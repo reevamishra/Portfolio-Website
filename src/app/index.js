@@ -116,7 +116,7 @@ function AppRoutes() {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
-                    <Route path="/projects/projectmodern" component={ProjectModern} />
+                    <Route path="/projects/modern" component={ProjectModern} />
                     <Route path="/projects/dtt" component={ProjectDevTechTools} />
                     <Route path="/projects/mystgang" component={ProjectMystGang} />
                     {/* <Route path="/articles" component={Articles} /> */}

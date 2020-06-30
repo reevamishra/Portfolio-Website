@@ -140,7 +140,7 @@ export default function Home(props) {
         title="Putting Players First"
         description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
-        buttonTo="/projects/projectmodern"
+        buttonTo="/projects/modern"
         imageSrc={useMemo(() => [`${modernProject} 980w, ${modernProjectLarge} 1376w`], [])}
         imageAlt={useMemo(() => ['The Modern Project Landing Page'], [])}
         imagePlaceholder={useMemo(() => [modernProjectPlaceholder], [])}
