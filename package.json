@@ -57,7 +57,8 @@
   "reactSnap": {
     "skipThirdPartyRequests": true,
     "headless": true,
-    "crawl": true
+    "crawl": true,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"]
   },
   "browserslist": {
     "production": [
