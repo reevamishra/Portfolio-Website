@@ -56,12 +56,12 @@ function Intro(props) {
             }
             <IntroText>
               <IntroName status={status} id={titleId}>
-                <DecoderText text="Cody Bennett" start={!prerender} offset={120} />
+                <DecoderText text="Namita Dash" start={!prerender} offset={120} />
               </IntroName>
               <IntroTitle>
-                <IntroTitleLabel>{`Designer + ${introLabel}`}</IntroTitleLabel>
+                <IntroTitleLabel>{`Architect + ${introLabel}`}</IntroTitleLabel>
                 <IntroTitleRow aria-hidden prerender={prerender}>
-                  <IntroTitleWord status={status} delay={tokens.base.durationXS}>Designer</IntroTitleWord>
+                  <IntroTitleWord status={status} delay={tokens.base.durationXS}>Architect</IntroTitleWord>
                   <IntroTitleLine status={status} />
                 </IntroTitleRow>
                 <TransitionGroup component={IntroTitleRow} prerender={prerender}>

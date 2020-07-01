@@ -16,7 +16,7 @@ import mystgangProject from 'assets/mystgang-project.png';
 import mystgangProjectLarge from 'assets/mystgang-project-large.png';
 import mystgangProjectPlaceholder from 'assets/mystgang-project-placeholder.png';
 
-const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Guitarist'];
+const disciplines = ['Designer','Structural', 'Interior', 'Landscape'];
 
 export default function Home(props) {
   const { status } = useRouteTransition();
