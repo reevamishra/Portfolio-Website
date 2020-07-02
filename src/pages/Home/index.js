@@ -120,7 +120,7 @@ export default function Home(props) {
   return (
     <Fragment>
       <Helmet
-        title="Cody Bennett | Designer + Developer"
+        title="Namita Dash | Architect"
         meta={[{
           name: "description",
           content: "Portfolio of Cody Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience.",
