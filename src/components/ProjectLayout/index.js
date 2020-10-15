@@ -139,7 +139,7 @@ export const ProjectSectionText = ({ className, ...rest }) => (
 
 export const ProjectTextRow = ({
   center,
-  justify,
+  justify = 'center',
   noMargin,
   className,
   centerMobile,
