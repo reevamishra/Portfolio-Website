@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Intro from './Intro';
@@ -20,10 +20,11 @@ import dttTextureLarge from 'assets/dtt-large.jpg';
 import dttTexturePlaceholder from 'assets/dtt-placeholder.jpg';
 import iphone11 from 'assets/iphone-11.glb';
 import macbookPro from 'assets/macbook-pro.glb';
+import './index.css';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
 
-export default function Home(props) {
+const Home = (props) => {
   const { status } = useRouteTransition();
   const { hash, state } = useLocation();
   const initHash = useRef(true);
@@ -123,7 +124,7 @@ export default function Home(props) {
   }, [hash, state, prefersReducedMotion, status]);
 
   return (
-    <Fragment>
+    <div className="home">
       <Helmet>
         <title>Cody Bennett | Designer + Developer</title>
         <meta
@@ -214,6 +215,8 @@ export default function Home(props) {
         id="about"
       />
       <Footer />
-    </Fragment>
+    </div>
   );
-}
+};
+
+export default Home;

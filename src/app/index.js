@@ -5,12 +5,14 @@ import classNames from 'classnames';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from 'components/Header';
 import ThemeProvider from 'components/ThemeProvider';
+import VisuallyHidden from 'components/VisuallyHidden';
 import { tokens } from 'components/ThemeProvider/theme';
 import { msToNum } from 'utils/style';
 import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
 import { initialState, reducer } from 'app/reducer';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
+import './reset.css';
 import './index.css';
 
 const Home = lazy(() => import('pages/Home'));
@@ -53,13 +55,13 @@ const App = () => {
 
   return (
     <HelmetProvider>
-      <ThemeProvider themeId={state.theme}>
-        <AppContext.Provider value={{ ...state, dispatch }}>
+      <AppContext.Provider value={{ ...state, dispatch }}>
+        <ThemeProvider themeId={state.theme}>
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
-        </AppContext.Provider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </AppContext.Provider>
     </HelmetProvider>
   );
 };
@@ -73,9 +75,9 @@ const AppRoutes = () => {
       <Helmet>
         <link rel="canonical" href={`https://codyb.co${pathname}`} />
       </Helmet>
-      <a className="skip-to-main" href="#MainContent">
+      <VisuallyHidden as="a" className="skip-to-main" href="#MainContent">
         Skip to main content
-      </a>
+      </VisuallyHidden>
       <Header location={location} />
       <TransitionGroup component="main" className="app" tabIndex={-1} id="MainContent">
         <Transition

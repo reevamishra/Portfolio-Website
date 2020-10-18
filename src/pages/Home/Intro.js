@@ -2,14 +2,15 @@ import React, { Suspense, lazy, useEffect, useState, Fragment } from 'react';
 import classNames from 'classnames';
 import { TransitionGroup, Transition } from 'react-transition-group';
 import DecoderText from 'components/DecoderText';
+import Heading from 'components/Heading';
+import Section from 'components/Section';
+import VisuallyHidden from 'components/VisuallyHidden';
+import { ReactComponent as ArrowDown } from 'assets/arrow-down.svg';
 import { useInterval, usePrevious, useWindowSize } from 'hooks';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import { media } from 'utils/style';
-import { ReactComponent as ArrowDown } from 'assets/arrow-down.svg';
 import { tokens } from 'components/ThemeProvider/theme';
-import Heading from 'components/Heading';
-import Section from 'components/Section';
 import { useTheme } from 'components/ThemeProvider';
 import './Intro.css';
 
@@ -75,7 +76,7 @@ function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) 
                 <DecoderText text="Cody Bennett" start={!prerender} delay={300} />
               </h1>
               <Heading level={0} as="h2" className="intro__title">
-                <span className="intro__title-label">{`Designer + ${introLabel}`}</span>
+                <VisuallyHidden className="intro__title-label">{`Designer + ${introLabel}`}</VisuallyHidden>
                 <span
                   aria-hidden
                   className={classNames('intro__title-row', {

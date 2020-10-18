@@ -1,6 +1,6 @@
 .project-summary {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   max-height: 1080px;
   padding-bottom: var(--spaceL);
   margin: 120px 0;
@@ -36,7 +36,6 @@
   .project-summary {
     padding-bottom: var(--space4XL);
     margin-bottom: 0;
-    overflow-x: hidden;
   }
 }
 
