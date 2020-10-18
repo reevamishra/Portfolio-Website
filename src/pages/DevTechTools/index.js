@@ -48,7 +48,7 @@ function DevTechTools() {
       </Helmet>
       <ProjectContainer>
         <ProjectBackground
-          srcSet={`${dttBackground} 1000w, ${dttBackgroundLarge} 1920w`}
+          srcSet={`${dttBackground} 1080w, ${dttBackgroundLarge} 2160w`}
           placeholder={dttBackgroundPlaceholder}
           entered={!prerender}
         />
@@ -58,13 +58,13 @@ function DevTechTools() {
           url="https://devtechtools.com"
           roles={roles}
         />
-        <ProjectSection>
+        <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
               reveal
-              srcSet={`${dtt} 800w, ${dttLarge} 1440w`}
+              srcSet={`${dtt} 1280w, ${dttLarge} 2560w`}
               placeholder={dttPlaceholder}
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="Landing screen of the DevTech Tools website."
             />
           </ProjectSectionContent>
@@ -99,14 +99,14 @@ function DevTechTools() {
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionColumns alterate>
+          <ProjectSectionColumns alternate>
             <Image
               srcSet={`${dttTool} 400w, ${dttToolLarge} 898w`}
               placeholder={dttToolPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="The tool wrapper of the JSON to CSV data converter."
             />
-            <ProjectTextRow>
+            <ProjectTextRow noMargin>
               <ProjectSectionHeading>Setting Sail</ProjectSectionHeading>
               <ProjectSectionText>
                 DevTech Tools launched with a comprehensive set of data converters, code formatters and linters, and many other tools.
@@ -148,10 +148,10 @@ function DevTechTools() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${dttLanding} 800w, ${dttLandingLarge} 1440w`}
+              srcSet={`${dttLanding} 1280w, ${dttLandingLarge} 2560w`}
               placeholder={dttLandingPlaceholder}
               alt="A screenshot of the landing page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
         </ProjectSection>

@@ -58,7 +58,7 @@ function ProjectModern() {
       </Helmet>
       <ProjectContainer>
         <ProjectBackground
-          srcSet={`${modernBackground} 1000w, ${modernBackgroundLarge} 1920w`}
+          srcSet={`${modernBackground} 1080w, ${modernBackgroundLarge} 2160w`}
           placeholder={modernBackgroundPlaceholder}
           entered={!prerender}
         />
@@ -68,13 +68,13 @@ function ProjectModern() {
           url="https://projectmodern.gg"
           roles={roles}
         />
-        <ProjectSection>
+        <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
               reveal
-              srcSet={`${modern} 800w, ${modernLarge} 1440w`}
+              srcSet={`${modern} 1280w, ${modernLarge} 2560w`}
               placeholder={modernPlaceholder}
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="Landing screen of the Project Modern website."
             />
           </ProjectSectionContent>
@@ -110,10 +110,10 @@ function ProjectModern() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${modernComponents} 800w, ${modernComponentsLarge} 1440w`}
+              srcSet={`${modernComponents} 1280w, ${modernComponentsLarge} 2560w`}
               placeholder={modernComponentsPlaceholder}
               alt="A screenshot of Project Modern's components from Storybook."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -126,10 +126,10 @@ function ProjectModern() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${modernLanding} 800w, ${modernLandingLarge} 1440w`}
+              srcSet={`${modernLanding} 1280w, ${modernLandingLarge} 2560w`}
               placeholder={modernLandingPlaceholder}
               alt="A screenshot of the landing page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>
         </ProjectSection>
@@ -142,16 +142,16 @@ function ProjectModern() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${modernEvents} 800w, ${modernEventsLarge} 1440w`}
+              srcSet={`${modernEvents} 1280w, ${modernEventsLarge} 2560w`}
               placeholder={modernEventsPlaceholder}
               alt="A screenshot of the events page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
             <Image
-              srcSet={`${modernEvent} 800w, ${modernEventLarge} 1440w`}
+              srcSet={`${modernEvent} 1280w, ${modernEventLarge} 2560w`}
               placeholder={modernEventPlaceholder}
               alt="A screenshot of an event page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               style={{ marginTop: 'var(--space3XL)' }}
             />
           </ProjectSectionContent>
@@ -165,16 +165,16 @@ function ProjectModern() {
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${modernSignup} 800w, ${modernSignupLarge} 1440w`}
+              srcSet={`${modernSignup} 1280w, ${modernSignupLarge} 2560w`}
               placeholder={modernSignupPlaceholder}
               alt="A screenshot of an event's signup page in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
             <Image
-              srcSet={`${modernComplete} 800w, ${modernCompleteLarge} 1440w`}
+              srcSet={`${modernComplete} 1280w, ${modernCompleteLarge} 2560w`}
               placeholder={modernCompletePlaceholder}
               alt="A screenshot showing an onboarding page after signup in production."
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               style={{ marginTop: 'var(--space3XL)' }}
             />
           </ProjectSectionContent>

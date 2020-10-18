@@ -60,7 +60,7 @@ function MystGang() {
       </Helmet>
       <ProjectContainer>
         <ProjectBackground
-          srcSet={`${mystgangBackground} 1000w, ${mystgangBackgroundLarge} 1920w`}
+          srcSet={`${mystgangBackground} 1080w, ${mystgangBackgroundLarge} 2160w`}
           placeholder={mystgangBackgroundPlaceholder}
           entered={!prerender}
         />
@@ -70,13 +70,13 @@ function MystGang() {
           url="https://mystgang.ml"
           roles={roles}
         />
-        <ProjectSection>
+        <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
               reveal
-              srcSet={`${mystgang} 800w, ${mystgangLarge} 1440w`}
+              srcSet={`${mystgang} 1280w, ${mystgangLarge} 2560w`}
               placeholder={mystgangPlaceholder}
-              sizes={`(max-width: ${media.mobile}px) 500px, (max-width: ${media.tablet}px) 800px, 1000px`}
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
               alt="Landing screne of the MystGang website."
             />
           </ProjectSectionContent>
@@ -130,42 +130,42 @@ function MystGang() {
                 images={useMemo(() => [
                   {
                     src: mystgangSlide1,
-                    srcSet: `${mystgangSlide1} 960w, ${mystgangSlide1Large} 1920w`,
+                    srcSet: `${mystgangSlide1} 960w, ${mystgangSlide1Large} 2160w`,
                     alt: 'MystGang Splash Screen',
                   },
                   {
                     src: mystgangSlide2,
-                    srcSet: `${mystgangSlide2} 960w, ${mystgangSlide2Large} 1920w`,
+                    srcSet: `${mystgangSlide2} 960w, ${mystgangSlide2Large} 2160w`,
                     alt: 'MystGang Home Screen',
                   },
                   {
                     src: mystgangSlide3,
-                    srcSet: `${mystgangSlide3} 960w, ${mystgangSlide3Large} 1920w`,
+                    srcSet: `${mystgangSlide3} 960w, ${mystgangSlide3Large} 2160w`,
                     alt: 'MystGang Fullscreen Menu',
                   },
                   {
                     src: mystgangSlide4,
-                    srcSet: `${mystgangSlide4} 960w, ${mystgangSlide4Large} 1920w`,
+                    srcSet: `${mystgangSlide4} 960w, ${mystgangSlide4Large} 2160w`,
                     alt: 'MystGang Work Screen',
                   },
                   {
                     src: mystgangSlide5,
-                    srcSet: `${mystgangSlide5} 960w, ${mystgangSlide5Large} 1920w`,
+                    srcSet: `${mystgangSlide5} 960w, ${mystgangSlide5Large} 2160w`,
                     alt: 'MystGang About Self'
                   },
                   {
                     src: mystgangSlide6,
-                    srcSet: `${mystgangSlide6} 960w, ${mystgangSlide6Large} 1920w`,
+                    srcSet: `${mystgangSlide6} 960w, ${mystgangSlide6Large} 2160w`,
                     alt: 'MystGang About Work',
                   },
                   {
                     src: mystgangSlide7,
-                    srcSet: `${mystgangSlide7} 960w, ${mystgangSlide7Large} 1920w`,
+                    srcSet: `${mystgangSlide7} 960w, ${mystgangSlide7Large} 2160w`,
                     alt: 'MystGang About Socials',
                   },
                   {
                     src: mystgangSlide8,
-                    srcSet: `${mystgangSlide8} 960w, ${mystgangSlide8Large} 1920w`,
+                    srcSet: `${mystgangSlide8} 960w, ${mystgangSlide8Large} 2160w`,
                     alt: 'MystGang Contact Screen',
                   },
                 ], [])}
