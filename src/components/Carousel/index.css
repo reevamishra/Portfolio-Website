@@ -58,10 +58,6 @@
   mix-blend-mode: difference;
 }
 
-.carousel__button::-moz-focus-inner {
-  border: 0;
-}
-
 .carousel__button:focus {
   box-shadow: 0 0 0 4px rgb(var(--rgbBackground)), 0 0 0 8px rgb(var(--rgbText));
 }
@@ -139,10 +135,6 @@
   transition-property: background, box-shadow;
   transition-duration: var(--durationL);
   transition-timing-function: var(--bezierFastoutSlowin);
-}
-
-.carousel__nav-button::-moz-focus-inner {
-  border: 0;
 }
 
 .carousel__nav-button:focus {
