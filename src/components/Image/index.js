@@ -5,14 +5,19 @@ import { Button } from 'components/Button';
 import Icon from 'components/Icon';
 import { Transition } from 'react-transition-group';
 import { reflow } from 'utils/transition';
-import prerender from 'utils/prerender';import { tokens } from 'components/ThemeProvider/theme';
+import prerender from 'utils/prerender';
+import { tokens } from 'components/ThemeProvider/theme';
 import { msToNum, numToMs } from 'utils/style';
+import { resolveVideoSrcFromSrcSet } from 'utils/image';
+import { useTheme } from 'components/ThemeProvider';
+import VisuallyHidden from 'components/VisuallyHidden';
 import './index.css';
 
-const Image = ({ className, style, reveal, delay = 0, ...rest }) => {
+const Image = ({ className, style, reveal, delay = 0, raised, src, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
+  const { themeId } = useTheme();
   const containerRef = useRef();
-  const inViewport = useInViewport(containerRef, true);
+  const inViewport = useInViewport(containerRef, !src?.endsWith('.mp4'));
 
   const onLoad = useCallback(() => {
     setLoaded(true);
@@ -20,9 +25,10 @@ const Image = ({ className, style, reveal, delay = 0, ...rest }) => {
 
   return (
     <div
-      className={classNames('image', className, {
+      className={classNames('image', className, `image--${themeId}`, {
         'image--in-viewport': inViewport,
         'image--reveal': reveal,
+        'image--raised': raised,
       })}
       style={{ ...style, '--delay': numToMs(delay) }}
       ref={containerRef}
@@ -33,6 +39,7 @@ const Image = ({ className, style, reveal, delay = 0, ...rest }) => {
         loaded={loaded}
         inViewport={inViewport}
         reveal={reveal}
+        src={src}
         {...rest}
       />
     </div>
@@ -59,6 +66,7 @@ const ImageElements = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [placeholderSize, setPlaceholderSize] = useState();
+  const [videoSrc, setVideoSrc] = useState();
   const placeholderRef = useRef();
   const videoRef = useRef();
   const isVideo = src?.endsWith('.mp4');
@@ -81,6 +89,19 @@ const ImageElements = ({
   }, []);
 
   useEffect(() => {
+    const resolveVideoSrc = async () => {
+      const resolvedVideoSrc = await resolveVideoSrcFromSrcSet(srcSet);
+      setVideoSrc(resolvedVideoSrc);
+    };
+
+    if (isVideo && srcSet) {
+      resolveVideoSrc();
+    } else if (isVideo) {
+      setVideoSrc(src);
+    }
+  }, [isVideo, src, srcSet]);
+
+  useEffect(() => {
     const { width, height } = placeholderRef.current;
 
     if (width && height) {
@@ -89,16 +110,16 @@ const ImageElements = ({
   }, []);
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    if (!videoRef.current || !videoSrc) return;
 
-    if (!play) {
+    if (!play || !inViewport) {
       setPlaying(false);
       videoRef.current.pause();
-    } else {
+    } else if (inViewport && !prefersReducedMotion) {
       setPlaying(true);
       videoRef.current.play();
     }
-  }, [play]);
+  }, [inViewport, play, prefersReducedMotion, videoSrc]);
 
   const handlePlaceholderLoad = event => {
     const { width, height } = event.target;
@@ -147,12 +168,11 @@ const ImageElements = ({
             autoPlay={!prefersReducedMotion}
             role="img"
             onLoadStart={onLoad}
+            src={videoSrc}
             aria-label={alt}
             ref={videoRef}
             {...rest}
-          >
-            <source src={src} type="video/mp4" />
-          </video>
+          />
           <Transition
             in={isHovered || isFocused}
             onExit={reflow}
@@ -160,17 +180,17 @@ const ImageElements = ({
             timeout={{ enter: 0, exit: msToNum(tokens.base.durationS) }}
           >
             {status => (
-              <Button
-                className={classNames('image__button', `image__button--${status}`, {
-                  'image__button--visible': showPlayButton,
-                })}
-                onFocus={handleFocusPlayButton}
-                onBlur={() => setIsFocused(false)}
-                onClick={togglePlaying}
-              >
-                <Icon icon={playing ? 'pause' : 'play'} />
-                {playing ? 'Pause' : 'Play'}
-              </Button>
+              <VisuallyHidden visible={showPlayButton}>
+                <Button
+                  className={classNames('image__button', `image__button--${status}`)}
+                  onFocus={handleFocusPlayButton}
+                  onBlur={() => setIsFocused(false)}
+                  onClick={togglePlaying}
+                >
+                  <Icon icon={playing ? 'pause' : 'play'} />
+                  {playing ? 'Pause' : 'Play'}
+                </Button>
+              </VisuallyHidden>
             )}
           </Transition>
         </Fragment>
