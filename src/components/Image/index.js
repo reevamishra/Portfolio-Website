@@ -168,11 +168,12 @@ const ImageElements = ({
             autoPlay={!prefersReducedMotion}
             role="img"
             onLoadStart={onLoad}
-            src={videoSrc}
             aria-label={alt}
             ref={videoRef}
             {...rest}
-          />
+          >
+            <source src={src} type="video/mp4" />
+          </video>
           <Transition
             in={isHovered || isFocused}
             onExit={reflow}
