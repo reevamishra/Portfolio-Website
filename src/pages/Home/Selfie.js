@@ -12,7 +12,7 @@ import {
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { spring, value } from 'popmotion';
 import { usePrefersReducedMotion, useInViewport } from 'hooks';
-import { renderPixelRatio, cleanScene, cleanRenderer, removeLights } from 'utils/three';
+import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
 import { useTheme } from 'components/ThemeProvider';
 import selfieModelPath from 'assets/selfie.glb';
@@ -38,7 +38,7 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
       powerPreference: 'high-performance',
     });
 
-    renderer.current.setPixelRatio(renderPixelRatio);
+    renderer.current.setPixelRatio(2);
     renderer.current.setSize(clientWidth, clientHeight);
     renderer.current.outputEncoding = sRGBEncoding;
     renderer.current.physicallyCorrectLights = true;

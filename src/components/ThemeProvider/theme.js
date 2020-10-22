@@ -13,8 +13,8 @@ const baseTokens = {
   durationM: '400ms',
   durationL: '600ms',
   durationXL: '800ms',
-  fontStack:
-    `Gotham, ${systemFontStack}`,
+  systemFontStack,
+  fontStack: `Gotham, ${systemFontStack}`,
   monoFontStack:
     'SFMono Regular, Roboto Mono, Consolas, Liberation Mono, Menlo, Courier, monospace',
   decoderFontStack:
@@ -34,7 +34,7 @@ const baseTokens = {
   fontSizeBodyXS: pxToRem(14),
   lineHeightTitle: '1.1',
   lineHeightBody: '1.5',
-  maxWidthS: '480px',
+  maxWidthS: '540px',
   maxWidthM: '720px',
   maxWidthL: '1096px',
   maxWidthXL: '1680px',
@@ -57,6 +57,8 @@ const tokensDesktop = {
 };
 
 const tokensLaptop = {
+  maxWidthS: '480px',
+  maxWidthM: '640px',
   maxWidthL: '1000px',
   maxWidthXL: '1100px',
   spaceOuter: '48px',

@@ -28,7 +28,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { delay, chain, spring, value } from 'popmotion';
 import { getImageFromSrcSet } from 'utils/image';
 import { useInViewport, usePrefersReducedMotion } from 'hooks';
-import { cleanScene, renderPixelRatio, cleanRenderer, removeLights } from 'utils/three';
+import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { ModelAnimationType } from './deviceModels';
 import { numToMs } from 'utils/style';
 import './index.css';
@@ -84,7 +84,7 @@ const Model = ({
       powerPreference: 'high-performance',
     });
 
-    renderer.current.setPixelRatio(renderPixelRatio);
+    renderer.current.setPixelRatio(2);
     renderer.current.setSize(clientWidth, clientHeight);
     renderer.current.outputEncoding = sRGBEncoding;
     renderer.current.physicallyCorrectLights = true;
@@ -340,7 +340,6 @@ const Model = ({
           introSprings.push(modelAnimation);
         }
 
-        // Render the loaded texture
         if (reduceMotion) {
           renderFrame();
         }
@@ -348,6 +347,7 @@ const Model = ({
         // Load full res screen texture
         await model.loadFullResTexture();
 
+        // Render the loaded texture
         if (reduceMotion) {
           renderFrame();
         }

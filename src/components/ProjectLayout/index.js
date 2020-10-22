@@ -122,7 +122,7 @@ export const ProjectSection = forwardRef(
 );
 
 export const ProjectBackground = ({ opacity = 0.7, className, entered, ...rest }) => {
-  const offset = useParallax(-0.6);
+  const offset = useParallax(0.6);
 
   return (
     <div
@@ -130,16 +130,15 @@ export const ProjectBackground = ({ opacity = 0.7, className, entered, ...rest }
         'project__background-image--entered': entered,
       })}
     >
-      <Image
+      <div
         className="project__background-image-element"
-        alt=""
-        role="presentation"
         style={{
-          '--opacity': opacity,
           '--offset': numToPx(offset),
         }}
-        {...rest}
-      />
+      >
+        <Image alt="" role="presentation" {...rest} />
+      </div>
+      <div className="project__background-scrim" style={{ '--opacity': opacity }} />
     </div>
   );
 };
