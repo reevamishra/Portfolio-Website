@@ -9,6 +9,7 @@ import { Button } from 'components/Button';
 import Section from 'components/Section';
 import Icon from 'components/Icon';
 import Heading from 'components/Heading';
+import Text from 'components/Text';
 import { useScrollRestore, useFormInput, useRouteTransition } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
 import prerender from 'utils/prerender';
@@ -202,15 +203,18 @@ const Contact = () => {
           <Transition appear mountOnEnter unmountOnExit onEnter={reflow} timeout={0}>
             {status => (
               <div className="contact__complete" aria-live="polite">
-                <h1
+                <Heading
+                  level={3}
+                  as="h3"
                   className={classNames(
                     'contact__complete-title',
                     `contact__complete-title--${status}`
                   )}
                 >
                   Message Sent
-                </h1>
-                <p
+                </Heading>
+                <Text
+                  size="l"
                   className={classNames(
                     'contact__complete-text',
                     `contact__complete-text--${status}`
@@ -218,9 +222,10 @@ const Contact = () => {
                   style={getDelay(tokens.base.durationXS)}
                 >
                   I’ll get back to you within a couple days
-                </p>
+                </Text>
                 <Button
                   secondary
+                  iconHoverShift
                   className={classNames(
                     'contact__complete-button',
                     `contact__complete-button--${status}`
