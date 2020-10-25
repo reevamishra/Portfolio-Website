@@ -75,7 +75,7 @@ const AppRoutes = () => {
       <Helmet>
         <link rel="canonical" href={`https://codyb.co${pathname}`} />
       </Helmet>
-      <VisuallyHidden as="a" className="skip-to-main" href="#MainContent">
+      <VisuallyHidden showOnFocus as="a" className="skip-to-main" href="#MainContent">
         Skip to main content
       </VisuallyHidden>
       <Header location={location} />
