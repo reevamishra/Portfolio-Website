@@ -1,4 +1,4 @@
-import React, { lazy, useMemo, Suspense, Fragment } from 'react';
+import { lazy, useMemo, Suspense, Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Image from 'components/Image';
 import { useScrollRestore } from 'hooks';

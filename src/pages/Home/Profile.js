@@ -1,4 +1,4 @@
-import React, { lazy, Fragment, Suspense } from 'react';
+import { lazy, Fragment, Suspense } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import Link from 'components/Link';

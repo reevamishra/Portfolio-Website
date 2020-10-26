@@ -19,7 +19,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "mdx-loader": "^3.0.2",
     "prettier": "^2.1.2",
-    "react-scripts": "3.4.4",
+    "react-scripts": "4.0.0",
     "react-snap": "1.23.0",
     "react-test-renderer": "^17.0.1",
     "source-map-explorer": "^2.5.0",
@@ -57,18 +57,10 @@
     "headless": true,
     "crawl": true
   },
-  "browserslist": {
-    "production": [
-      ">10%",
-      "not dead",
-      "not ie 11",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "proxy": "https://codyb.co"
 }

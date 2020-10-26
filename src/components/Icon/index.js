@@ -1,4 +1,3 @@
-import React from 'react';
 import classNames from 'classnames';
 import { ReactComponent as ArrowRight } from 'assets/icons/arrow-right.svg';
 import { ReactComponent as ChevronRight } from 'assets/icons/chevron-right.svg';
