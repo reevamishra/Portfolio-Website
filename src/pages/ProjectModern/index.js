@@ -8,7 +8,9 @@ import {
   ProjectSectionContent, ProjectImage, ProjectSectionHeading, ProjectSectionText,
   ProjectSectionColumns, ProjectTextRow
 } from 'components/ProjectLayout';
-import { useScrollRestore } from 'hooks';
+import SegmentedControl, { SegmentedControlOption } from 'components/SegmentedControl';
+import { useTheme } from 'components/ThemeProvider';
+import { useAppContext, useScrollRestore } from 'hooks';
 import { media } from 'utils/style';
 import prerender from 'utils/prerender';
 import modernBackground from 'assets/modern-background.jpg';
@@ -20,24 +22,22 @@ import modernPlaceholder from 'assets/modern-placeholder.jpg';
 import modernBranding from 'assets/modern-branding.png';
 import modernBrandingLarge from 'assets/modern-branding-large.png';
 import modernBrandingPlaceholder from 'assets/modern-branding-placeholder.png';
-import modernComponents from 'assets/modern-components.jpg';
-import modernComponentsLarge from 'assets/modern-components-large.jpg';
-import modernComponentsPlaceholder from 'assets/modern-components-placeholder.jpg';
+import modernComponentsDark from 'assets/modern-components-dark.png';
+import modernComponentsDarkLarge from 'assets/modern-components-dark-large.png';
+import modernComponentsDarkPlaceholder from 'assets/modern-components-dark-placeholder.png';
+import modernComponentsLight from 'assets/modern-components-light.png';
+import modernComponentsLightLarge from 'assets/modern-components-light-large.png';
+import modernComponentsLightPlaceholder from 'assets/modern-components-light-placeholder.png';
+import modernDesignSystemDark from 'assets/modern-design-system-dark.jpg';
+import modernDesignSystemDarkLarge from 'assets/modern-design-system-dark-large.jpg';
+import modernDesignSystemDarkPlaceholder from 'assets/modern-design-system-dark-placeholder.jpg';
+import modernDesignSystemLight from 'assets/modern-design-system-light.jpg';
+import modernDesignSystemLightLarge from 'assets/modern-design-system-light-large.jpg';
+import modernDesignSystemLightPlaceholder from 'assets/modern-design-system-light-placeholder.jpg';
 import modernLanding from 'assets/modern-landing.jpg';
 import modernLandingLarge from 'assets/modern-landing-large.jpg';
 import modernLandingPlaceholder from 'assets/modern-landing-placeholder.jpg';
-import modernEvents from 'assets/modern-events.jpg';
-import modernEventsLarge from 'assets/modern-events-large.jpg';
-import modernEventsPlaceholder from 'assets/modern-events-placeholder.jpg';
-import modernEvent from 'assets/modern-event.jpg';
-import modernEventLarge from 'assets/modern-event-large.jpg';
-import modernEventPlaceholder from 'assets/modern-event-placeholder.jpg';
-import modernSignup from 'assets/modern-signup.jpg';
-import modernSignupLarge from 'assets/modern-signup-large.jpg';
-import modernSignupPlaceholder from 'assets/modern-signup-placeholder.jpg';
-import modernComplete from 'assets/modern-complete.jpg';
-import modernCompleteLarge from 'assets/modern-complete-large.jpg';
-import modernCompletePlaceholder from 'assets/modern-complete-placeholder.jpg';
+import './index.css';
 
 const title = 'Project Modern';
 const description = 'Building a community that puts players and game health first, not profits.';
@@ -48,7 +48,16 @@ const roles = [
 ];
 
 function ProjectModern() {
+  const { themeId } = useTheme();
+  const { dispatch } = useAppContext();
   useScrollRestore();
+
+  const isDark = themeId === 'dark';
+  const themes = ['dark', 'light'];
+
+  const handleThemeChange = index => {
+    dispatch({ type: 'setTheme', value: themes[index] });
+  };
 
   return (
     <Fragment>
@@ -71,7 +80,7 @@ function ProjectModern() {
         <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
-              reveal
+              raised
               srcSet={`${modern} 1280w, ${modernLarge} 2560w`}
               placeholder={modernPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
@@ -84,10 +93,14 @@ function ProjectModern() {
             <ProjectTextRow>
               <ProjectSectionHeading>Visual Identity</ProjectSectionHeading>
               <ProjectSectionText>
-                Project Modern is a splinter community from a gamemode based from the card game: Magic, the Gathering in protest of recent conflict of interest in game management.
+                Project Modern is a splinter community from a gamemode based from the
+                card game: Magic, the Gathering in protest of recent conflict of interest
+                in game management.
               </ProjectSectionText>
               <ProjectSectionText>
-                We represented the modern or new feel behind the mission of Project Modern with custom typography with a plus for new, accompanied with fresh colors and a crisp typeface.
+                We represented the modern or new feel behind the mission of Project Modern
+                with custom typography with a plus for new, accompanied with fresh colors
+                and a crisp typeface.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -98,23 +111,74 @@ function ProjectModern() {
             />
           </ProjectSectionColumns>
         </ProjectSection>
-        <ProjectSection light>
+        <ProjectSection light={isDark}>
           <ProjectSectionContent>
+            <Image
+              key={themeId}
+              srcSet={`${
+                isDark ? modernComponentsDark : modernComponentsLight
+              } 800w, ${
+                isDark ? modernComponentsDarkLarge : modernComponentsLightLarge
+              } 1000w`}
+              placeholder={
+                isDark
+                  ? modernComponentsDarkPlaceholder
+                  : modernComponentsLightPlaceholder
+              }
+              alt={`A set of ${themeId} themed components for the Project Modern design system`}
+              sizes="100vw"
+            />
+            <ProjectTextRow>
+              <SegmentedControl
+                currentIndex={themes.indexOf(themeId)}
+                onChange={handleThemeChange}
+              >
+                <SegmentedControlOption>Dark theme</SegmentedControlOption>
+                <SegmentedControlOption>Light theme</SegmentedControlOption>
+              </SegmentedControl>
+            </ProjectTextRow>
             <ProjectTextRow>
               <ProjectSectionHeading>Design and Development</ProjectSectionHeading>
               <ProjectSectionText>
-                I lead the design and development of online services for Project Modern, ranging from website design and development to backing cloud and bot functions.
+                I lead the design and development of online services for Project Modern,
+                ranging from website design and development to backing cloud and bot functions.
               </ProjectSectionText>
               <ProjectSectionText>
-                We kept the brand and style of Project Modern consistent throughout its <Link href="https://storybook.projectmodern.gg" target="_blank">component-based design</Link>.
+                I kept the brand and style of Project Modern consistent throughout its
+                {` `}<Link href="https://storybook.projectmodern.gg" target="_blank">component-based design</Link>.
+                This would inform both the aesthetics and user experience across the website
+                and marketing material.
               </ProjectSectionText>
             </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
+        <ProjectSection>
+          <ProjectSectionContent>
             <Image
-              srcSet={`${modernComponents} 1280w, ${modernComponentsLarge} 2560w`}
-              placeholder={modernComponentsPlaceholder}
-              alt="A screenshot of Project Modern's components from Storybook."
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
+              raised
+              key={themeId}
+              srcSet={`${
+                isDark ? modernDesignSystemDark : modernDesignSystemLight
+              } 1280w, ${
+                isDark ? modernDesignSystemDarkLarge : modernDesignSystemLightLarge
+              } 2560w`}
+              placeholder={
+                isDark
+                  ? modernDesignSystemDarkPlaceholder
+                  : modernDesignSystemLightPlaceholder
+              }
+              alt="The homepage of the Project Modern design system docs website linking to amchor components."
+              sizes="100vw"
             />
+            <ProjectTextRow>
+              <ProjectSectionHeading>Design System</ProjectSectionHeading>
+              <ProjectSectionText>
+                A design system is useless if no one knows how to use it, so I put
+                together a comprehensive documentation website to cover ux,
+                accessibility, and component guidelines for designers and engineers
+                working with the system.
+              </ProjectSectionText>
+            </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
@@ -122,7 +186,9 @@ function ProjectModern() {
             <ProjectTextRow>
               <ProjectSectionHeading>A Home for Project Modern</ProjectSectionHeading>
               <ProjectSectionText>
-                A website is the biggest tell in brand. With a good, lasting impression, I designed and developed elegant interfaces, complimented with inviting interactions throughout the website.
+                A website is the biggest tell in brand. With a good, lasting impression,
+                I designed and developed elegant interfaces, complimented with inviting
+                interactions throughout the website.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -130,52 +196,6 @@ function ProjectModern() {
               placeholder={modernLandingPlaceholder}
               alt="A screenshot of the landing page in production."
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Let's Play!</ProjectSectionHeading>
-              <ProjectSectionText>
-                Project Modern boasts a large, healthy playerbase, and we showed that with cultivated tournaments for everyone.
-              </ProjectSectionText>
-            </ProjectTextRow>
-            <Image
-              srcSet={`${modernEvents} 1280w, ${modernEventsLarge} 2560w`}
-              placeholder={modernEventsPlaceholder}
-              alt="A screenshot of the events page in production."
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-            <Image
-              srcSet={`${modernEvent} 1280w, ${modernEventLarge} 2560w`}
-              placeholder={modernEventPlaceholder}
-              alt="A screenshot of an event page in production."
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              style={{ marginTop: 'var(--space3XL)' }}
-            />
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
-          <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Signup Here</ProjectSectionHeading>
-              <ProjectSectionText>
-                Project Modern's events' catalogue isn't the end. The website is designed to encourage and capture event signup, automating everything with ease.
-              </ProjectSectionText>
-            </ProjectTextRow>
-            <Image
-              srcSet={`${modernSignup} 1280w, ${modernSignupLarge} 2560w`}
-              placeholder={modernSignupPlaceholder}
-              alt="A screenshot of an event's signup page in production."
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-            />
-            <Image
-              srcSet={`${modernComplete} 1280w, ${modernCompleteLarge} 2560w`}
-              placeholder={modernCompletePlaceholder}
-              alt="A screenshot showing an onboarding page after signup in production."
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
-              style={{ marginTop: 'var(--space3XL)' }}
             />
           </ProjectSectionContent>
         </ProjectSection>
