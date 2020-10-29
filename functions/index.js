@@ -4,8 +4,12 @@ const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
 
 const app = express();
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 const gmailEmail = functions.config().gmail.email;
 const gmailPassword = functions.config().gmail.password;
 const mailTransport = nodemailer.createTransport({
@@ -16,17 +20,19 @@ const mailTransport = nodemailer.createTransport({
   },
 });
 
+const ORIGIN: 'https://codyb.co';
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 
 admin.initializeApp();
 app.use(helmet());
 app.use(express.json());
-app.use(cors({ origin: 'https://codyb.co' }));
+app.use(cors({ origin: ORIGIN }));
 
 app.post('/functions/sendMessage', async (req, res) => {
   try {
-    const { email, message } = req.body;
+    const email = DOMPurify.sanitize(req.body.email);
+    const message = DOMPurify.sanitize(req.body.message);
 
     // Validate email request
     if (!email || !/(.+)@(.+){2,}\.(.+){2,}/.test(email)) {
@@ -46,7 +52,7 @@ app.post('/functions/sendMessage', async (req, res) => {
     await admin.database().ref('/messages').push({ email, message });
     return res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
-    console.error(error);
+    console.error('Rejected', error);
     return res.status(500).json({ error: 'Message rejected' });
   }
 });
