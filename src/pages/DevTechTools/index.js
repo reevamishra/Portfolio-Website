@@ -61,7 +61,7 @@ function DevTechTools() {
         <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
-              reveal
+              raised
               srcSet={`${dtt} 1280w, ${dttLarge} 2560w`}
               placeholder={dttPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
@@ -101,6 +101,7 @@ function DevTechTools() {
         <ProjectSection>
           <ProjectSectionColumns alternate>
             <Image
+              raised
               srcSet={`${dttTool} 400w, ${dttToolLarge} 898w`}
               placeholder={dttToolPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}

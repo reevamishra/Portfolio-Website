@@ -37,7 +37,6 @@ import modernDesignSystemLightPlaceholder from 'assets/modern-design-system-ligh
 import modernLanding from 'assets/modern-landing.jpg';
 import modernLandingLarge from 'assets/modern-landing-large.jpg';
 import modernLandingPlaceholder from 'assets/modern-landing-placeholder.jpg';
-import './index.css';
 
 const title = 'Project Modern';
 const description = 'Building a community that puts players and game health first, not profits.';
