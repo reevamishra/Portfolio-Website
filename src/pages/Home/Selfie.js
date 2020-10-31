@@ -8,6 +8,7 @@ import {
   SmoothShading,
   AmbientLight,
   DirectionalLight,
+  Color,
 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { spring, value } from 'popmotion';
@@ -76,7 +77,7 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
     dirLight.position.set(30, 20, 32);
 
     lights.current = [ambientLight, dirLight];
-    scene.current.background = rgbToThreeColor(rgbBackgroundLight);
+    scene.current.background = new Color(...rgbToThreeColor(rgbBackgroundLight));
     lights.current.forEach(light => scene.current.add(light));
 
     return () => {
@@ -144,9 +145,7 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
     return function cleanup() {
       window.removeEventListener('mousemove', onMouseMove);
 
-      if (rotationSpring) {
-        rotationSpring.stop();
-      }
+      rotationSpring?.stop();
     };
   }, [isInViewport, prefersReducedMotion]);
 

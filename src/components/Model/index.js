@@ -403,18 +403,17 @@ const Model = ({
       window.addEventListener('mousemove', onMouseMove);
     }
 
-    return function cleanup() {
+    return () => {
       window.removeEventListener('mousemove', onMouseMove);
-
-      if (rotationSpring) {
-        rotationSpring.stop();
-      }
+      rotationSpring?.stop();
     };
   }, [isInViewport, reduceMotion, renderFrame]);
 
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
+      if (!container.current) return;
+
       const { clientWidth, clientHeight } = container.current;
 
       renderer.current.setSize(clientWidth, clientHeight);
@@ -427,7 +426,7 @@ const Model = ({
     window.addEventListener('resize', handleResize);
     handleResize();
 
-    return function cleanup() {
+    return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [renderFrame]);
