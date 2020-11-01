@@ -1,14 +1,14 @@
 import { lazy, Suspense, useEffect, createContext, useReducer, Fragment } from 'react';
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
-import { Transition, TransitionGroup, config as transitionConfig } from 'react-transition-group';
+import { Transition, TransitionGroup } from 'react-transition-group';
 import classNames from 'classnames';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import Header from 'components/Header';
+import Navbar from 'components/Navbar';
 import ThemeProvider from 'components/ThemeProvider';
 import VisuallyHidden from 'components/VisuallyHidden';
 import { tokens } from 'components/ThemeProvider/theme';
 import { msToNum } from 'utils/style';
-import { useLocalStorage, usePrefersReducedMotion } from 'hooks';
+import { useLocalStorage } from 'hooks';
 import { initialState, reducer } from 'app/reducer';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
@@ -30,15 +30,6 @@ const repoPrompt = `\u00A9 2018-${new Date().getFullYear()} Cody Bennett\n\nChec
 const App = () => {
   const [storedTheme] = useLocalStorage('theme', 'dark');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      transitionConfig.disabled = true;
-    } else {
-      transitionConfig.disabled = false;
-    }
-  }, [prefersReducedMotion]);
 
   useEffect(() => {
     if (!prerender) {
@@ -77,7 +68,7 @@ const AppRoutes = () => {
       <VisuallyHidden showOnFocus as="a" className="skip-to-main" href="#MainContent">
         Skip to main content
       </VisuallyHidden>
-      <Header location={location} />
+      <Navbar location={location} />
       <TransitionGroup component="main" className="app" tabIndex={-1} id="MainContent">
         <Transition
           key={pathname}

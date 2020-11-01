@@ -13526,10 +13526,10 @@ react-router@5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-scripts@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-4.0.0.tgz#36f3d84ffff708ac0618fd61e71eaaea11c26417"
-  integrity sha512-icJ/ctwV5XwITUOupBP9TUVGdWOqqZ0H08tbJ1kVC5VpNWYzEZ3e/x8axhV15ZXRsixLo27snwQE7B6Zd9J2Tg==
+react-scripts-postcss@4.0.0-mod1:
+  version "4.0.0-mod1"
+  resolved "https://registry.yarnpkg.com/react-scripts-postcss/-/react-scripts-postcss-4.0.0-mod1.tgz#50e12b9a3e268214f8a5b08acd6f48dd8954642c"
+  integrity sha512-uW2r3s4iyjxahjB8Woy2X1rXTpTZqCq0pLliqm+VVCWcdI6+C3mjK+vUlBiG/kjMPTWFIJ4P0dDCiRNZ5pbMTA==
   dependencies:
     "@babel/core" "7.12.3"
     "@pmmmwh/react-refresh-webpack-plugin" "0.4.2"

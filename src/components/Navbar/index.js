@@ -13,30 +13,30 @@ import { tokens } from 'components/ThemeProvider/theme';
 import { blurOnMouseUp } from 'utils/focus';
 import './index.css';
 
-const HeaderIcons = () => (
-  <div className="header__nav-icons">
+const NavbarIcons = () => (
+  <div className="navbar__nav-icons">
     {socialLinks.map(({ label, url, icon }) => (
       <a
         key={label}
-        className="header__nav-icon-link"
+        className="navbar__nav-icon-link"
         aria-label={label}
         href={url}
         onMouseUp={blurOnMouseUp}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Icon className="header__nav-icon" icon={icon} />
+        <Icon className="navbar__nav-icon" icon={icon} />
       </a>
     ))}
   </div>
 );
 
-function Header(props) {
+function Navbar(props) {
   const { menuOpen, dispatch } = useAppContext();
   const { location } = props;
   const [hashKey, setHashKey] = useState();
   const windowSize = useWindowSize();
-  const headerRef = useRef();
+  const navbarRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
 
   const handleNavClick = () => {
@@ -54,9 +54,9 @@ function Header(props) {
   };
 
   return (
-    <header className="header" ref={headerRef}>
+    <navbar className="navbar" ref={navbarRef}>
       <RouterLink
-        className="header__logo"
+        className="navbar__logo"
         to={{ pathname: '/', hash: '#intro', state: hashKey }}
         aria-label="Cody Bennett, Designer & Developer"
         onClick={handleMobileNavClick}
@@ -65,13 +65,13 @@ function Header(props) {
         <Monogram highlight />
       </RouterLink>
       <NavToggle onClick={() => dispatch({ type: 'toggleMenu' })} menuOpen={menuOpen} />
-      <nav className="header__nav">
-        <div className="header__nav-list">
+      <nav className="navbar__nav">
+        <div className="navbar__nav-list">
           {navLinks.map(({ label, pathname, hash }) => (
             <NavLink
               exact
-              className="header__nav-link"
-              activeClassName="header__nav-link--active"
+              className="navbar__nav-link"
+              activeClassName="navbar__nav-link--active"
               isActive={match => isMatch({ match, hash })}
               onClick={handleNavClick}
               key={label}
@@ -82,7 +82,7 @@ function Header(props) {
             </NavLink>
           ))}
         </div>
-        <HeaderIcons />
+        <NavbarIcons />
       </nav>
       <Transition
         mountOnEnter
@@ -92,11 +92,11 @@ function Header(props) {
         onEnter={reflow}
       >
         {status => (
-          <nav className={`header__mobile-nav header__mobile-nav--${status}`}>
+          <nav className={`navbar__mobile-nav navbar__mobile-nav--${status}`}>
             {navLinks.map(({ label, pathname, hash }, index) => (
               <NavLink
-                className={`header__mobile-nav-link header__mobile-nav-link--${status}`}
-                activeClassName="header__mobile-nav-link--active"
+                className={`navbar__mobile-nav-link navbar__mobile-nav-link--${status}`}
+                activeClassName="navbar__mobile-nav-link--active"
                 key={label}
                 onClick={handleMobileNavClick}
                 to={{ pathname, hash, state: hashKey }}
@@ -110,14 +110,14 @@ function Header(props) {
                 {label}
               </NavLink>
             ))}
-            <HeaderIcons />
+            <NavbarIcons />
             <ThemeToggle isMobile />
           </nav>
         )}
       </Transition>
       {!isMobile && <ThemeToggle />}
-    </header>
+    </navbar>
   );
 }
 
-export default memo(Header);
+export default memo(Navbar);
