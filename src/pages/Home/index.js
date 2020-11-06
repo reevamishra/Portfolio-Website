@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import Intro from './Intro';
 import ProjectSummary from './ProjectSummary';
 import Profile from './Profile';

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 import Image from 'components/Image';
 import Link from 'components/Link';
 import Footer from 'components/Footer';
