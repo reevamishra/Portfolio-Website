@@ -13,32 +13,13 @@
   }
 </script>
 
-<script>
-  const titleTag = document.createElement('title');
-  titleTag.text = 'Cody Bennett | Storybook';
-
-  const firstMeta = document.head.querySelector('meta[charset="utf-8"]');
-  document.head.insertBefore(titleTag, firstMeta.nextSibling);
-
-  const callback = function(mutationsList, observer) {
-    for (let mutation of mutationsList) {
-      if (mutation.type == 'childList') {
-        observer.disconnect();
-        titleTag.text = 'Cody Bennett | Storybook';
-      }
-    }
-  };
-
-  const observer = new MutationObserver(callback);
-  observer.observe(titleTag, { childList: true });
-</script>
-
 <style>
   .sidebar-header img {
     width: 32px;
   }
 </style>
 
+<title>Cody Bennett | Storybook</title>
 <meta name="description" content="My custom design component system created from the ground up used in building my portfolio. Built with the help of storybook and styled-components">
 
 <meta name="theme-color" content="#111111" />

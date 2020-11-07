@@ -218,6 +218,16 @@
 
 .project__details {
   position: relative;
+
+  &:only-child {
+    grid-column: 1 / span 2;
+  }
+
+  @media (--mediaTablet) {
+    &:only-child {
+      grid-column: 1;
+    }
+  }
 }
 
 .project__title {
@@ -423,6 +433,10 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space3XL);
   margin: 0;
+
+  & p {
+    hyphens: auto;
+  }
 
   @media (--mediaTablet) {
     & {

@@ -6,7 +6,7 @@ const Footer = () => (
     <span className="footer__date">
       {`© 2018-${new Date().getFullYear()} `}
     </span>
-    <Link className="footer__link" secondary href="/humans.txt">
+    <Link secondary className="footer__link" href="/humans.txt" target="_self">
       Cody Bennett
     </Link>
   </footer>
