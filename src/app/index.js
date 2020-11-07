@@ -20,6 +20,7 @@ const Contact = lazy(() => import('pages/Contact'));
 const ProjectModern = lazy(() => import('pages/ProjectModern'));
 const ProjectDTT = lazy(() => import('pages/DevTechTools'));
 const Articles = lazy(() => import('pages/Articles'));
+const Uses = lazy(() => import('pages/Uses'));
 const Page404 = lazy(() => import('pages/404'));
 
 export const AppContext = createContext();
@@ -82,6 +83,7 @@ const AppRoutes = () => {
                     <Route path="/contact" component={Contact} />
                     <Route path="/projects/modern" component={ProjectModern} />
                     <Route path="/projects/dtt" component={ProjectDTT} />
+                    <Route path="/uses" component={Uses} />
                     <Route path="/articles" component={Articles} />
                     <Route component={Page404} />
                   </Switch>
