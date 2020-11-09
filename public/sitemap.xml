@@ -55,18 +55,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://supernote.codyb.co</loc>
-    <lastmod>2020-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amongus.codyb.co</loc>
-    <lastmod>2020-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://github.codyb.co</loc>
     <lastmod>2020-11-07</lastmod>
     <changefreq>monthly</changefreq>

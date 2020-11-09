@@ -9,12 +9,9 @@ import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
 import modernTexture from 'assets/modern.jpg';
 import modernTextureLarge from 'assets/modern-large.jpg';
 import modernTexturePlaceholder from 'assets/modern-placeholder.jpg';
-import supernoteTexture from 'assets/supernote.jpg';
-import supernoteTextureLarge from 'assets/supernote-large.jpg';
-import supernoteTexturePlaceholder from 'assets/supernote-placeholder.jpg';
-import supernoteHomeTexture from 'assets/supernote-home.jpg';
-import supernoteHomeTextureLarge from 'assets/supernote-home-large.jpg';
-import supernoteHomeTexturePlaceholder from 'assets/supernote-home-placeholder.jpg';
+import deviceModelsTexture from 'assets/device-models.jpg';
+import deviceModelsTextureLarge from 'assets/device-models-large.jpg';
+import deviceModelsTexturePlaceholder from 'assets/device-models-placeholder.jpg';
 import dttTexture from 'assets/dtt.jpg';
 import dttTextureLarge from 'assets/dtt-large.jpg';
 import dttTexturePlaceholder from 'assets/dtt-placeholder.jpg';
@@ -167,23 +164,23 @@ const Home = (props) => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Supernote"
-        description="Design and development of a note taking app built with React Native."
+        title="Device Models"
+        description="Design and development of a Figma plugin to create mockups with 3D device models."
         buttonText="View Website"
-        buttonLink="https://supernote.codyb.co"
+        buttonLink="https://devicemodels.com"
         model={{
           type: 'phone',
-          alt: 'Supernote\'s splash screen.',
+          alt: 'Device Model\'s default image',
           textures: [
             {
-              src: supernoteHomeTexture,
-              srcSet: `${supernoteHomeTexture} 254w, ${supernoteHomeTextureLarge} 508w`,
-              placeholder: supernoteHomeTexturePlaceholder,
+              src: deviceModelsTexture,
+              srcSet: `${deviceModelsTexture} 254w, ${deviceModelsTextureLarge} 508w`,
+              placeholder: deviceModelsTexturePlaceholder,
             },
             {
-              src: supernoteTexture,
-              srcSet: `${supernoteTexture} 254w, ${supernoteTextureLarge} 508w`,
-              placeholder: supernoteTexturePlaceholder,
+              src: deviceModelsTexture,
+              srcSet: `${deviceModelsTexture} 254w, ${deviceModelsTextureLarge} 508w`,
+              placeholder: deviceModelsTexturePlaceholder,
             },
           ],
         }}

@@ -50,7 +50,9 @@ const Uses = () => {
                   <li>
                     <Link href="https://figma.com">Figma</Link> is my primary tool for
                     UI design these days. Made the switch from InVision in 2019 and haven't
-                    looked back.
+                    looked back. I've also created{' '}
+                    <Link href="https://figma.com/@codyb">a few plugins</Link> that
+                    you can install.
                   </li>
                   <li>
                     Any motion graphics I create are created in Adobe After Effects. So

@@ -1,12 +1,9 @@
 import Model from 'components/Model';
 import { StoryContainer } from '../../../.storybook/StoryContainer';
 import deviceModels from './deviceModels';
-import phoneTexture from 'assets/supernote-home.jpg';
-import phoneTextureLarge from 'assets/supernote-home-large.jpg';
-import phoneTexturePlaceholder from 'assets/supernote-home-placeholder.jpg';
-import phoneTexture2 from 'assets/supernote.jpg';
-import phoneTexture2Large from 'assets/supernote-large.jpg';
-import phoneTexture2Placeholder from 'assets/supernote-placeholder.jpg';
+import phoneTexture from 'assets/device-models.jpg';
+import phoneTextureLarge from 'assets/device-models-large.jpg';
+import phoneTexturePlaceholder from 'assets/device-models-placeholder.jpg';
 import laptopTexture from 'assets/dtt.jpg';
 import laptopTextureLarge from 'assets/dtt-large.jpg';
 import laptopTexturePlaceholder from 'assets/dtt-placeholder.jpg';
@@ -37,9 +34,9 @@ export const phone = () => (
           ...deviceModels.phone,
           position: { x: 0.6, y: -0.8, z: 0.4 },
           texture: {
-            src: phoneTexture2,
-            srcSet: `${phoneTexture2} 800w, ${phoneTexture2Large} 1440w`,
-            placeholder: phoneTexture2Placeholder,
+            src: phoneTexture,
+            srcSet: `${phoneTexture} 800w, ${phoneTextureLarge} 1440w`,
+            placeholder: phoneTexturePlaceholder,
           },
         },
       ]}
