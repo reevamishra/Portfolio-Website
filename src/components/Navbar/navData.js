@@ -26,13 +26,13 @@ export const socialLinks = [
     icon: 'linkedin',
   },
   {
+    label: 'Dribbble',
+    url: 'https://dribbble.com/codybennett',
+    icon: 'dribbble',
+  },
+  {
     label: 'Github',
     url: 'https://github.codyb.co',
     icon: 'github',
-  },
-  {
-    label: 'Email',
-    url: 'mailto:hi@codyb.co',
-    icon: 'email',
   },
 ];
