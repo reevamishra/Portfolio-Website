@@ -61,7 +61,7 @@ function ProjectModern() {
   return (
     <Fragment>
       <Helmet>
-        <title>{`Projects | ${title}`}</title>
+        <title>Cody Jason Bennett | {title}</title>
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>

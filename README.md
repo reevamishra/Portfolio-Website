@@ -1,4 +1,4 @@
-# Portfolio Website
+# Portfolio
 
 [![Site preview](/public/social-image.png)](https://codyb.co)
 

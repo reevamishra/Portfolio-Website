@@ -23,8 +23,9 @@ import './index.css';
 const PostWrapper = ({
   children,
   title,
-  date,
   description,
+  slug,
+  date,
   banner,
   bannerVideo,
   bannerPlaceholder,
@@ -48,8 +49,9 @@ const PostWrapper = ({
   return (
     <article className="post">
       <Helmet>
-        <title>{`Articles | ${title}`}</title>
+        <title>Cody Jason Benentt | {title}</title>
         <meta name="description" content={description} />
+        <meta property="og:type" content="article" />
       </Helmet>
       <header className="post__header">
         <div className="post__header-text">

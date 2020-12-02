@@ -24,7 +24,7 @@ const Uses = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Uses | Cody Bennett</title>
+        <title>Cody Jason Bennett | Uses</title>
         <meta
           name="description"
           content="A list of hardware and software I use to do my thing"
@@ -95,11 +95,11 @@ const Uses = () => {
                     For 3D effects and image shaders I use{' '}
                     <Link href="https://threejs.org">three.js</Link>. It has a bit of a
                     learning curve but you can do some really powerful stuff with it. I
-                    have a few <Link href="https://codepen.codyb.co">experiments</Link> and{` `}
+                    have a few <Link href="https://dribbble.codyb.co">experiments</Link> and{` `}
                     <Link to="/articles">articles</Link> about it.
                   </li>
                   <li>
-                    For CSS I've used a myriad pre-processors and css-in-js solutions like{` `}
+                    For CSS I've used a myriad of pre-processors and css-in-js solutions like{` `}
                     <Link href="https://styled-components.com">styled-components</Link>, but these days I'm using vanilla CSS with{' '}
                     <Link href="https://postcss.org">PostCSS</Link> to get upcoming CSS
                     features today.

@@ -15,7 +15,7 @@ import './index.css';
 const NotFound = () => (
   <section className="page-404">
     <Helmet>
-      <title tag="title">404 | Not Found</title>
+      <title tag="title">Cody Jason Bennett | 404 Not Found</title>
       <meta name="description" content="404 page not found. This page doesn't exist" />
     </Helmet>
     <Transition appear in={true} timeout={0} onEnter={reflow}>

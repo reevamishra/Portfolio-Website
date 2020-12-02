@@ -123,7 +123,7 @@ const Home = (props) => {
   return (
     <div className="home">
       <Helmet>
-        <title>Cody Bennett | Designer + Developer</title>
+        <title>Cody Jason Bennett | Designer + Developer</title>
         <meta
           name="description"
           content="Portfolio of Cody Jason Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
