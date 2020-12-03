@@ -3,9 +3,16 @@ import { Helmet } from 'react-helmet';
 import Image from 'components/Image';
 import Footer from 'components/Footer';
 import {
-  ProjectContainer, ProjectBackground, ProjectHeader, ProjectSection,
-  ProjectSectionContent, ProjectImage, ProjectSectionHeading, ProjectSectionText,
-  ProjectSectionColumns, ProjectTextRow
+  ProjectContainer,
+  ProjectBackground,
+  ProjectHeader,
+  ProjectSection,
+  ProjectSectionContent,
+  ProjectImage,
+  ProjectSectionHeading,
+  ProjectSectionText,
+  ProjectSectionColumns,
+  ProjectTextRow,
 } from 'components/ProjectLayout';
 import { useScrollRestore } from 'hooks';
 import { media } from 'utils/style';
@@ -30,12 +37,9 @@ import dttLandingLarge from 'assets/dtt-landing-large.jpg';
 import dttLandingPlaceholder from 'assets/dtt-landing-placeholder.jpg';
 
 const title = 'A Tool for Everything';
-const description = 'I lead the design and development of DevTech Tools. We focused on creating the best platform for developers to build better software.';
-const roles = [
-  'Visual Identity',
-  'UX and UI Design',
-  'Full-stack Development',
-];
+const description =
+  'I lead the design and development of DevTech Tools. We focused on creating the best platform for developers to build better software.';
+const roles = ['Visual Identity', 'UX and UI Design', 'Full-stack Development'];
 
 function DevTechTools() {
   useScrollRestore();
@@ -43,7 +47,7 @@ function DevTechTools() {
   return (
     <Fragment>
       <Helmet>
-        <title>Cody Jason Bennett | {title}</title>
+        <title>Project | {title}</title>
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>
@@ -74,7 +78,8 @@ function DevTechTools() {
             <ProjectTextRow>
               <ProjectSectionHeading>Visual Identity</ProjectSectionHeading>
               <ProjectSectionText>
-                We represented the technology aspect of DevTech Tools with a bundle of traces, accompanied with fresh colors and a crisp typeface.
+                We represented the technology aspect of DevTech Tools with a bundle of
+                traces, accompanied with fresh colors and a crisp typeface.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -90,10 +95,12 @@ function DevTechTools() {
             <ProjectTextRow noMargin>
               <ProjectSectionHeading>The Mission</ProjectSectionHeading>
               <ProjectSectionText>
-                DevTech Tools started as a small set of developer tools that generated, parsed, and converted between data formats.
+                DevTech Tools started as a small set of developer tools that generated,
+                parsed, and converted between data formats.
               </ProjectSectionText>
               <ProjectSectionText>
-                Our mission was to create an expanding arsenal of developer tools to use in any environment, for any purpose, on one platform.
+                Our mission was to create an expanding arsenal of developer tools to use
+                in any environment, for any purpose, on one platform.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -110,10 +117,12 @@ function DevTechTools() {
             <ProjectTextRow noMargin>
               <ProjectSectionHeading>Setting Sail</ProjectSectionHeading>
               <ProjectSectionText>
-                DevTech Tools launched with a comprehensive set of data converters, code formatters and linters, and many other tools.
+                DevTech Tools launched with a comprehensive set of data converters, code
+                formatters and linters, and many other tools.
               </ProjectSectionText>
               <ProjectSectionText>
-                I designed and developed a simple, intuitive interface to cut development time down to a single click.
+                I designed and developed a simple, intuitive interface to cut development
+                time down to a single click.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionColumns>
@@ -123,10 +132,12 @@ function DevTechTools() {
             <ProjectTextRow>
               <ProjectSectionHeading>Expanding the Workflow</ProjectSectionHeading>
               <ProjectSectionText>
-                Following the release of our online tools, we accompanied this release with a powerful API, giving developers complete control.
+                Following the release of our online tools, we accompanied this release
+                with a powerful API, giving developers complete control.
               </ProjectSectionText>
               <ProjectSectionText>
-                Experienced developers now had full flexibility with our tools in their projects.
+                Experienced developers now had full flexibility with our tools in their
+                projects.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -145,7 +156,9 @@ function DevTechTools() {
                 We needed a place for DevTech Tools and its users to call home.
               </ProjectSectionText>
               <ProjectSectionText>
-                I designed and developed the DevTech Tools website, featuring a blog with weekly tutorials, comprehensive and interactive documentation for the DevTech Tools API, and a web application to put everything together.
+                I designed and developed the DevTech Tools website, featuring a blog with
+                weekly tutorials, comprehensive and interactive documentation for the
+                DevTech Tools API, and a web application to put everything together.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image

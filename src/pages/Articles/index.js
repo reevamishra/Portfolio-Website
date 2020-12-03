@@ -77,7 +77,7 @@ const Articles = () => {
   return (
     <div className="articles">
       <Helmet>
-        <title>Cody Jason Bennett | Articles</title>
+        <title>Articles | Cody Bennett</title>
         <meta
           name="description"
           content="A collection of technical design and development articles."

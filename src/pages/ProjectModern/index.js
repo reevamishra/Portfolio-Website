@@ -4,9 +4,16 @@ import Image from 'components/Image';
 import Link from 'components/Link';
 import Footer from 'components/Footer';
 import {
-  ProjectContainer, ProjectBackground, ProjectHeader, ProjectSection,
-  ProjectSectionContent, ProjectImage, ProjectSectionHeading, ProjectSectionText,
-  ProjectSectionColumns, ProjectTextRow
+  ProjectContainer,
+  ProjectBackground,
+  ProjectHeader,
+  ProjectSection,
+  ProjectSectionContent,
+  ProjectImage,
+  ProjectSectionHeading,
+  ProjectSectionText,
+  ProjectSectionColumns,
+  ProjectTextRow,
 } from 'components/ProjectLayout';
 import SegmentedControl, { SegmentedControlOption } from 'components/SegmentedControl';
 import { useTheme } from 'components/ThemeProvider';
@@ -39,12 +46,9 @@ import modernLandingLarge from 'assets/modern-landing-large.jpg';
 import modernLandingPlaceholder from 'assets/modern-landing-placeholder.jpg';
 
 const title = 'Project Modern';
-const description = 'Building a community that puts players and game health first, not profits.';
-const roles = [
-  'Visual Identity',
-  'UX and UI Design',
-  'Full-stack Development',
-];
+const description =
+  'Building a community that puts players and game health first, not profits.';
+const roles = ['Visual Identity', 'UX and UI Design', 'Full-stack Development'];
 
 function ProjectModern() {
   const { themeId } = useTheme();
@@ -61,7 +65,7 @@ function ProjectModern() {
   return (
     <Fragment>
       <Helmet>
-        <title>Cody Jason Bennett | {title}</title>
+        <title>Project | {title}</title>
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>
@@ -92,9 +96,9 @@ function ProjectModern() {
             <ProjectTextRow>
               <ProjectSectionHeading>Visual Identity</ProjectSectionHeading>
               <ProjectSectionText>
-                Project Modern is a splinter community from a gamemode based from the
-                card game: Magic, the Gathering in protest of recent conflict of interest
-                in game management.
+                Project Modern is a splinter community from a gamemode based from the card
+                game: Magic, the Gathering in protest of recent conflict of interest in
+                game management.
               </ProjectSectionText>
               <ProjectSectionText>
                 We represented the modern or new feel behind the mission of Project Modern
@@ -114,9 +118,7 @@ function ProjectModern() {
           <ProjectSectionContent>
             <Image
               key={themeId}
-              srcSet={`${
-                isDark ? modernComponentsDark : modernComponentsLight
-              } 800w, ${
+              srcSet={`${isDark ? modernComponentsDark : modernComponentsLight} 800w, ${
                 isDark ? modernComponentsDarkLarge : modernComponentsLightLarge
               } 1000w`}
               placeholder={
@@ -140,13 +142,17 @@ function ProjectModern() {
               <ProjectSectionHeading>Design and Development</ProjectSectionHeading>
               <ProjectSectionText>
                 I lead the design and development of online services for Project Modern,
-                ranging from website design and development to backing cloud and bot functions.
+                ranging from website design and development to backing cloud and bot
+                functions.
               </ProjectSectionText>
               <ProjectSectionText>
                 I kept the brand and style of Project Modern consistent throughout its
-                {` `}<Link href="https://storybook.projectmodern.gg" target="_blank">component-based design</Link>.
-                This would inform both the aesthetics and user experience across the website
-                and marketing material.
+                {` `}
+                <Link href="https://storybook.projectmodern.gg" target="_blank">
+                  component-based design
+                </Link>
+                . This would inform both the aesthetics and user experience across the
+                website and marketing material.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -173,9 +179,9 @@ function ProjectModern() {
               <ProjectSectionHeading>Design System</ProjectSectionHeading>
               <ProjectSectionText>
                 A design system is useless if no one knows how to use it, so I put
-                together a comprehensive documentation website to cover ux,
-                accessibility, and component guidelines for designers and engineers
-                working with the system.
+                together a comprehensive documentation website to cover ux, accessibility,
+                and component guidelines for designers and engineers working with the
+                system.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -185,8 +191,8 @@ function ProjectModern() {
             <ProjectTextRow>
               <ProjectSectionHeading>A Home for Project Modern</ProjectSectionHeading>
               <ProjectSectionText>
-                A website is the biggest tell in brand. With a good, lasting impression,
-                I designed and developed elegant interfaces, complimented with inviting
+                A website is the biggest tell in brand. With a good, lasting impression, I
+                designed and developed elegant interfaces, complimented with inviting
                 interactions throughout the website.
               </ProjectSectionText>
             </ProjectTextRow>

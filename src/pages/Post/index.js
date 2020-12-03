@@ -49,7 +49,7 @@ const PostWrapper = ({
   return (
     <article className="post">
       <Helmet>
-        <title>Cody Jason Benentt | {title}</title>
+        <title>Articles | {title}</title>
         <meta name="description" content={description} />
         <meta property="og:type" content="article" />
       </Helmet>
@@ -137,14 +137,7 @@ const PostParagraph = ({ children, ...rest }) => (
 const PostImage = ({ src, alt, ...rest }) => {
   const imgSrc = src.startsWith('http') ? src : require(`posts/assets/${src}`);
 
-  return (
-    <Image
-      className="post__image"
-      src={imgSrc}
-      alt={alt}
-      {...rest}
-    />
-  );
+  return <Image className="post__image" src={imgSrc} alt={alt} {...rest} />;
 };
 
 const PostCode = ({ children, ...rest }) => (

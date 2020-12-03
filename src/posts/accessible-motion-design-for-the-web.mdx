@@ -110,7 +110,12 @@ Here's how we would use the hook with ThreeJS, a 3D rendering library that works
 ```js
 import React, { useRef, useEffect } from 'react';
 import {
-  PerspectiveCamera, Scene, BoxGeometry, MeshNormalMaterial, Mesh, WebGLRenderer
+  PerspectiveCamera,
+  Scene,
+  BoxGeometry,
+  MeshNormalMaterial,
+  Mesh,
+  WebGLRenderer,
 } from 'three';
 import { usePrefersReducedMotion } from 'hooks';
 
@@ -181,9 +186,7 @@ function AccessibleCube() {
     };
   }, [prefersReducedMotion]);
 
-  return (
-    <canvas aria-hidden ref={canvasRef} />
-  );
+  return <canvas aria-hidden ref={canvasRef} />;
 }
 
 export default AccessibleCube;

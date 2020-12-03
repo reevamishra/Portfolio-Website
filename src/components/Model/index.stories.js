@@ -50,15 +50,17 @@ export const laptop = () => (
       style={modelStyle}
       cameraPosition={{ x: 0, y: 0, z: 8 }}
       alt="Laptop Model"
-      models={[{
-        ...deviceModels.laptop,
-        position: { x: 0, y: 0, z: 0 },
-        texture: {
-          src: laptopTexture,
-          srcSet: `${laptopTexture} 800w, ${laptopTextureLarge} 1440w`,
-          placeholder: laptopTexturePlaceholder,
+      models={[
+        {
+          ...deviceModels.laptop,
+          position: { x: 0, y: 0, z: 0 },
+          texture: {
+            src: laptopTexture,
+            srcSet: `${laptopTexture} 800w, ${laptopTextureLarge} 1440w`,
+            placeholder: laptopTexturePlaceholder,
+          },
         },
-      }]}
+      ]}
     />
   </StoryContainer>
 );

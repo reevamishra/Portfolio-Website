@@ -21,7 +21,7 @@ import './index.css';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
 
-const Home = (props) => {
+const Home = props => {
   const { status } = useRouteTransition();
   const { hash, state } = useLocation();
   const initHash = useRef(true);
@@ -37,20 +37,26 @@ const Home = (props) => {
   useEffect(() => {
     const revealSections = [intro, projectOne, projectTwo, projectThree, about];
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const section = entry.target;
-          observer.unobserve(section);
-          if (visibleSections.includes(section)) return;
-          setVisibleSections(prevSections => [...prevSections, section]);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px' });
+    const sectionObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+            observer.unobserve(section);
+            if (visibleSections.includes(section)) return;
+            setVisibleSections(prevSections => [...prevSections, section]);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px' }
+    );
 
-    const indicatorObserver = new IntersectionObserver(([entry]) => {
-      setScrollIndicatorHidden(!entry.isIntersecting);
-    }, { rootMargin: '-100% 0px 0px 0px' });
+    const indicatorObserver = new IntersectionObserver(
+      ([entry]) => {
+        setScrollIndicatorHidden(!entry.isIntersecting);
+      },
+      { rootMargin: '-100% 0px 0px 0px' }
+    );
 
     revealSections.forEach(section => {
       sectionObserver.observe(section.current);
@@ -79,15 +85,21 @@ const Home = (props) => {
       const behavior = scroll && !prefersReducedMotion ? 'smooth' : 'instant';
       const top = element.current.offsetTop;
 
-      scrollObserver = new IntersectionObserver((entries, observer) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          scrollTimeout = setTimeout(() => {
-            element.current.focus();
-          }, prefersReducedMotion ? 0 : 400);
-          observer.unobserve(entry.target);
-        }
-      }, { rootMargin: '-20% 0px -20% 0px' });
+      scrollObserver = new IntersectionObserver(
+        (entries, observer) => {
+          const [entry] = entries;
+          if (entry.isIntersecting) {
+            scrollTimeout = setTimeout(
+              () => {
+                element.current.focus();
+              },
+              prefersReducedMotion ? 0 : 400
+            );
+            observer.unobserve(entry.target);
+          }
+        },
+        { rootMargin: '-20% 0px -20% 0px' }
+      );
 
       scrollObserver.observe(element.current);
 
@@ -123,7 +135,7 @@ const Home = (props) => {
   return (
     <div className="home">
       <Helmet>
-        <title>Cody Jason Bennett | Designer + Developer</title>
+        <title>Cody Bennett | Designer + Developer</title>
         <meta
           name="description"
           content="Portfolio of Cody Jason Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
@@ -170,7 +182,7 @@ const Home = (props) => {
         buttonLink="https://devicemodels.com"
         model={{
           type: 'phone',
-          alt: 'Device Model\'s default image',
+          alt: "Device Model's default image",
           textures: [
             {
               src: deviceModelsTexture,

@@ -28,10 +28,12 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
-      <Link href="https://linkedin.com/company/tech-builders" target="_blank">Tech Builders</Link>
-      . I am a designer, full-stack developer, and creator of web & mobile solutions with a focus
-      on motion and user experience. If you're interested in
-      the tools and software I use check out my <Link href="/uses">uses page</Link>.
+      <Link href="https://linkedin.com/company/tech-builders" target="_blank">
+        Tech Builders
+      </Link>
+      . I am a designer, full-stack developer, and creator of web & mobile solutions with
+      a focus on motion and user experience. If you're interested in the tools and
+      software I use check out my <Link href="/uses">uses page</Link>.
     </Text>
     <Text
       className={classNames('profile__description', `profile__description--${status}`)}
@@ -89,18 +91,19 @@ const Profile = ({ id, visible, sectionRef }) => {
                   About Me
                 </div>
               </div>
-              <div
-                className="profile__image-wrapper"
-              >
-                {!prerender &&
+              <div className="profile__image-wrapper">
+                {!prerender && (
                   <Suspense fallback={null}>
                     <Selfie
-                      className={classNames('profile__image', `profile__image--${status}`)}
+                      className={classNames(
+                        'profile__image',
+                        `profile__image--${status}`
+                      )}
                       delay={100}
                       alt="A 3D rendition of myself."
                     />
                   </Suspense>
-                }
+                )}
               </div>
             </div>
           </div>

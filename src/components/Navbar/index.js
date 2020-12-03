@@ -54,7 +54,7 @@ function Navbar(props) {
   };
 
   return (
-    <navbar className="navbar" ref={navbarRef}>
+    <header className="navbar" ref={navbarRef}>
       <RouterLink
         className="navbar__logo"
         to={{ pathname: '/', hash: '#intro', state: hashKey }}
@@ -116,7 +116,7 @@ function Navbar(props) {
         )}
       </Transition>
       {!isMobile && <ThemeToggle />}
-    </navbar>
+    </header>
   );
 }
 
