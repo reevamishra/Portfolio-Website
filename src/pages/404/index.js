@@ -4,7 +4,6 @@ import { Transition } from 'react-transition-group';
 import { Helmet } from 'react-helmet';
 import { Button } from 'components/Button';
 import DecoderText from 'components/DecoderText';
-import Image from 'components/Image';
 import Heading from 'components/Heading';
 import Text from 'components/Text';
 import { reflow } from 'utils/transition';
@@ -70,12 +69,16 @@ const NotFound = () => (
               `page-404__video-container--${status}`
             )}
           >
-            <Image
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
               className={classNames('page-404__video', `page-404__video--${status}`)}
-              src={notFound}
-              placeholder={notFoundPoster}
-              alt="A cyberpunk robot with a helmet, reading file not found."
-            />
+              poster={notFoundPoster}
+            >
+              <source src={notFound} type="video/mp4" />
+            </video>
             <a
               className={classNames('page-404__credit', `page-404__credit--${status}`)}
               href="https://twitter.com/ruinergame"

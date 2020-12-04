@@ -11,8 +11,9 @@ import { Route, Switch, Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Post from 'pages/Post';
 import Image from 'components/Image';
-import { useScrollRestore } from 'hooks';
 import Section from 'components/Section';
+import Footer from 'components/Footer';
+import { useScrollRestore } from 'hooks';
 import fetchPosts from 'posts';
 import './index.css';
 
@@ -93,6 +94,7 @@ const Articles = () => {
           ))}
         </div>
       </Section>
+      <Footer />
     </div>
   );
 };
@@ -106,7 +108,11 @@ const ArticlesRouter = () => {
     const grabPosts = async () => {
       const postData = await Promise.all(fetchPosts);
 
-      setPosts(postData.sort((a, b) => Date.parse(b.date) - Date.parse(a.date)));
+      const posts = postData
+        .filter(({ draft }) => !draft)
+        .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+
+      setPosts(posts);
     };
 
     grabPosts();

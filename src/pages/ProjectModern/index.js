@@ -65,7 +65,7 @@ function ProjectModern() {
   return (
     <Fragment>
       <Helmet>
-        <title>Project | {title}</title>
+        <title>Projects | {title}</title>
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>
