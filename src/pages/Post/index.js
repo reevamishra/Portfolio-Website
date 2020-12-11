@@ -134,6 +134,12 @@ const PostParagraph = ({ children, ...rest }) => (
   </Text>
 );
 
+const PostList = ({ children, ...rest }) => (
+  <PostParagraph {...rest}>
+    <ul>{children}</ul>
+  </PostParagraph>
+);
+
 const PostImage = ({ src, alt, ...rest }) => {
   const imgSrc = src.startsWith('http') ? src : require(`posts/assets/${src}`);
 
@@ -155,6 +161,7 @@ const Post = ({ slug, content: PostContent, ...rest }) => {
         wrapper: PostWrapper,
         h2: PostHeadingTwo,
         p: PostParagraph,
+        ul: PostList,
         img: PostImage,
         a: PostLink,
         pre: Code,

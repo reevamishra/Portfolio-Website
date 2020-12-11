@@ -27,7 +27,7 @@ export const socialLinks = [
   },
   {
     label: 'Dribbble',
-    url: 'https://dribbble.com/codybennett',
+    url: 'https://dribbble.codyb.co',
     icon: 'dribbble',
   },
   {
