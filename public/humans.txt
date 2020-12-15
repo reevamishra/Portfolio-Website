@@ -29,4 +29,5 @@ _______________________________________________________________________________
 FONTS
 
 Gotham
-SFMono Regular
+SFMono
+Hiragino Kaku Gothic
