@@ -41,7 +41,7 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       In my spare time, I like to write music and{' '}
-      <Link href="https://dribbble.codyb.co" target="_blank">
+      <Link href="https://github.codyb.co" target="_blank">
         experiment with new tech
       </Link>
       . I’m always interested in new projects, so feel free to drop me a line.
