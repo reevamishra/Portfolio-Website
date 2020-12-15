@@ -202,6 +202,22 @@
   }
 }
 
+.profile__svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate3d(50%, -20%, 0);
+  height: 100%;
+  z-index: 32;
+  opacity: 0;
+  transition: opacity var(--durationM) ease var(--durationL);
+  fill: var(--colorTextTitle);
+}
+
+.profile__svg--entered {
+  opacity: 1;
+}
+
 .profile__button {
   opacity: 0;
   transition: opacity var(--durationXL) ease var(--durationL);

@@ -17,7 +17,7 @@ const baseTokens = {
   fontStack: `Gotham, ${systemFontStack}`,
   monoFontStack:
     'SFMono Regular, Roboto Mono, Consolas, Liberation Mono, Menlo, Courier, monospace',
-  decoderFontStack:
+  japaneseFontStack:
     'ヒラギノ角ゴ Pro W3, Hiragino Kaku Gothic Pro, Hiragino Sans, Osaka, メイリオ, Meiryo, Segoe UI, sans-serif',
   fontWeightRegular: 400,
   fontWeightMedium: 500,
