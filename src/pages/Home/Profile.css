@@ -170,7 +170,7 @@
     z-index: 16;
   }
 
-  & .selfie__canvas {
+  & .portrait__canvas {
     opacity: 0;
   }
 
@@ -195,7 +195,7 @@
     animation-iteration-count: 1;
   }
 
-  & .selfie__canvas {
+  & .portrait__canvas {
     animation: fade-in var(--durationM) ease var(--delay) forwards;
     animation-iteration-count: 1;
     animation-delay: 1s;
