@@ -5,7 +5,6 @@ import {
   sRGBEncoding,
   Scene,
   PerspectiveCamera,
-  SmoothShading,
   AmbientLight,
   DirectionalLight,
   Color,
@@ -16,10 +15,10 @@ import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
 import { useTheme } from 'components/ThemeProvider';
-import selfieModelPath from 'assets/selfie.glb';
-import './Selfie.css';
+import portraitModelPath from 'assets/portrait.glb';
+import './Portrait.css';
 
-const Selfie = ({ className, delay, alt, ...rest }) => {
+const Portrait = ({ className, delay, ...rest }) => {
   const { colorWhite, themeId, rgbBackgroundLight } = useTheme();
   const container = useRef();
   const canvas = useRef();
@@ -51,10 +50,10 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
 
     const modelLoader = new GLTFLoader();
 
-    modelLoader.load(selfieModelPath, model => {
+    modelLoader.load(portraitModelPath, model => {
       model.scene.traverse(node => {
         if (node.isMesh) {
-          node.material.shading = SmoothShading;
+          node.material.flatShading = false;
           node.geometry.computeVertexNormals(true);
         }
       });
@@ -172,16 +171,16 @@ const Selfie = ({ className, delay, alt, ...rest }) => {
 
   return (
     <div
-      className={classNames('selfie', className)}
+      className={classNames('portrait', className)}
       ref={container}
       style={{ '--delay': delay }}
       role="img"
-      aria-label={alt}
+      aria-label="A 3D portrait of myself."
       {...rest}
     >
-      <canvas aria-hidden className="selfie__canvas" ref={canvas} />
+      <canvas aria-hidden className="portrait__canvas" ref={canvas} />
     </div>
   );
 };
 
-export default Selfie;
+export default Portrait;

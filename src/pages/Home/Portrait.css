@@ -1,8 +1,8 @@
-.selfie {
+.portrait {
   position: relative;
 }
 
-.selfie__canvas {
+.portrait__canvas {
   position: absolute;
   top: 0;
   right: 0;

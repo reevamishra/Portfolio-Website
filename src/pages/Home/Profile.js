@@ -13,7 +13,7 @@ import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './Profile.css';
 
-const Selfie = lazy(() => import('./Selfie'));
+const Portrait = lazy(() => import('./Portrait'));
 
 const ProfileText = ({ status, titleId }) => (
   <Fragment>
@@ -22,7 +22,7 @@ const ProfileText = ({ status, titleId }) => (
       level={3}
       id={titleId}
     >
-      <DecoderText text="Hi" start={status !== 'exited'} delay={500} />
+      <DecoderText text="Hi there" start={status !== 'exited'} delay={500} />
     </Heading>
     <Text
       className={classNames('profile__description', `profile__description--${status}`)}
@@ -33,8 +33,9 @@ const ProfileText = ({ status, titleId }) => (
         Tech Builders
       </Link>
       . I am a designer, full-stack developer, and creator of web & mobile solutions with
-      a focus on motion and user experience. If you're interested in the tools and
-      software I use check out my <Link href="/uses">uses page</Link>.
+      a focus on motion and user experience. My projects include UI/UX design, animation,
+      illustration, and development. If you're interested in the tools and software I use
+      check out my <Link href="/uses">uses page</Link>.
     </Text>
     <Text
       className={classNames('profile__description', `profile__description--${status}`)}
@@ -95,13 +96,12 @@ const Profile = ({ id, visible, sectionRef }) => {
               <div className="profile__image-wrapper">
                 {!prerender && (
                   <Suspense fallback={null}>
-                    <Selfie
+                    <Portrait
                       className={classNames(
                         'profile__image',
                         `profile__image--${status}`
                       )}
                       delay={100}
-                      alt="A 3D rendition of myself."
                     />
                   </Suspense>
                 )}
