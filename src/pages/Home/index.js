@@ -154,18 +154,18 @@ const Home = props => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="A Tool for Everything"
-        description="Creating a platfrom to help developers build better software."
+        title="Putting Players First"
+        description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
-        buttonLink="/projects/dtt"
+        buttonLink="/projects/modern"
         model={{
           type: 'laptop',
-          alt: 'DevTech Tools Landing Page',
+          alt: 'The Modern Project Landing Page',
           textures: [
             {
-              src: dttTexture,
-              srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
-              placeholder: dttTexturePlaceholder,
+              src: modernTexture,
+              srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
+              placeholder: modernTexturePlaceholder,
             },
           ],
         }}
@@ -202,18 +202,18 @@ const Home = props => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Putting Players First"
-        description="Building a community that puts players and game health first, not profits."
+        title="A Tool for Everything"
+        description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
-        buttonLink="/projects/modern"
+        buttonLink="/projects/dtt"
         model={{
           type: 'laptop',
-          alt: 'The Modern Project Landing Page',
+          alt: 'DevTech Tools Landing Page',
           textures: [
             {
-              src: modernTexture,
-              srcSet: `${modernTexture} 800w, ${modernTextureLarge} 1440w`,
-              placeholder: modernTexturePlaceholder,
+              src: dttTexture,
+              srcSet: `${dttTexture} 800w, ${dttTextureLarge} 1440w`,
+              placeholder: dttTexturePlaceholder,
             },
           ],
         }}

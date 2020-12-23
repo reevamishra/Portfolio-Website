@@ -3,18 +3,22 @@ import classNames from 'classnames';
 import {
   WebGLRenderer,
   sRGBEncoding,
-  Scene,
   PerspectiveCamera,
+  Scene,
+  UnsignedByteType,
+  PMREMGenerator,
   AmbientLight,
   DirectionalLight,
   Color,
 } from 'three';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { spring, value } from 'popmotion';
 import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
 import { useTheme } from 'components/ThemeProvider';
+import portraitEnv from 'assets/portrait-env.hdr';
 import portraitModelPath from 'assets/portrait.glb';
 import './Portrait.css';
 
@@ -47,6 +51,19 @@ const Portrait = ({ className, delay, ...rest }) => {
     camera.current.position.z = 24;
 
     scene.current = new Scene();
+
+    const envLoader = new RGBELoader();
+    envLoader.setDataType(UnsignedByteType);
+
+    envLoader.load(portraitEnv, texture => {
+      const pmremGenerator = new PMREMGenerator(renderer.current);
+      pmremGenerator.compileEquirectangularShader();
+
+      const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+      pmremGenerator.dispose();
+
+      scene.current.environment = envMap;
+    });
 
     const modelLoader = new GLTFLoader();
 
