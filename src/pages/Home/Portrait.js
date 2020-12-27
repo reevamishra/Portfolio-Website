@@ -48,7 +48,7 @@ const Portrait = ({ className, delay, ...rest }) => {
     renderer.current.physicallyCorrectLights = true;
 
     camera.current = new PerspectiveCamera(45, clientWidth / clientHeight, 0.1, 800);
-    camera.current.position.z = 24;
+    camera.current.position.z = 2;
 
     scene.current = new Scene();
 
@@ -75,8 +75,10 @@ const Portrait = ({ className, delay, ...rest }) => {
         }
       });
 
+      model.scene.scale.multiplyScalar(3);
+
       scene.current.add(model.scene);
-      model.scene.position.y = -8;
+      model.scene.position.y = -5;
     });
 
     return () => {

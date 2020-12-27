@@ -50,7 +50,7 @@ const description =
   'Building a community that puts players and game health first, not profits.';
 const roles = ['Visual Identity', 'UX and UI Design', 'Full-stack Development'];
 
-function ProjectModern() {
+const ProjectModern = () => {
   const { themeId } = useTheme();
   const { dispatch } = useAppContext();
   useScrollRestore();
@@ -101,7 +101,7 @@ function ProjectModern() {
                 game management.
               </ProjectSectionText>
               <ProjectSectionText>
-                We represented the modern or new feel behind the mission of Project Modern
+                I represented the modern or new feel behind the mission of Project Modern
                 with custom typography with a plus for new, accompanied with fresh colors
                 and a crisp typeface.
               </ProjectSectionText>
@@ -208,6 +208,6 @@ function ProjectModern() {
       <Footer />
     </Fragment>
   );
-}
+};
 
 export default ProjectModern;

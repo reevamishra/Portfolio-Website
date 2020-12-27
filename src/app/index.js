@@ -17,8 +17,8 @@ import './index.css';
 
 const Home = lazy(() => import('pages/Home'));
 const Contact = lazy(() => import('pages/Contact'));
-const ProjectModern = lazy(() => import('pages/ProjectModern'));
-const ProjectDTT = lazy(() => import('pages/DevTechTools'));
+const ProjectModern = lazy(() => import('pages/Modern'));
+const ProjectDTT = lazy(() => import('pages/DTT'));
 const Articles = lazy(() => import('pages/Articles'));
 const Uses = lazy(() => import('pages/Uses'));
 const Page404 = lazy(() => import('pages/404'));

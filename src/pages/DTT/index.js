@@ -41,7 +41,7 @@ const description =
   'I lead the design and development of DevTech Tools. We focused on creating the best platform for developers to build better software.';
 const roles = ['Visual Identity', 'UX and UI Design', 'Full-stack Development'];
 
-function DevTechTools() {
+const ProjectDTT = () => {
   useScrollRestore();
 
   return (
@@ -173,6 +173,6 @@ function DevTechTools() {
       <Footer />
     </Fragment>
   );
-}
+};
 
-export default DevTechTools;
+export default ProjectDTT;
