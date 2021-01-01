@@ -17,6 +17,7 @@ import dttTextureLarge from 'assets/dtt-large.jpg';
 import dttTexturePlaceholder from 'assets/dtt-placeholder.jpg';
 import iphone11 from 'assets/iphone-11.glb';
 import macbookPro from 'assets/macbook-pro.glb';
+import portrait from 'assets/portrait.glb';
 import './index.css';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
@@ -142,6 +143,7 @@ const Home = props => {
         />
         <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
         <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
+        <link rel="prefetch" href={portrait} as="fetch" crossorigin="" />
       </Helmet>
       <Intro
         id="intro"
