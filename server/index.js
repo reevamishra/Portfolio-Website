@@ -8,13 +8,15 @@ const { JSDOM } = require('jsdom');
 const app = express();
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
-const { gmailEmail, gmailPassword } = process.env;
+const { smtpHost, smtpUser, smtpPass } = process.env;
 
 const mailTransport = nodemailer.createTransport({
-  service: 'gmail',
+  host: smtpHost,
+  port: 465,
+  secure: true,
   auth: {
-    user: gmailEmail,
-    pass: gmailPassword,
+    user: smtpUser,
+    pass: smtpPass,
   },
 });
 
