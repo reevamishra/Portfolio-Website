@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
-  "routes": [
-    { "src": "/index.html", "dest": "/" },
-    { "src": "/functions(.*)", "dest": "https://mail.codyb.co" }
+  "rewrites": [
+    { "source": "/index.html", "destination": "/" },
+    { "source": "/functions(.*)", "destination": "https://mail.codyb.co" }
   ]
 }
