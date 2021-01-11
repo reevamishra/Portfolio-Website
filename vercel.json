@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/index.html", "dest": "/" },
+    { "src": "/functions(.*)", "dest": "https://mail.codyb.co" }
+  ]
+}
