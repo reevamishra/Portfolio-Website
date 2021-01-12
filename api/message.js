@@ -1,11 +1,7 @@
 const nodemailer = require('nodemailer');
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
-const app = express();
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
 const { smtpHost, smtpUser, smtpPass } = process.env;
@@ -20,15 +16,10 @@ const mailTransport = nodemailer.createTransport({
   },
 });
 
-const ORIGIN = 'https://codyb.co';
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 
-app.use(helmet());
-app.use(express.json());
-app.use(cors({ origin: ORIGIN }));
-
-app.post('/', async (req, res) => {
+module.exports = async (req, res) => {
   try {
     const email = DOMPurify.sanitize(req.body.email);
     const message = DOMPurify.sanitize(req.body.message);
@@ -63,7 +54,4 @@ app.post('/', async (req, res) => {
     console.error('Rejected', error);
     return res.status(500).json({ error: 'Message rejected' });
   }
-});
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listening on port :${port}`));
+};

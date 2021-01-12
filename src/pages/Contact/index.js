@@ -63,7 +63,7 @@ const Contact = () => {
       try {
         setSending(true);
 
-        const response = await fetch('/functions/sendMessage', {
+        const response = await fetch('/api/message', {
           method: 'POST',
           mode: 'cors',
           headers: {

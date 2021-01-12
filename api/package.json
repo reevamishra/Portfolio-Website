@@ -1,14 +1,11 @@
 {
-  "name": "server",
-  "description": "Server process for codyb.co",
+  "name": "api",
+  "description": "Serverless functions for codyb.co",
   "scripts": {
     "lint": "eslint ."
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "dompurify": "^2.2.3",
-    "express": "^4.17.1",
-    "helmet": "^4.2.0",
     "jsdom": "^16.4.0",
     "nodemailer": "^6.4.17"
   },
