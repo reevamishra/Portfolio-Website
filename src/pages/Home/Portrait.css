@@ -3,6 +3,7 @@
 }
 
 .portrait__canvas {
+  background: rgb(var(--rgbBackgroundLight));
   position: absolute;
   top: 0;
   right: 0;

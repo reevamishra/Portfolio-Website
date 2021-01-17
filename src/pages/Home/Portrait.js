@@ -2,83 +2,114 @@ import { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import {
   WebGLRenderer,
+  ACESFilmicToneMapping,
   sRGBEncoding,
   PerspectiveCamera,
   Scene,
-  UnsignedByteType,
-  PMREMGenerator,
-  AmbientLight,
-  DirectionalLight,
+  Fog,
   Color,
+  HalfFloatType,
+  AmbientLight,
+  RectAreaLight,
 } from 'three';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import {
+  EffectComposer,
+  RenderPass,
+  NormalPass,
+  SSAOEffect,
+  BlendFunction,
+  BloomEffect,
+  KernelSize,
+  EffectPass,
+} from 'postprocessing';
 import { spring, value } from 'popmotion';
+import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
 import { useTheme } from 'components/ThemeProvider';
-import portraitEnv from 'assets/portrait-env.hdr';
 import portraitModelPath from 'assets/portrait.glb';
 import './Portrait.css';
 
+RectAreaLightUniformsLib.init();
+
 const Portrait = ({ className, delay, ...rest }) => {
-  const { colorWhite, themeId, rgbBackgroundLight } = useTheme();
+  const { rgbBackgroundLight, themeId } = useTheme();
   const container = useRef();
   const canvas = useRef();
   const renderer = useRef();
   const camera = useRef();
   const scene = useRef();
+  const composer = useRef();
   const lights = useRef();
   const prefersReducedMotion = usePrefersReducedMotion();
-  const isInViewport = useInViewport(canvas);
+  const isInViewport = useInViewport(container);
 
   // Init scene and models
   useEffect(() => {
     const { clientWidth, clientHeight } = container.current;
 
     renderer.current = new WebGLRenderer({
+      alpha: true,
+      antialias: true,
       canvas: canvas.current,
       powerPreference: 'high-performance',
     });
-
-    renderer.current.setPixelRatio(2);
     renderer.current.setSize(clientWidth, clientHeight);
+    renderer.current.setPixelRatio(2);
+    renderer.current.toneMapping = ACESFilmicToneMapping;
     renderer.current.outputEncoding = sRGBEncoding;
-    renderer.current.physicallyCorrectLights = true;
 
-    camera.current = new PerspectiveCamera(45, clientWidth / clientHeight, 0.1, 800);
-    camera.current.position.z = 2;
+    camera.current = new PerspectiveCamera(45, clientWidth / clientHeight, 0.5, 2.25);
+    camera.current.position.z = 0.8;
 
     scene.current = new Scene();
+    scene.current.fog = new Fog(0xffffff, 0, 2.25);
 
-    const envLoader = new RGBELoader();
-    envLoader.setDataType(UnsignedByteType);
-
-    envLoader.load(portraitEnv, texture => {
-      const pmremGenerator = new PMREMGenerator(renderer.current);
-      pmremGenerator.compileEquirectangularShader();
-
-      const envMap = pmremGenerator.fromEquirectangular(texture).texture;
-      pmremGenerator.dispose();
-
-      scene.current.environment = envMap;
+    composer.current = new EffectComposer(renderer.current, {
+      frameBufferType: HalfFloatType,
     });
+    const renderPass = new RenderPass(scene.current, camera.current);
+    composer.current.addPass(renderPass);
+
+    const normalPass = new NormalPass(scene.current, camera.current);
+
+    const ssaoEffect = new SSAOEffect(camera.current, normalPass.renderTarget.texture, {
+      blendFunction: BlendFunction.MULTIPLY,
+      samples: 21, // May get away with less samples
+      rings: 4, // Just make sure this isn't a multiple of samples
+      distanceThreshold: 1.0,
+      distanceFalloff: 0.0,
+      rangeThreshold: 0.015, // Controls sensitivity based on camera view distance
+      rangeFalloff: 0.002,
+      luminanceInfluence: 0.9,
+      radius: 20, // Spread range
+      scale: 0.25, // Controls intensity
+      bias: 0.25,
+    });
+
+    const bloomEffect = new BloomEffect({
+      opacity: 1,
+      blendFunction: BlendFunction.SCREEN,
+      kernelSize: KernelSize.SMALL,
+      luminanceThreshold: 0.65,
+      luminanceSmoothing: 0.07,
+      height: 600,
+    });
+    bloomEffect.blendMode.opacity.value = 1;
+
+    const effectPass = new EffectPass(camera.current, ssaoEffect, bloomEffect);
+    effectPass.renderToScreen = true;
+
+    composer.current.addPass(normalPass);
+    composer.current.addPass(effectPass);
 
     const modelLoader = new GLTFLoader();
 
     modelLoader.load(portraitModelPath, model => {
-      model.scene.traverse(node => {
-        if (node.isMesh) {
-          node.material.flatShading = false;
-          node.geometry.computeVertexNormals(true);
-        }
-      });
-
-      model.scene.scale.multiplyScalar(3);
-
+      model.scene.position.y = -1.6;
       scene.current.add(model.scene);
-      model.scene.position.y = -5;
     });
 
     return () => {
@@ -89,41 +120,26 @@ const Portrait = ({ className, delay, ...rest }) => {
 
   // Lights
   useEffect(() => {
-    const ambientLight = new AmbientLight(colorWhite, 0.8);
-    const dirLight = new DirectionalLight(colorWhite, themeId === 'light' ? 1.6 : 0.8);
+    const ambientLight = new AmbientLight(0xffffff, themeId === 'dark' ? 0.1 : 0.2);
 
-    dirLight.position.set(30, 20, 32);
+    const rectLight1 = new RectAreaLight(0xffffff, 6, 10, 10);
+    rectLight1.position.set(4.5, -1.3, -3);
+    rectLight1.lookAt(0, 0, 0);
 
-    lights.current = [ambientLight, dirLight];
-    scene.current.background = new Color(...rgbToThreeColor(rgbBackgroundLight));
+    const rectLight2 = new RectAreaLight(0xffffff, 6, 15, 15);
+    rectLight2.position.set(-10, 0.7, -10);
+    rectLight2.lookAt(0, 0, 0);
+
+    lights.current = [ambientLight, rectLight1, rectLight2];
     lights.current.forEach(light => scene.current.add(light));
+
+    scene.current.fog.color = new Color(...rgbToThreeColor(rgbBackgroundLight));
+    scene.current.fog.far = 10;
 
     return () => {
       removeLights(lights.current);
     };
-  }, [colorWhite, themeId, rgbBackgroundLight]);
-
-  // Handles window resize
-  useEffect(() => {
-    const handleResize = () => {
-      const { clientWidth, clientHeight } = container.current;
-
-      renderer.current.setSize(clientWidth, clientHeight);
-      camera.current.aspect = clientWidth / clientHeight;
-      camera.current.updateProjectionMatrix();
-
-      if (prefersReducedMotion) {
-        renderer.current.render(scene.current, camera.current);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [prefersReducedMotion]);
+  }, [themeId, rgbBackgroundLight]);
 
   // Handle mouse move animation
   useEffect(() => {
@@ -167,30 +183,50 @@ const Portrait = ({ className, delay, ...rest }) => {
     };
   }, [isInViewport, prefersReducedMotion]);
 
+  // Handles window resize
+  useEffect(() => {
+    const handleResize = () => {
+      const { clientWidth, clientHeight } = container.current;
+
+      renderer.current.setSize(clientWidth, clientHeight);
+      composer.current.setSize(clientWidth, clientHeight);
+      camera.current.aspect = clientWidth / clientHeight;
+      camera.current.updateProjectionMatrix();
+
+      // Render a single frame on resize when not animating
+      if (prefersReducedMotion) {
+        composer.current.render();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [prefersReducedMotion]);
+
   // Handles renders
   useEffect(() => {
-    let animation;
-
-    const animate = () => {
-      animation = requestAnimationFrame(animate);
-
-      renderer.current.render(scene.current, camera.current);
+    const animation = () => {
+      composer.current.render();
     };
 
     if (!prefersReducedMotion && isInViewport) {
-      animate();
+      renderer.current.setAnimationLoop(animation);
     } else {
-      renderer.current.render(scene.current, camera.current);
+      composer.current.render();
     }
 
     return () => {
-      cancelAnimationFrame(animation);
+      renderer.current.setAnimationLoop(null);
     };
-  }, [isInViewport, prefersReducedMotion]);
+  }, [prefersReducedMotion, isInViewport]);
 
   return (
     <div
-      className={classNames('portrait', className)}
+      className={classNames('portrait', `portrait--${themeId}`, className)}
       ref={container}
       style={{ '--delay': delay }}
       role="img"
