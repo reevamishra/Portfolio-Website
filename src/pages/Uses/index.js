@@ -10,7 +10,9 @@ import {
   ProjectSectionText,
   ProjectTextRow,
 } from 'components/ProjectLayout';
+import { Table, TableCell, TableRow } from 'components/Table';
 import Link from 'components/Link';
+import Icon from 'components/Icon';
 import Footer from 'components/Footer';
 import { useScrollRestore } from 'hooks';
 import prerender from 'utils/prerender';
@@ -79,8 +81,8 @@ const Uses = () => {
                   <li>
                     I use{' '}
                     <Link href="https://code.visualstudio.com">Visual Studio Code</Link>{' '}
-                    as my text editor, with the Atom One Dark theme and Jetbrains Mono as
-                    my typeface of choice.
+                    as my text editor, with the Base 16 Tomorrow Dark theme and Jetbrains
+                    Mono as my typeface of choice.
                   </li>
                   <li>
                     <Link href="https://mozilla.org/en-US/firefox/developer">
@@ -134,25 +136,80 @@ const Uses = () => {
         </ProjectSection>
         <ProjectSection className="uses__section">
           <ProjectSectionContent>
-            <ProjectTextRow width="m">
+            <ProjectTextRow stretch width="m">
               <ProjectSectionHeading>Hardware</ProjectSectionHeading>
-              <ProjectSectionText>
-                <ul>
-                  <li>
-                    My PC is a custom built RTX 2070, AMD RYZEN 7 3800X, ASUS STRIX B450-I
-                    build with a 1TB NVME SSD and a EVGA SuperNOVA 750 P2 power supply.
-                  </li>
-                  <li>
-                    I use a Lewitt LCT 440 Pure microphone and a Focusrite Scarlett Solo
-                    for audio recording.
-                  </li>
-                  <li>
-                    For musical works, I use a Fender Telecaster into a Deluxe Reverb for
-                    guitar parts and a Yamaha Preface CS for synth parts.
-                  </li>
-                  <li>I use Beyderdynamic 770 Pro headphones for playback.</li>
-                </ul>
-              </ProjectSectionText>
+              <Table>
+                <TableRow>
+                  <TableCell>
+                    <strong>CPU</strong>
+                  </TableCell>
+                  <TableCell>AMD Ryzen 7 3800x</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>GPU</strong>
+                  </TableCell>
+                  <TableCell>NVIDIA RTX 2070</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Keyboard</strong>
+                  </TableCell>
+                  <TableCell>Keychron K8</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Motherboard</strong>
+                  </TableCell>
+                  <TableCell>Razer DeathAdder Elite</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Headphones</strong>
+                  </TableCell>
+                  <TableCell>Beyderdynamic 770 Pro</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Microphone</strong>
+                  </TableCell>
+                  <TableCell>Lewitt LCT 440 Pure</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Interface</strong>
+                  </TableCell>
+                  <TableCell>Focusrite Scarlett Solo</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Axe</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      secondary
+                      href="https://youtube.codyb.co"
+                      style={{ display: 'inline-flex', flexDirection: 'row' }}
+                    >
+                      Fender Telecaster Ultra <Icon icon="music" />
+                    </Link>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <strong>Amp</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      secondary
+                      href="https://youtube.codyb.co"
+                      style={{ display: 'inline-flex', flexDirection: 'row' }}
+                    >
+                      Fender Deluxe Reverb <Icon icon="music" />
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              </Table>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>

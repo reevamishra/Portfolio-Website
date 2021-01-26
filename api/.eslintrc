@@ -2,9 +2,7 @@
   "parserOptions": {
     "ecmaVersion": 6
   },
-  "plugins": [
-    "promise"
-  ],
+  "plugins": ["promise"],
   "extends": "eslint:recommended",
   "rules": {
     "no-console": "off",

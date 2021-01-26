@@ -83,12 +83,10 @@ const ImageElements = ({
     };
 
     const placeholderElement = placeholderRef.current;
-    placeholderElement.addEventListener('transitionend', purgePlaceholder);
+    placeholderElement?.addEventListener('transitionend', purgePlaceholder);
 
-    return function cleanUp() {
-      if (placeholderElement) {
-        placeholderElement.removeEventListener('transitionend', purgePlaceholder);
-      }
+    return () => {
+      placeholderElement?.removeEventListener('transitionend', purgePlaceholder);
     };
   }, []);
 
@@ -106,9 +104,9 @@ const ImageElements = ({
   }, [isVideo, src, srcSet]);
 
   useEffect(() => {
-    const { width, height } = placeholderRef.current;
+    if (placeholderRef?.current) {
+      const { width, height } = placeholderRef.current;
 
-    if (width && height) {
       setPlaceholderSize({ width, height });
     }
   }, []);

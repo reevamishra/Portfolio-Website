@@ -28,11 +28,7 @@ import { useState } from 'react';
 function Counter({ initialCount = 0 }) {
   const [count, setCount] = useState(initialCount);
 
-  return (
-    <p onClick={() => setCount(count++)}>
-      {count}
-    </p>
-  );
+  return <p onClick={() => setCount(count++)}>{count}</p>;
 }
 ```
 
@@ -53,9 +49,7 @@ import { useHeavyMethod } from 'heavyDependency';
 function ServerComponent() {
   const data = useHeavyMethod();
 
-  return (
-    <p>{data}</p>
-  );
+  return <p>{data}</p>;
 }
 ```
 
@@ -76,9 +70,7 @@ const AlternateComponent = lazy(() => import('./AlternateComponent.js'));
 function ClientComponent({ alternate }) {
   if (alternate) return <AlternateComponent />;
 
-  return (
-    <DefaultComponent />
-  );
+  return <DefaultComponent />;
 }
 ```
 
@@ -95,9 +87,7 @@ import AlternateComponent from './AlternateComponent.client.js';
 function ServerComponent({ alternate }) {
   if (alternate) return <AlternateComponent />;
 
-  return (
-    <DefaultComponent />
-  );
+  return <DefaultComponent />;
 }
 ```
 
