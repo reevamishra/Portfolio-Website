@@ -24,7 +24,7 @@ import { usePrefersReducedMotion, useInViewport, useWindowSize } from 'hooks';
 import { reflow } from 'utils/transition';
 import { media, rgbToThreeColor } from 'utils/style';
 import { cleanScene, removeLights, cleanRenderer } from 'utils/three';
-import './DisplacementSphere.css';
+import './index.css';
 
 const DisplacementSphere = props => {
   const theme = useTheme();

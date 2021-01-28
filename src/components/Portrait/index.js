@@ -30,7 +30,7 @@ import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
 import { rgbToThreeColor } from 'utils/style';
 import { useTheme } from 'components/ThemeProvider';
 import portraitModelPath from 'assets/portrait.glb';
-import './Portrait.css';
+import './index.css';
 
 RectAreaLightUniformsLib.init();
 
@@ -52,7 +52,7 @@ const Portrait = ({ className, delay, ...rest }) => {
 
     renderer.current = new WebGLRenderer({
       alpha: true,
-      antialias: true,
+      antialias: false,
       canvas: canvas.current,
       powerPreference: 'high-performance',
     });
@@ -77,15 +77,15 @@ const Portrait = ({ className, delay, ...rest }) => {
 
     const ssaoEffect = new SSAOEffect(camera.current, normalPass.renderTarget.texture, {
       blendFunction: BlendFunction.MULTIPLY,
-      samples: 21, // May get away with less samples
-      rings: 4, // Just make sure this isn't a multiple of samples
+      samples: 21,
+      rings: 4,
       distanceThreshold: 1.0,
       distanceFalloff: 0.0,
-      rangeThreshold: 0.015, // Controls sensitivity based on camera view distance
+      rangeThreshold: 0.015,
       rangeFalloff: 0.002,
       luminanceInfluence: 0.9,
-      radius: 20, // Spread range
-      scale: 0.25, // Controls intensity
+      radius: 20,
+      scale: 0.25,
       bias: 0.25,
     });
 
@@ -110,6 +110,8 @@ const Portrait = ({ className, delay, ...rest }) => {
     modelLoader.load(portraitModelPath, model => {
       model.scene.position.y = -1.6;
       scene.current.add(model.scene);
+
+      composer.current.render();
     });
 
     return () => {
@@ -158,6 +160,7 @@ const Portrait = ({ className, delay, ...rest }) => {
       if (!rotationSpringValue) {
         rotationSpringValue = value({ x: rotation.x, y: rotation.y }, ({ x, y }) => {
           rotation.set(x, y, rotation.z);
+          composer.current.render();
         });
       }
 
@@ -193,10 +196,8 @@ const Portrait = ({ className, delay, ...rest }) => {
       camera.current.aspect = clientWidth / clientHeight;
       camera.current.updateProjectionMatrix();
 
-      // Render a single frame on resize when not animating
-      if (prefersReducedMotion) {
-        composer.current.render();
-      }
+      // Render a single frame on resize
+      composer.current.render();
     };
 
     window.addEventListener('resize', handleResize);
@@ -206,23 +207,6 @@ const Portrait = ({ className, delay, ...rest }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, [prefersReducedMotion]);
-
-  // Handles renders
-  useEffect(() => {
-    const animation = () => {
-      composer.current.render();
-    };
-
-    if (!prefersReducedMotion && isInViewport) {
-      renderer.current.setAnimationLoop(animation);
-    } else {
-      composer.current.render();
-    }
-
-    return () => {
-      renderer.current.setAnimationLoop(null);
-    };
-  }, [prefersReducedMotion, isInViewport]);
 
   return (
     <div

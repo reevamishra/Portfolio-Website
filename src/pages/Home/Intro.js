@@ -14,7 +14,7 @@ import { tokens } from 'components/ThemeProvider/theme';
 import { useTheme } from 'components/ThemeProvider';
 import './Intro.css';
 
-const DisplacementSphere = lazy(() => import('pages/Home/DisplacementSphere'));
+const DisplacementSphere = lazy(() => import('components/DisplacementSphere'));
 
 function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) {
   const theme = useTheme();

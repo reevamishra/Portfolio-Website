@@ -5,7 +5,7 @@ export default {
   title: 'Icon',
 };
 
-export const Icons = () => {
+export const icon = () => {
   return (
     <StoryContainer>
       {Object.keys(icons).map(key => (

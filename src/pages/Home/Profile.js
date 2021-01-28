@@ -13,7 +13,7 @@ import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './Profile.css';
 
-const Portrait = lazy(() => import('./Portrait'));
+const Portrait = lazy(() => import('components/Portrait'));
 
 const ProfileText = ({ status, titleId }) => (
   <Fragment>
