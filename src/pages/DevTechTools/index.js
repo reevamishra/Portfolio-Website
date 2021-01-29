@@ -26,12 +26,9 @@ import dttPlaceholder from 'assets/dtt-placeholder.jpg';
 import dttBranding from 'assets/dtt-branding.png';
 import dttBrandingLarge from 'assets/dtt-branding-large.png';
 import dttBrandingPlaceholder from 'assets/dtt-branding-placeholder.png';
-import dttTool from 'assets/dtt-tool.png';
-import dttToolLarge from 'assets/dtt-tool-large.png';
-import dttToolPlaceholder from 'assets/dtt-tool-placeholder.png';
-import dttAPI from 'assets/dtt-api.png';
-import dttAPILarge from 'assets/dtt-api-large.png';
-import dttAPIPlaceholder from 'assets/dtt-api-placeholder.png';
+import dttTool from 'assets/dtt-tool.jpg';
+import dttToolLarge from 'assets/dtt-tool-large.jpg';
+import dttToolPlaceholder from 'assets/dtt-tool-placeholder.jpg';
 import dttLanding from 'assets/dtt-landing.jpg';
 import dttLandingLarge from 'assets/dtt-landing-large.jpg';
 import dttLandingPlaceholder from 'assets/dtt-landing-placeholder.jpg';
@@ -79,7 +76,8 @@ const ProjectDTT = () => {
               <ProjectSectionHeading>Visual Identity</ProjectSectionHeading>
               <ProjectSectionText>
                 We represented the technology aspect of DevTech Tools with a bundle of
-                traces, accompanied with fresh colors and a crisp typeface.
+                traces, accompanied with fresh colors and a crisp typeface to portray its
+                modernity.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -91,61 +89,25 @@ const ProjectDTT = () => {
           </ProjectSectionColumns>
         </ProjectSection>
         <ProjectSection light>
-          <ProjectSectionContent>
-            <ProjectTextRow noMargin>
-              <ProjectSectionHeading>The Mission</ProjectSectionHeading>
-              <ProjectSectionText>
-                DevTech Tools started as a small set of developer tools that generated,
-                parsed, and converted between data formats.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                Our mission was to create an expanding arsenal of developer tools to use
-                in any environment, for any purpose, on one platform.
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
-        </ProjectSection>
-        <ProjectSection>
           <ProjectSectionColumns alternate>
             <Image
-              raised
               srcSet={`${dttTool} 400w, ${dttToolLarge} 898w`}
               placeholder={dttToolPlaceholder}
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
               alt="The tool wrapper of the JSON to CSV data converter."
             />
             <ProjectTextRow noMargin>
-              <ProjectSectionHeading>Setting Sail</ProjectSectionHeading>
-              <ProjectSectionText>
-                DevTech Tools launched with a comprehensive set of data converters, code
-                formatters and linters, and many other tools.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                I designed and developed a simple, intuitive interface to cut development
-                time down to a single click.
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionColumns>
-        </ProjectSection>
-        <ProjectSection light>
-          <ProjectSectionColumns>
-            <ProjectTextRow>
               <ProjectSectionHeading>Expanding the Workflow</ProjectSectionHeading>
               <ProjectSectionText>
-                Following the release of our online tools, we accompanied this release
-                with a powerful API, giving developers complete control.
+                DevTech Tools launched with a comprehensive set of tools that expanded
+                into convenience tools for maintaining and migrating large databases and
+                datasets.
               </ProjectSectionText>
               <ProjectSectionText>
-                Experienced developers now had full flexibility with our tools in their
-                projects.
+                I designed a simple, intuitive interface for users to cut down menial
+                development time to a single click.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Image
-              srcSet={`${dttAPI} 400w, ${dttAPILarge} 898w`}
-              placeholder={dttAPIPlaceholder}
-              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 50vw`}
-              alt="A snippet from the DevTech Tools API, converting data from JSON to CSV."
-            />
           </ProjectSectionColumns>
         </ProjectSection>
         <ProjectSection>
@@ -164,7 +126,7 @@ const ProjectDTT = () => {
             <Image
               srcSet={`${dttLanding} 1280w, ${dttLandingLarge} 2560w`}
               placeholder={dttLandingPlaceholder}
-              alt="A screenshot of the landing page in production."
+              alt="A screenshot of the DevTech Tools landing page."
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
           </ProjectSectionContent>

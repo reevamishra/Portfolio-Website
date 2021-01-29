@@ -2,9 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/index.html", "destination": "/" },
-    { "source": "/functions/:endpoint", "destination": "/api/message" },
-    { "source": "/projects/modern", "destination": "/projects/project-modern" },
-    { "source": "/projects/dtt", "destination": "/projects/devtechtools" }
+    { "source": "/functions/:endpoint", "destination": "/api/message" }
   ],
   "github": {
     "silent": true

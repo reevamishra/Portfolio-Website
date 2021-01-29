@@ -28,24 +28,18 @@ const ProfileText = ({ status, titleId }) => (
       className={classNames('profile__description', `profile__description--${status}`)}
       size="l"
     >
-      I’m Cody. Currently, I am based in Austin, working as the lead designer at{' '}
-      <Link href="https://linkedin.com/company/tech-builders" target="_blank">
-        Tech Builders
-      </Link>
-      . I am a designer, full-stack developer, and creator of web & mobile solutions with
-      a focus on motion and user experience. My projects include UI/UX design, animation,
-      illustration, and development. If you're interested in the tools and software I use
-      check out my <Link href="/uses">uses page</Link>.
+      I’m Cody. I am a designer, full-stack developer, and creator of web & mobile
+      solutions with a focus on motion and user experience. My projects include UI/UX
+      design, animation, illustration, and development. If you're interested in the tools
+      and software I use check out my <Link href="/uses">uses page</Link>.
     </Text>
     <Text
       className={classNames('profile__description', `profile__description--${status}`)}
       size="l"
     >
       In my spare time, I like to write music and{' '}
-      <Link href="https://github.codyb.co" target="_blank">
-        experiment with new tech
-      </Link>
-      . I’m always interested in new projects, so feel free to drop me a line.
+      <Link href="https://github.codyb.co">experiment with new tech</Link>. I’m always
+      interested in new projects, so feel free to drop me a line.
     </Text>
   </Fragment>
 );

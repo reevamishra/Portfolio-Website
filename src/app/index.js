@@ -17,7 +17,6 @@ import './index.css';
 
 const Home = lazy(() => import('pages/Home'));
 const Contact = lazy(() => import('pages/Contact'));
-const ProjectModern = lazy(() => import('pages/ProjectModern'));
 const ProjectDM = lazy(() => import('pages/DeviceModels'));
 const ProjectDTT = lazy(() => import('pages/DevTechTools'));
 const Articles = lazy(() => import('pages/Articles'));
@@ -82,9 +81,8 @@ const AppRoutes = () => {
                   <Switch location={location}>
                     <Route exact path="/" component={Home} />
                     <Route path="/contact" component={Contact} />
-                    <Route path="/projects/project-modern" component={ProjectModern} />
                     <Route path="/projects/device-models" component={ProjectDM} />
-                    <Route path="/projects/devtechtools" component={ProjectDTT} />
+                    <Route path="/projects/devtech-tools" component={ProjectDTT} />
                     <Route path="/uses" component={Uses} />
                     <Route path="/articles" component={Articles} />
                     <Route component={Page404} />
