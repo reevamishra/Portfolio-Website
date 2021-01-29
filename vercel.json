@@ -2,8 +2,8 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/index.html", "destination": "/" },
-    { "source": "/functions/:endpoint", "destination": "/api/message" }
-    { "source": "/projects/modern", "destination": "/projects/project-modern" }
+    { "source": "/functions/:endpoint", "destination": "/api/message" },
+    { "source": "/projects/modern", "destination": "/projects/project-modern" },
     { "source": "/projects/dtt", "destination": "/projects/devtechtools" }
   ],
   "github": {
