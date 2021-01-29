@@ -9,9 +9,9 @@ import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
 import modernTexture from 'assets/modern.jpg';
 import modernTextureLarge from 'assets/modern-large.jpg';
 import modernTexturePlaceholder from 'assets/modern-placeholder.jpg';
-import deviceModelsTexture from 'assets/device-models.jpg';
-import deviceModelsTextureLarge from 'assets/device-models-large.jpg';
-import deviceModelsTexturePlaceholder from 'assets/device-models-placeholder.jpg';
+import deviceModelsTexture from 'assets/device-models-phone.jpg';
+import deviceModelsTextureLarge from 'assets/device-models-phone-large.jpg';
+import deviceModelsTexturePlaceholder from 'assets/device-models-phone-placeholder.jpg';
 import dttTexture from 'assets/dtt.jpg';
 import dttTextureLarge from 'assets/dtt-large.jpg';
 import dttTexturePlaceholder from 'assets/dtt-placeholder.jpg';
@@ -159,7 +159,7 @@ const Home = props => {
         title="Putting Players First"
         description="Building a community that puts players and game health first, not profits."
         buttonText="View Project"
-        buttonLink="/projects/modern"
+        buttonLink="/projects/project-modern"
         model={{
           type: 'laptop',
           alt: 'The Modern Project Landing Page',
@@ -180,8 +180,8 @@ const Home = props => {
         index={2}
         title="Device Models"
         description="Design and development of a Figma plugin to create mockups with 3D device models."
-        buttonText="View Website"
-        buttonLink="https://devicemodels.com"
+        buttonText="View Project"
+        buttonLink="/projects/device-models"
         model={{
           type: 'phone',
           alt: "Device Model's default image",
@@ -207,7 +207,7 @@ const Home = props => {
         title="A Tool for Everything"
         description="Creating a platfrom to help developers build better software."
         buttonText="View Project"
-        buttonLink="/projects/dtt"
+        buttonLink="/projects/devtechtools"
         model={{
           type: 'laptop',
           alt: 'DevTech Tools Landing Page',
