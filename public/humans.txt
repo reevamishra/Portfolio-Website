@@ -21,7 +21,6 @@ TECHNOLOGY
 React
 Storybook
 Three
-Firebase
 Popmotion
 
 _______________________________________________________________________________
