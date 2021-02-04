@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.12.13",
     "@storybook/addon-a11y": "^6.1.16",
     "@storybook/addon-actions": "^6.1.16",
     "@storybook/addon-controls": "^6.1.16",
@@ -16,8 +16,8 @@
     "@storybook/react": "^6.1.16",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "babel-loader": "8.1.0",
     "@testing-library/user-event": "^12.6.3",
+    "babel-loader": "8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "mdx-loader": "^3.0.2",

@@ -206,7 +206,7 @@ const Portrait = ({ className, delay, ...rest }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [prefersReducedMotion]);
+  }, []);
 
   return (
     <div
