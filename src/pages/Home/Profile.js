@@ -38,8 +38,8 @@ const ProfileText = ({ status, titleId }) => (
       size="l"
     >
       In my spare time, I like to write music and{' '}
-      <Link href="https://github.codyb.co">experiment with new tech</Link>. I’m always
-      interested in new projects, so feel free to drop me a line.
+      <Link href="/articles">experiment with new tech</Link>. I’m always interested in new
+      projects, so feel free to drop me a line.
     </Text>
   </Fragment>
 );
