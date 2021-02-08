@@ -53,6 +53,8 @@ const Portrait = ({ className, delay, ...rest }) => {
     renderer.current = new WebGLRenderer({
       alpha: true,
       antialias: false,
+      stencil: false,
+      depth: false,
       canvas: canvas.current,
       powerPreference: 'high-performance',
     });
