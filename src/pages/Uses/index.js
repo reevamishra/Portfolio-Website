@@ -159,7 +159,7 @@ const Uses = () => {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <strong>Motherboard</strong>
+                    <strong>Mouse</strong>
                   </TableCell>
                   <TableCell>Razer DeathAdder Elite</TableCell>
                 </TableRow>
