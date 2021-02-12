@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import Image from 'components/Image';
 import Link from 'components/Link';
+import { Button } from 'components/Button';
 import Footer from 'components/Footer';
 import {
   ProjectContainer,
@@ -29,15 +30,18 @@ import deviceModelsPlaceholder from 'assets/device-models-placeholder.jpg';
 import deviceModelsBranding from 'assets/device-models-branding.png';
 import deviceModelsBrandingLarge from 'assets/device-models-branding-large.png';
 import deviceModelsBrandingPlaceholder from 'assets/device-models-branding-placeholder.png';
+import deviceModelsBanner from 'assets/device-models-banner.jpg';
+import deviceModelsBannerLarge from 'assets/device-models-banner-large.jpg';
+import deviceModelsBannerPlaceholder from 'assets/device-models-banner-placeholder.jpg';
 import deviceModelsComponentsDark from 'assets/device-models-components-dark.jpg';
 import deviceModelsComponentsDarkLarge from 'assets/device-models-components-dark-large.jpg';
 import deviceModelsComponentsDarkPlaceholder from 'assets/device-models-components-dark-placeholder.jpg';
 import deviceModelsComponentsLight from 'assets/device-models-components-light.jpg';
 import deviceModelsComponentsLightLarge from 'assets/device-models-components-light-large.jpg';
 import deviceModelsComponentsLightPlaceholder from 'assets/device-models-components-light-placeholder.jpg';
-import deviceModelsLanding from 'assets/device-models-landing.jpg';
-import deviceModelsLandingLarge from 'assets/device-models-landing-large.jpg';
-import deviceModelsLandingPlaceholder from 'assets/device-models-landing-placeholder.jpg';
+import deviceModelsLogo from 'assets/device-models-logo.png';
+import deviceModelsLogoLarge from 'assets/device-models-logo-large.png';
+import deviceModelsLogoPlaceholder from 'assets/device-models-logo-placeholder.png';
 
 const title = 'Device Models';
 const description =
@@ -86,13 +90,36 @@ const ProjectDM = () => {
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>Research and Initial Thoughts</ProjectSectionHeading>
+              <ProjectSectionText>
+                After complimenting <Link href="/uses">my arsenal</Link> with Figma as my
+                weapon of choice in 2019, I noticed that working with 3D and interactive
+                content was not possible within Figma, especially when using grid systems.
+              </ProjectSectionText>
+              <ProjectSectionText>
+                In early 2019, I found that designers were growing increasingly interested
+                in 3D and immersive art direction, yet lacked the tools to do so without
+                hiring a developer or modeler. I decided to change that and, with it,
+                created Device Models.
+              </ProjectSectionText>
+            </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
+        <ProjectSection light>
           <ProjectSectionColumns>
             <ProjectTextRow>
               <ProjectSectionHeading>Visual Identity</ProjectSectionHeading>
               <ProjectSectionText>
+                With a clear mission and audience in mind, it was time to create a name
+                for itself. Branding was critical to stand out in the Figma catalog, where
+                identity in a small 64x64 pixel square was the first thing a user sees.
+              </ProjectSectionText>
+              <ProjectSectionText>
                 I complimented the 3D feel of Device Models with a low poly monogram and
-                bright, modern colors. The typeface and accents matched while remaining
-                consistent with Figma's design system.
+                bright, modern colors to portray its classy modernism. This included a
+                matching typeface and color scheme that kept true to the feel of Figma.
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
@@ -103,7 +130,7 @@ const ProjectDM = () => {
             />
           </ProjectSectionColumns>
         </ProjectSection>
-        <ProjectSection light={isDark}>
+        <ProjectSection>
           <ProjectSectionContent>
             <Image
               key={themeId}
@@ -134,36 +161,71 @@ const ProjectDM = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>Design and Development</ProjectSectionHeading>
               <ProjectSectionText>
-                Ranging from promotional material to a website and its software, I had to
-                keep Device Models' look and feel consistent.
+                Keeping the look and feel of Device Models consistent across its online
+                presence was a difficult challenge. It was critical to remain consistent
+                in both messaging and appearance while curating to different platforms.
               </ProjectSectionText>
               <ProjectSectionText>
                 Keeping to a universal,{' '}
                 <Link href="https://storybook.devicemodels.com">
                   component-based design
                 </Link>
-                , this would inform both the aesthetics and user experience across the
-                board.
+                , kept the "look and feel" nice and tidy, and both the aesthetics and user
+                experience were well-informed across the board.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
-        <ProjectSection>
+        <ProjectSection light>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Time to Launch</ProjectSectionHeading>
+              <ProjectSectionHeading>Show, not Tell</ProjectSectionHeading>
               <ProjectSectionText>
-                With the launch of Device Models on Figma, it needed an online presence. I
-                designed and developed a minimal introduction to what was to offer with
-                clean and tidy interactions.
+                I embrace the idea of "show, not tell" when marketing innovative products.
+                Wide-spread adoption is momentum-based, and you have to give users a
+                reason to jump onboard, hype or not. I like putting the product in front
+                of them and letting its productivity powers speak for itself.
+              </ProjectSectionText>
+              <ProjectSectionText>
+                With a sharp display of identity, I included the very 3D components used
+                on the plugin both within marketing material and online, displaying its
+                variations to communicate its flexibility (using Device Models, of
+                course).
               </ProjectSectionText>
             </ProjectTextRow>
             <Image
-              srcSet={`${deviceModelsLanding} 1280w, ${deviceModelsLandingLarge} 2560w`}
-              placeholder={deviceModelsLandingPlaceholder}
-              alt="A screenshot of the landing page in production."
+              srcSet={`${deviceModelsBanner} 1280w, ${deviceModelsBannerLarge} 2560w`}
+              placeholder={deviceModelsBannerPlaceholder}
+              alt="A promotional banner for Device Models, displaying a variety of devices and bright colors."
               sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 800px, 1000px`}
             />
+          </ProjectSectionContent>
+        </ProjectSection>
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectTextRow center centerMobile noMargin>
+              <Image
+                srcSet={`${deviceModelsLogo} 180w, ${deviceModelsLogoLarge} 320w`}
+                placeholder={deviceModelsLogoPlaceholder}
+                alt="The Device Models logo."
+                sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 100vw, 220px`}
+                style={{ maxWidth: 220, width: '100%', marginBottom: 30 }}
+              />
+              <ProjectSectionHeading>The Result</ProjectSectionHeading>
+              <ProjectSectionText>
+                Within 48 hours of release, Device Models became a popular tool, reaching
+                1,000 downloads. You can find the plugin on Figma's featured plugins
+                collection to render 3D mockups all across designer spaces.
+              </ProjectSectionText>
+              <Button
+                secondary
+                iconHoverShift
+                icon="chevronRight"
+                href="https://devicemodels.com"
+              >
+                View on Figma
+              </Button>
+            </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>
