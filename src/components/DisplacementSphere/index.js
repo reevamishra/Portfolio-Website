@@ -29,7 +29,6 @@ import './index.css';
 const DisplacementSphere = props => {
   const theme = useTheme();
   const { rgbBackground, themeId, colorWhite } = theme;
-  const start = useRef(Date.now());
   const canvasRef = useRef();
   const mouse = useRef();
   const renderer = useRef();
@@ -80,7 +79,6 @@ const DisplacementSphere = props => {
     geometry.current = new SphereBufferGeometry(32, 128, 128);
 
     sphere.current = new Mesh(geometry.current, material.current);
-    sphere.current.position.z = 0;
     sphere.current.modifier = Math.random();
     scene.current.add(sphere.current);
 
@@ -94,9 +92,7 @@ const DisplacementSphere = props => {
     const dirLight = new DirectionalLight(colorWhite, 0.6);
     const ambientLight = new AmbientLight(colorWhite, themeId === 'light' ? 0.8 : 0.1);
 
-    dirLight.position.z = 200;
-    dirLight.position.x = 100;
-    dirLight.position.y = 100;
+    dirLight.position.set(100, 100, 200);
 
     lights.current = [dirLight, ambientLight];
     scene.current.background = new Color(...rgbToThreeColor(rgbBackground));
@@ -110,7 +106,7 @@ const DisplacementSphere = props => {
   useEffect(() => {
     const { width, height } = windowSize;
 
-    const adjustedHeight = height + height * 0.3;
+    const adjustedHeight = height * 1.3;
     renderer.current.setSize(width, adjustedHeight);
     camera.current.aspect = width / adjustedHeight;
     camera.current.updateProjectionMatrix();
@@ -142,9 +138,9 @@ const DisplacementSphere = props => {
       };
 
       if (!sphereSpring.current) {
-        sphereSpring.current = value(rotation.toArray(), values =>
-          rotation.set(values[0], values[1], sphere.current.rotation.z)
-        );
+        sphereSpring.current = value(rotation.toArray(), values => {
+          rotation.set(values[0], values[1], sphere.current.rotation.z);
+        });
       }
 
       tweenRef.current = spring({
@@ -169,27 +165,22 @@ const DisplacementSphere = props => {
   }, [isInViewport, prefersReducedMotion]);
 
   useEffect(() => {
-    let animation;
-
-    const animate = () => {
-      animation = requestAnimationFrame(animate);
-
-      if (uniforms.current !== undefined) {
-        uniforms.current.time.value = 0.00005 * (Date.now() - start.current);
-      }
-
-      sphere.current.rotation.z += 0.001;
-      renderer.current.render(scene.current, camera.current);
-    };
-
     if (!prefersReducedMotion && isInViewport) {
-      animate();
+      renderer.current.setAnimationLoop(time => {
+        if (uniforms.current !== undefined) {
+          uniforms.current.time.value = time / 20000;
+        }
+
+        sphere.current.rotation.z = time / 25000;
+
+        renderer.current.render(scene.current, camera.current);
+      });
     } else {
       renderer.current.render(scene.current, camera.current);
     }
 
     return () => {
-      cancelAnimationFrame(animation);
+      renderer.current.setAnimationLoop(null);
     };
   }, [isInViewport, prefersReducedMotion]);
 
