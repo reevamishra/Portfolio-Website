@@ -36,7 +36,7 @@ import dttLandingPlaceholder from 'assets/dtt-landing-placeholder.jpg';
 const title = 'A Tool for Everything';
 const description =
   'I lead the design and development of DevTech Tools. We focused on creating the best platform for developers to build better software.';
-const roles = ['Visual Identity', 'UX and UI Design', 'Full-stack Development'];
+const roles = ['Art Direction', 'UX and UI Design', 'API & Full Stack Development'];
 
 const ProjectDTT = () => {
   useScrollRestore();

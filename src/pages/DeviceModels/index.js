@@ -46,7 +46,12 @@ import deviceModelsLogoPlaceholder from 'assets/device-models-logo-placeholder.p
 const title = 'Device Models';
 const description =
   'Design and development of a Figma plugin to create mockups with 3D device models.';
-const roles = ['Visual Identity', 'UX and UI Design', 'Front-end & App Development'];
+const roles = [
+  'Creative Direction',
+  'UX and UI Design',
+  'Front End & App Development',
+  'Motion Design',
+];
 
 const ProjectDM = () => {
   const { themeId } = useTheme();
@@ -90,22 +95,21 @@ const ProjectDM = () => {
           </ProjectSectionContent>
         </ProjectSection>
         <ProjectSection>
-          <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Research and Initial Thoughts</ProjectSectionHeading>
-              <ProjectSectionText>
-                After complimenting <Link href="/uses">my arsenal</Link> with Figma as my
-                weapon of choice in 2019, I noticed that working with 3D and interactive
-                content was not possible within Figma, especially when using grid systems.
-              </ProjectSectionText>
-              <ProjectSectionText>
-                In early 2019, I found that designers were growing increasingly interested
-                in 3D and immersive art direction, yet lacked the tools to do so without
-                hiring a developer or modeler. I decided to change that and, with it,
-                created Device Models.
-              </ProjectSectionText>
-            </ProjectTextRow>
-          </ProjectSectionContent>
+          <ProjectTextRow>
+            <ProjectSectionHeading>The Problem</ProjectSectionHeading>
+            <ProjectSectionText>
+              After complimenting <Link href="/uses">my arsenal</Link> with Figma as my
+              weapon of choice for UI design in 2019, I noticed that working with 3D and
+              interactive content was not possible within Figma, especially when using
+              grid systems.
+            </ProjectSectionText>
+            <ProjectSectionText>
+              In early 2019, I found that designers were growing increasingly interested
+              in 3D and immersive art direction, yet lacked the tools to do so without
+              hiring a developer or modeler. I decided to change that and, with it,
+              created Device Models.
+            </ProjectSectionText>
+          </ProjectTextRow>
         </ProjectSection>
         <ProjectSection light>
           <ProjectSectionColumns>
@@ -170,8 +174,8 @@ const ProjectDM = () => {
                 <Link href="https://storybook.devicemodels.com">
                   component-based design
                 </Link>
-                , kept the "look and feel" nice and tidy, and both the aesthetics and user
-                experience were well-informed across the board.
+                , the "look and feel" remained nice and tidy, and both the aesthetics and
+                user experience were well-informed across the board.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -187,8 +191,8 @@ const ProjectDM = () => {
                 of them and letting its productivity powers speak for itself.
               </ProjectSectionText>
               <ProjectSectionText>
-                With a sharp display of identity, I included the very 3D components used
-                on the plugin both within marketing material and online, displaying its
+                With a bold show of identity, I included the very 3D components used on
+                the plugin both within marketing material and online, featuring its
                 variations to communicate its flexibility (using Device Models, of
                 course).
               </ProjectSectionText>
