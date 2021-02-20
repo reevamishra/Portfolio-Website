@@ -64,6 +64,7 @@ const SegmentedControl = ({ children, currentIndex, onChange, label, ...props })
         role="radiogroup"
         aria-labelledby={labelId}
         onKeyDown={handleKeyDown}
+        tabIndex={0}
         {...props}
       >
         <VisuallyHidden as="label" className="segmented-control__label" id={labelId}>

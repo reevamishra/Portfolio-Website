@@ -157,8 +157,11 @@ const ImageElements = ({
         'image__element-wrapper--in-viewport': inViewport,
       })}
       onMouseOver={isVideo ? handleShowPlayButton : undefined}
+      onFocus={isVideo ? handleShowPlayButton : undefined}
       onMouseOut={isVideo ? () => setIsHovered(false) : undefined}
+      onBlur={isVideo ? () => setIsHovered(false) : undefined}
       style={{ '--delay': numToMs(delay + 1000) }}
+      role="presentation"
     >
       {isVideo && (
         <Fragment>
@@ -168,7 +171,6 @@ const ImageElements = ({
             playsInline
             className={classNames('image__element', { 'image__element--loaded': loaded })}
             autoPlay={!prefersReducedMotion}
-            role="img"
             onLoadStart={onLoad}
             aria-label={alt}
             ref={videoRef}
