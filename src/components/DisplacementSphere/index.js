@@ -11,7 +11,7 @@ import {
   UniformsUtils,
   UniformsLib,
   MeshPhongMaterial,
-  SphereBufferGeometry,
+  SphereGeometry,
   Mesh,
   Color,
 } from 'three';
@@ -29,7 +29,7 @@ import './index.css';
 const DisplacementSphere = props => {
   const theme = useTheme();
   const { rgbBackground, themeId, colorWhite } = theme;
-  const canvasRef = useRef();
+  const canvas = useRef();
   const mouse = useRef();
   const renderer = useRef();
   const camera = useRef();
@@ -42,14 +42,14 @@ const DisplacementSphere = props => {
   const tweenRef = useRef();
   const sphereSpring = useRef();
   const prefersReducedMotion = usePrefersReducedMotion();
-  const isInViewport = useInViewport(canvasRef);
+  const isInViewport = useInViewport(canvas);
   const windowSize = useWindowSize();
 
   useEffect(() => {
     const { innerWidth, innerHeight } = window;
     mouse.current = new Vector2(0.8, 0.5);
     renderer.current = new WebGLRenderer({
-      canvas: canvasRef.current,
+      canvas: canvas.current,
       antialias: false,
       powerPreference: 'high-performance',
     });
@@ -76,10 +76,9 @@ const DisplacementSphere = props => {
       shader.fragmentShader = fragShader;
     };
 
-    geometry.current = new SphereBufferGeometry(32, 128, 128);
+    geometry.current = new SphereGeometry(32, 128, 128);
 
     sphere.current = new Mesh(geometry.current, material.current);
-    sphere.current.modifier = Math.random();
     scene.current.add(sphere.current);
 
     return () => {
@@ -190,7 +189,7 @@ const DisplacementSphere = props => {
         <canvas
           aria-hidden
           className={classNames('displacement-sphere', `displacement-sphere--${status}`)}
-          ref={canvasRef}
+          ref={canvas}
           {...props}
         />
       )}

@@ -4,7 +4,7 @@ import {
   LinearFilter,
   OrthographicCamera,
   Scene,
-  PlaneBufferGeometry,
+  PlaneGeometry,
   TextureLoader,
   ShaderMaterial,
   Mesh,
@@ -131,7 +131,7 @@ const Carousel = ({ width, height, images, placeholder, ...rest }) => {
         opacity: 1,
       });
 
-      geometry.current = new PlaneBufferGeometry(width, height, 1);
+      geometry.current = new PlaneGeometry(width, height, 1);
       imagePlane.current = new Mesh(geometry.current, material.current);
       imagePlane.current.position.set(0, 0, 0);
       scene.current.add(imagePlane.current);
