@@ -71,32 +71,14 @@ The media queries work great for CSS animations, but we'll need a solution for J
 Because this feature is implemented as a media query, it can be accessed the same way we access any media query values in JavaScript by using `window.matchMedia`:
 
 ```jsx
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
 
 function usePrefersReducedMotion() {
-  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const [reduceMotion, setReduceMotion] = useState(mediaQuery.matches);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const handleMediaChange = () => {
-      if (mediaQuery.matches) {
-        setReduceMotion(true);
-      }
-    };
-
-    mediaQuery.addListener(handleMediaChange);
-
-    return () => {
-      mediaQuery.removeListener(handleMediaChange);
-    };
-  }, []);
+  const mediaQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+  const reduceMotion = useMemo(() => mediaQuery?.matches, [mediaQuery]);
 
   return reduceMotion;
 }
-
-export default usePrefersReducedMotion;
 ```
 
 This listener will fire when the user toggles the `reduce motion` settings in their operating system.
@@ -107,96 +89,91 @@ We want to listen for this event because we want to immediately halt animations 
 
 Here's how we would use the hook with ThreeJS, a 3D rendering library that works great with React:
 
-```js
-import React, { useRef, useEffect } from 'react';
+```jsx
+import { useRef, useEffect } from 'react';
 import {
+  WebGLRenderer,
   PerspectiveCamera,
   Scene,
   BoxGeometry,
   MeshNormalMaterial,
   Mesh,
-  WebGLRenderer,
 } from 'three';
-import { usePrefersReducedMotion } from 'hooks';
+import usePrefersReducedMotion from './hooks/prefersReducedMotion';
 
 function AccessibleCube() {
-  const width = useRef(window.innerWidth);
-  const height = useRef(window.innerHeight);
+  const canvas = useRef();
+  const renderer = useRef();
   const camera = useRef();
   const scene = useRef();
-  const geometry = useRef();
-  const material = useRef();
   const mesh = useRef();
-  const renderer = useRef();
-  const canvasRef = useRef();
   const prefersReducedMotion = usePrefersReducedMotion();
 
+  // Setup scene
   useEffect(() => {
-    camera.current = new PerspectiveCamera(70, width.current / height.current, 0.01, 10);
+    const { innerWidth, innerHeight } = window;
+
+    // Initialize renderer to work over our canvas
+    renderer.current = new WebGLRenderer({
+      antialias: false,
+      canvas: canvas.current,
+    });
+    renderer.current.setPixelRatio(2);
+    renderer.current.setSize(innerWidth, innerHeight);
+
+    // Initialize camera
+    camera.current = new PerspectiveCamera(70, innerWidth / innerHeight, 0.01, 10);
     camera.current.position.z = 1;
 
+    // Set the stage with a scene
     scene.current = new Scene();
 
-    geometry.current = new BoxGeometry(0.2, 0.2, 0.2);
-    material.current = new MeshNormalMaterial();
-
-    mesh.current = new Mesh(geometry.current, material.current);
+    // Create a cube and its look and feel
+    const geometry = new BoxGeometry(0.2, 0.2, 0.2);
+    const material = new MeshNormalMaterial();
+    mesh.current = new Mesh(geometry, material);
     scene.current.add(mesh.current);
 
-    renderer.current = new WebGLRenderer({
-      canvas: canvasRef.current,
-      powerPreference: 'high-performance',
-    });
-    renderer.current.setSize(width.current, height.current);
-
-    return function cleanup() {
+    // Cleanup after ourselves on unmount
+    return () => {
       scene.current.remove(mesh.current);
       mesh.current.geometry.dispose();
       mesh.current.material.dispose();
-      geometry.current.dispose();
-      material.current.dispose();
-      renderer.current.dispose();
-      scene.current.dispose();
-      camera.current = null;
-      mesh.current = null;
-      renderer.current.domElement = null;
+      renderer.dispose();
+      renderer.forceContextLoss();
+      renderer = null;
     };
   }, []);
 
+  // Handle animation
   useEffect(() => {
-    let animation;
-
-    const animate = () => {
-      animation = requestAnimationFrame(animate);
-
-      mesh.current.rotation.x += 0.01;
-      mesh.current.rotation.y += 0.02;
-
-      renderer.current.render(scene.current, camera.current);
-    };
-
+    // Only animate for no-preference
     if (!prefersReducedMotion) {
-      animate();
+      renderer.current.setAnimationLoop(time => {
+        mesh.current.rotation.x += time / 2000;
+        mesh.current.rotation.y += time / 1000;
+
+        renderer.current.render(scene.current, camera.current);
+      });
     } else {
       renderer.current.render(scene.current, camera.current);
     }
 
+    // Cleanup the animation loop, if present
     return () => {
-      cancelAnimationFrame(animation);
+      renderer.current.setAnimationLoop(null);
     };
   }, [prefersReducedMotion]);
 
-  return <canvas aria-hidden ref={canvasRef} />;
+  return <canvas aria-hidden ref={canvas} />;
 }
-
-export default AccessibleCube;
 ```
 
 ![A ThreeJS scene, featuring a cube that reacts to devices' accessibility settings.](accessible-three-scene.mp4)
 
 We can control whether the scene is animated with the `usePrefersReducedMotion` hook.
 
-This hook is plug-and-play, so you can connect this as a boolean to any component.
+This hook is plug-and-play, so you can connect this to any component or within other hooks.
 
 ## Conclusion
 

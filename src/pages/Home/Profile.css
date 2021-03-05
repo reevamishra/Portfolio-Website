@@ -190,15 +190,17 @@
 }
 
 .profile__image--entered {
-  &::before {
-    animation: image-reveal 1.8s var(--bezierFastoutSlowin) var(--delay);
-    animation-iteration-count: 1;
-  }
-
   & .portrait__canvas {
     animation: fade-in var(--durationM) ease var(--delay) forwards;
     animation-iteration-count: 1;
     animation-delay: 1s;
+  }
+
+  @media (--mediaUseMotion) {
+    &::before {
+      animation: image-reveal 1.8s var(--bezierFastoutSlowin) var(--delay);
+      animation-iteration-count: 1;
+    }
   }
 }
 
