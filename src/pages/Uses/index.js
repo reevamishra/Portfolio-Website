@@ -12,7 +12,6 @@ import {
 } from 'components/ProjectLayout';
 import { Table, TableCell, TableRow } from 'components/Table';
 import Link from 'components/Link';
-import Icon from 'components/Icon';
 import Footer from 'components/Footer';
 import { useScrollRestore } from 'hooks';
 import prerender from 'utils/prerender';
@@ -92,16 +91,21 @@ const Uses = () => {
                   </li>
                   <li>
                     <Link href="https://reactjs.org">React</Link> is my front end
-                    Javascript library of choice. The component-centric mental model is
+                    JavaScript library of choice. The component-centric mental model is
                     the first thing that truly made sense to me as a designer.
                   </li>
                   <li>
-                    For 3D effects and image shaders I use{' '}
+                    For 3D effects and image shaders, I use{' '}
                     <Link href="https://threejs.org">three.js</Link>. It has a bit of a
-                    learning curve but you can do some really powerful stuff with it. I
-                    have a few <Link href="https://dribbble.codyb.co">experiments</Link>{' '}
-                    and{` `}
-                    <Link to="/articles">articles</Link> about it.
+                    learning curve, but you can do some really powerful stuff with it. I
+                    am an active contributor in the WebGL and WebXR space, where I have
+                    made and collaborated on{' '}
+                    <Link href="https://github.com/CodyJasonBennett">
+                      some abstractions
+                    </Link>
+                    . You can check out some of my{` `}
+                    <Link href="https://dribbble.codyb.co">experiments</Link> and{` `}
+                    <Link href="/articles">articles</Link> about it.
                   </li>
                   <li>
                     For CSS I've used a myriad of pre-processors and css-in-js solutions
@@ -112,7 +116,7 @@ const Uses = () => {
                     features today.
                   </li>
                   <li>
-                    For Javascript animations I use{' '}
+                    For JavaScript animations I use{' '}
                     <Link href="https://popmotion.io/api">Popmotion Pure 8</Link>, it's a
                     great way to add spring animations to three.js. All other animations
                     are CSS with{' '}
@@ -138,6 +142,15 @@ const Uses = () => {
           <ProjectSectionContent>
             <ProjectTextRow stretch width="m">
               <ProjectSectionHeading>Hardware</ProjectSectionHeading>
+              <ProjectSectionText style={{ marginBottom: 24 }}>
+                I frequently work in the 3D and recording space, so my setup has had to
+                keep up with it. This is the setup I use for my work, from design,
+                development, modeling, to{' '}
+                <Link href="https://youtube.codyb.co">
+                  playing, recording, and mixing music
+                </Link>
+                .
+              </ProjectSectionText>
               <Table>
                 <TableRow>
                   <TableCell>
@@ -180,34 +193,6 @@ const Uses = () => {
                     <strong>Interface</strong>
                   </TableCell>
                   <TableCell>Focusrite Scarlett Solo</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <strong>Axe</strong>
-                  </TableCell>
-                  <TableCell>
-                    <Link
-                      secondary
-                      href="https://youtube.codyb.co"
-                      style={{ display: 'inline-flex', flexDirection: 'row' }}
-                    >
-                      Fender Telecaster Ultra <Icon icon="music" />
-                    </Link>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                    <strong>Amp</strong>
-                  </TableCell>
-                  <TableCell>
-                    <Link
-                      secondary
-                      href="https://youtube.codyb.co"
-                      style={{ display: 'inline-flex', flexDirection: 'row' }}
-                    >
-                      Fender Deluxe Reverb <Icon icon="music" />
-                    </Link>
-                  </TableCell>
                 </TableRow>
               </Table>
             </ProjectTextRow>

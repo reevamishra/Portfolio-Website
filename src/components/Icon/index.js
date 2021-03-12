@@ -9,7 +9,6 @@ import { ReactComponent as Figma } from 'assets/icons/figma.svg';
 import { ReactComponent as Github } from 'assets/icons/github.svg';
 import { ReactComponent as Linkedin } from 'assets/icons/linkedin.svg';
 import { ReactComponent as Menu } from 'assets/icons/menu.svg';
-import { ReactComponent as Music } from 'assets/icons/music.svg';
 import { ReactComponent as Pause } from 'assets/icons/pause.svg';
 import { ReactComponent as Play } from 'assets/icons/play.svg';
 import { ReactComponent as Send } from 'assets/icons/send.svg';
@@ -27,7 +26,6 @@ export const icons = {
   github: Github,
   linkedin: Linkedin,
   menu: Menu,
-  music: Music,
   pause: Pause,
   play: Play,
   send: Send,

@@ -87,7 +87,7 @@ We want to listen for this event because we want to immediately halt animations 
 
 ## JavaScript Implementation
 
-Here's how we would use the hook with ThreeJS, a 3D rendering library that works great with React:
+Here's how we would use the hook with [three.js](https://threejs.org), a 3D rendering library that I frequently combine this with:
 
 ```jsx
 import { useRef, useEffect } from 'react';
@@ -114,10 +114,7 @@ function AccessibleCube() {
     const { innerWidth, innerHeight } = window;
 
     // Initialize renderer to work over our canvas
-    renderer.current = new WebGLRenderer({
-      antialias: false,
-      canvas: canvas.current,
-    });
+    renderer.current = new WebGLRenderer({ canvas: canvas.current });
     renderer.current.setPixelRatio(2);
     renderer.current.setSize(innerWidth, innerHeight);
 
