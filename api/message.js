@@ -1,11 +1,11 @@
-const nodemailer = require('nodemailer');
-const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
+const createDOMPurify = require('dompurify');
+const nodemailer = require('nodemailer');
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
-const { smtpHost, smtpUser, smtpPass } = process.env;
 
+const { smtpHost, smtpUser, smtpPass } = process.env;
 const mailTransport = nodemailer.createTransport({
   host: smtpHost,
   port: 465,

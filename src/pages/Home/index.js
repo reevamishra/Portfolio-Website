@@ -135,7 +135,7 @@ const Home = props => {
         <title>Cody Bennett | Designer + Developer</title>
         <meta
           name="description"
-          content="Portfolio of Cody Jason Bennett – a designer, full-stack developer, and creator of web & mobile solutions with a focus on motion and user experience."
+          content="Portfolio of Cody Jason Bennett – a creative designer & developer with a focus on motion and user experience."
         />
         <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
         <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
