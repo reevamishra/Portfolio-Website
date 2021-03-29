@@ -1,9 +1,9 @@
 const { JSDOM } = require('jsdom');
-const createDOMPurify = require('dompurify');
+const DOMPurify = require('dompurify');
 const nodemailer = require('nodemailer');
 
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
+const { window } = new JSDOM('');
+const { sanitize } = DOMPurify(window);
 
 const { smtpHost, smtpUser, smtpPass } = process.env;
 const mailTransport = nodemailer.createTransport({
@@ -21,8 +21,8 @@ const MAX_MESSAGE_LENGTH = 4096;
 
 module.exports = async (req, res) => {
   try {
-    const email = DOMPurify.sanitize(req.body.email);
-    const message = DOMPurify.sanitize(req.body.message);
+    const email = sanitize(req.body.email);
+    const message = sanitize(req.body.message);
 
     // Validate email request
     if (!email || !/(.+)@(.+){2,}\.(.+){2,}/.test(email)) {

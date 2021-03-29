@@ -100,7 +100,7 @@ const Model = ({
     const keyLight = new DirectionalLight(0xffffff, 1.1);
     const fillLight = new DirectionalLight(0xffffff, 0.8);
 
-    fillLight.position.set(-6, 2, 2);
+    fillLight.position.z = 2;
     keyLight.position.set(0.5, 0, 0.866);
     lights.current = [ambientLight, keyLight, fillLight];
     lights.current.forEach(light => scene.current.add(light));
