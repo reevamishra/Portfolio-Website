@@ -9,14 +9,14 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.13.14",
-    "@storybook/addon-a11y": "^6.1.21",
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-controls": "^6.1.21",
+    "@storybook/addon-a11y": "^6.2.1",
+    "@storybook/addon-actions": "^6.2.1",
+    "@storybook/addon-controls": "^6.2.1",
     "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.1.21",
+    "@storybook/react": "^6.2.1",
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^13.0.16",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.1",
     "babel-loader": "8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
@@ -38,7 +38,7 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "5.2.0",
     "react-transition-group": "^4.4.1",
-    "three": "^0.126.1"
+    "three": "^0.127.0"
   },
   "scripts": {
     "start": "set PORT=80 && react-scripts start",
