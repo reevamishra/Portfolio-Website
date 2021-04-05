@@ -24,6 +24,7 @@ import {
 } from 'postprocessing';
 import { spring, value } from 'popmotion';
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { cleanScene, cleanRenderer, removeLights } from 'utils/three';
@@ -107,7 +108,11 @@ const Portrait = ({ className, delay, ...rest }) => {
     composer.current.addPass(normalPass);
     composer.current.addPass(effectPass);
 
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+
     const modelLoader = new GLTFLoader();
+    modelLoader.setDRACOLoader(dracoLoader);
 
     modelLoader.load(portraitModelPath, model => {
       model.scene.position.y = -1.6;

@@ -19,7 +19,7 @@ import './index.css';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
 
-const Home = props => {
+const Home = () => {
   const { status } = useRouteTransition();
   const { hash, state } = useLocation();
   const initHash = useRef(true);
