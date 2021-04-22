@@ -180,7 +180,7 @@ const Home = () => {
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
         title="A Tool for Everything"
-        description="Creating a platfrom to help developers build better software."
+        description="Creating a platform for developers to build better software."
         buttonText="View Project"
         buttonLink="/projects/devtech-tools"
         model={{

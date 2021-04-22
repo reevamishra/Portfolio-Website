@@ -21,9 +21,9 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    label: 'LinkedIn',
-    url: 'https://linkedin.codyb.co',
-    icon: 'linkedin',
+    label: 'Twitter',
+    url: 'https://twitter.codyb.co',
+    icon: 'twitter',
   },
   {
     label: 'Dribbble',
