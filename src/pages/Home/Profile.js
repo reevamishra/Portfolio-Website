@@ -28,8 +28,8 @@ const ProfileText = ({ status, titleId }) => (
       className={classNames('profile__description', `profile__description--${status}`)}
       size="l"
     >
-      I am Cody. I am a creative designer & developer with a focus on motion and user
-      experience. My projects include UI/UX design, animation, illustration, and
+      I'm Cody. I am a multidisciplinary designer & developer with a focus on motion and
+      user experience. My projects include UI/UX design, animation, illustration, and
       development. If you are interested in the tools and software I use, check out my{' '}
       <Link href="/uses">uses page</Link>.
     </Text>
