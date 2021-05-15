@@ -3,7 +3,7 @@
   "description": "Serverless functions for codyb.co",
   "private": true,
   "devDependencies": {
-    "eslint": "^7.25.0",
+    "eslint": "^7.26.0",
     "eslint-plugin-promise": "^5.1.0"
   },
   "dependencies": {
