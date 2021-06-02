@@ -8,20 +8,9 @@ import {
   Scene,
   Fog,
   Color,
-  HalfFloatType,
   AmbientLight,
   RectAreaLight,
 } from 'three';
-import {
-  EffectComposer,
-  RenderPass,
-  NormalPass,
-  SSAOEffect,
-  BlendFunction,
-  BloomEffect,
-  KernelSize,
-  EffectPass,
-} from 'postprocessing';
 import { spring, value } from 'popmotion';
 import { RectAreaLightUniformsLib } from 'three/examples/jsm/lights/RectAreaLightUniformsLib.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
@@ -42,7 +31,6 @@ const Portrait = ({ className, delay, ...rest }) => {
   const renderer = useRef();
   const camera = useRef();
   const scene = useRef();
-  const composer = useRef();
   const lights = useRef();
   const prefersReducedMotion = usePrefersReducedMotion();
   const isInViewport = useInViewport(container);
@@ -52,10 +40,7 @@ const Portrait = ({ className, delay, ...rest }) => {
     const { clientWidth, clientHeight } = container.current;
 
     renderer.current = new WebGLRenderer({
-      alpha: true,
       antialias: false,
-      stencil: false,
-      depth: false,
       canvas: canvas.current,
       powerPreference: 'high-performance',
     });
@@ -70,44 +55,6 @@ const Portrait = ({ className, delay, ...rest }) => {
     scene.current = new Scene();
     scene.current.fog = new Fog(0xffffff, 0, 2.25);
 
-    composer.current = new EffectComposer(renderer.current, {
-      frameBufferType: HalfFloatType,
-    });
-    const renderPass = new RenderPass(scene.current, camera.current);
-    composer.current.addPass(renderPass);
-
-    const normalPass = new NormalPass(scene.current, camera.current);
-
-    const ssaoEffect = new SSAOEffect(camera.current, normalPass.renderTarget.texture, {
-      blendFunction: BlendFunction.MULTIPLY,
-      samples: 21,
-      rings: 4,
-      distanceThreshold: 1.0,
-      distanceFalloff: 0.0,
-      rangeThreshold: 0.015,
-      rangeFalloff: 0.002,
-      luminanceInfluence: 0.9,
-      radius: 20,
-      scale: 0.25,
-      bias: 0.25,
-    });
-
-    const bloomEffect = new BloomEffect({
-      opacity: 1,
-      blendFunction: BlendFunction.SCREEN,
-      kernelSize: KernelSize.SMALL,
-      luminanceThreshold: 0.65,
-      luminanceSmoothing: 0.07,
-      height: 600,
-    });
-    bloomEffect.blendMode.opacity.value = 1;
-
-    const effectPass = new EffectPass(camera.current, ssaoEffect, bloomEffect);
-    effectPass.renderToScreen = true;
-
-    composer.current.addPass(normalPass);
-    composer.current.addPass(effectPass);
-
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 
@@ -118,7 +65,7 @@ const Portrait = ({ className, delay, ...rest }) => {
       model.scene.position.y = -1.6;
       scene.current.add(model.scene);
 
-      composer.current.render();
+      renderer.current.render(scene.current, camera.current);
     });
 
     return () => {
@@ -142,6 +89,7 @@ const Portrait = ({ className, delay, ...rest }) => {
     lights.current = [ambientLight, rectLight1, rectLight2];
     lights.current.forEach(light => scene.current.add(light));
 
+    scene.current.background = new Color(...rgbToThreeColor(rgbBackgroundLight));
     scene.current.fog.color = new Color(...rgbToThreeColor(rgbBackgroundLight));
     scene.current.fog.far = 10;
 
@@ -167,7 +115,7 @@ const Portrait = ({ className, delay, ...rest }) => {
       if (!rotationSpringValue) {
         rotationSpringValue = value({ x: rotation.x, y: rotation.y }, ({ x, y }) => {
           rotation.set(x, y, rotation.z);
-          composer.current.render();
+          renderer.current.render(scene.current, camera.current);
         });
       }
 
@@ -199,12 +147,11 @@ const Portrait = ({ className, delay, ...rest }) => {
       const { clientWidth, clientHeight } = container.current;
 
       renderer.current.setSize(clientWidth, clientHeight);
-      composer.current.setSize(clientWidth, clientHeight);
       camera.current.aspect = clientWidth / clientHeight;
       camera.current.updateProjectionMatrix();
 
       // Render a single frame on resize
-      composer.current.render();
+      renderer.current.render(scene.current, camera.current);
     };
 
     window.addEventListener('resize', handleResize);
