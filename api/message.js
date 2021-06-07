@@ -24,6 +24,11 @@ module.exports = async (req, res) => {
     const email = sanitize(req.body.email);
     const message = sanitize(req.body.message);
 
+    // Reject unsupported origins
+    if (req.headers.origin !== ORIGIN) {
+      throw new Error(`Unsupported origin: ${req.headers.origin}`);
+    }
+
     // Validate email request
     if (!email || !/(.+)@(.+){2,}\.(.+){2,}/.test(email)) {
       return res.status(400).json({ error: 'Please enter a valid email address' });
