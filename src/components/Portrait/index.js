@@ -57,7 +57,6 @@ const Portrait = ({ className, delay, ...rest }) => {
 
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('/draco');
-    dracoLoader.setDecoderConfig({ type: 'js' });
 
     const modelLoader = new GLTFLoader();
     modelLoader.setDRACOLoader(dracoLoader);
