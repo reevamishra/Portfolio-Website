@@ -56,7 +56,8 @@ const Portrait = ({ className, delay, ...rest }) => {
     scene.current.fog = new Fog(0xffffff, 0, 2.25);
 
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+    dracoLoader.setDecoderPath('/draco');
+    dracoLoader.setDecoderConfig({ type: 'js' });
 
     const modelLoader = new GLTFLoader();
     modelLoader.setDRACOLoader(dracoLoader);
