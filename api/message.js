@@ -16,6 +16,7 @@ const mailTransport = nodemailer.createTransport({
   },
 });
 
+const ORIGIN = 'https://codyb.co';
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
 
