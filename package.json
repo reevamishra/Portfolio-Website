@@ -8,12 +8,12 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@craco/craco": "^6.2.0",
-    "@storybook/addon-a11y": "^6.3.6",
-    "@storybook/addon-actions": "^6.3.6",
-    "@storybook/addon-controls": "^6.3.6",
-    "@storybook/react": "^6.3.6",
+    "@storybook/addon-a11y": "^6.3.7",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-controls": "^6.3.7",
+    "@storybook/react": "^6.3.7",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -37,7 +37,7 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "5.2.0",
     "react-transition-group": "^4.4.2",
-    "three": "^0.131.1"
+    "three": "^0.131.3"
   },
   "scripts": {
     "start": "set PORT=80 && craco start",
