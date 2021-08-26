@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import Footer from 'components/Footer';
 import {
   ProjectContainer,
-  ProjectBackground,
   ProjectHeader,
   ProjectSection,
   ProjectSectionContent,
@@ -12,17 +11,13 @@ import {
 } from 'components/ProjectLayout';
 import { useScrollRestore } from 'hooks';
 import { media } from 'utils/style';
-import prerender from 'utils/prerender';
-import dttBackground from 'assets/dtt-background.jpg';
-import dttBackgroundLarge from 'assets/dtt-background-large.jpg';
-import dttBackgroundPlaceholder from 'assets/dtt-background-placeholder.jpg';
 import dtt from 'assets/dtt.jpg';
 import dttLarge from 'assets/dtt-large.jpg';
 import dttPlaceholder from 'assets/dtt-placeholder.jpg';
 
-const title = 'A Tool for Everything';
-const description = 'Creating a platform for developers to build better software.';
-const roles = ['Branding', 'UX and UI Design', 'Full Stack Development'];
+const title = 'DevTech Tools';
+const description = 'Creating the ultimate productivity platform.';
+const roles = ['Research', 'UX and UI Design', 'Full Stack Development'];
 
 const ProjectDTT = () => {
   useScrollRestore();
@@ -34,12 +29,12 @@ const ProjectDTT = () => {
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>
-        <ProjectBackground
-          srcSet={`${dttBackground} 1080w, ${dttBackgroundLarge} 2160w`}
-          placeholder={dttBackgroundPlaceholder}
-          entered={!prerender}
+        <ProjectHeader
+          title={title}
+          description={description}
+          url="https://devtechtools.com"
+          roles={roles}
         />
-        <ProjectHeader title={title} description={description} roles={roles} />
         <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage

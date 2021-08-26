@@ -179,8 +179,8 @@ const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="A Tool for Everything"
-        description="Creating a platform for developers to build better software."
+        title="DevTech Tools"
+        description="Creating the ultimate productivity platform."
         buttonText="View Project"
         buttonLink="/projects/devtech-tools"
         model={{
