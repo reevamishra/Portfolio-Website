@@ -1,9 +1,8 @@
-import { Fragment } from 'react';
+import { lazy, Fragment, Suspense } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import Section from 'components/Section';
 import { Button } from 'components/Button';
-import Model from 'components/Model';
 import Divider from 'components/Divider';
 import { useWindowSize } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
@@ -13,7 +12,10 @@ import deviceModels from 'components/Model/deviceModels';
 import Heading from 'components/Heading';
 import Text from 'components/Text';
 import { useTheme } from 'components/ThemeProvider';
+import prerender from 'utils/prerender';
 import './ProjectSummary.css';
+
+const Model = lazy(() => import('components/Model'));
 
 const ProjectSummary = ({
   id,
@@ -102,25 +104,29 @@ const ProjectSummary = ({
               }
             )}
           />
-          <Model
-            className={classNames(
-              'project-summary__model',
-              'project-summary__model--laptop'
-            )}
-            alt={model.alt}
-            cameraPosition={{ x: 0, y: 0, z: 8 }}
-            showDelay={800}
-            show={isVisible(status)}
-            models={[
-              {
-                ...deviceModels.laptop,
-                texture: {
-                  ...model.textures[0],
-                  sizes: laptopSizes,
-                },
-              },
-            ]}
-          />
+          {!prerender && (
+            <Suspense fallback={null}>
+              <Model
+                className={classNames(
+                  'project-summary__model',
+                  'project-summary__model--laptop'
+                )}
+                alt={model.alt}
+                cameraPosition={{ x: 0, y: 0, z: 8 }}
+                showDelay={800}
+                show={isVisible(status)}
+                models={[
+                  {
+                    ...deviceModels.laptop,
+                    texture: {
+                      ...model.textures[0],
+                      sizes: laptopSizes,
+                    },
+                  },
+                ]}
+              />
+            </Suspense>
+          )}
         </Fragment>
       )}
       {model.type === 'phone' && (
@@ -136,34 +142,38 @@ const ProjectSummary = ({
               }
             )}
           />
-          <Model
-            className={classNames(
-              'project-summary__model',
-              'project-summary__model--phone'
-            )}
-            alt={model.alt}
-            cameraPosition={{ x: 0, y: 0, z: 11.5 }}
-            showDelay={500}
-            show={isVisible(status)}
-            models={[
-              {
-                ...deviceModels.phone,
-                position: { x: -0.6, y: 1.1, z: 0 },
-                texture: {
-                  ...model.textures[0],
-                  sizes: phoneSizes,
-                },
-              },
-              {
-                ...deviceModels.phone,
-                position: { x: 0.6, y: -0.5, z: 0.3 },
-                texture: {
-                  ...model.textures[1],
-                  sizes: phoneSizes,
-                },
-              },
-            ]}
-          />
+          {!prerender && (
+            <Suspense fallback={null}>
+              <Model
+                className={classNames(
+                  'project-summary__model',
+                  'project-summary__model--phone'
+                )}
+                alt={model.alt}
+                cameraPosition={{ x: 0, y: 0, z: 11.5 }}
+                showDelay={500}
+                show={isVisible(status)}
+                models={[
+                  {
+                    ...deviceModels.phone,
+                    position: { x: -0.6, y: 1.1, z: 0 },
+                    texture: {
+                      ...model.textures[0],
+                      sizes: phoneSizes,
+                    },
+                  },
+                  {
+                    ...deviceModels.phone,
+                    position: { x: 0.6, y: -0.5, z: 0.3 },
+                    texture: {
+                      ...model.textures[1],
+                      sizes: phoneSizes,
+                    },
+                  },
+                ]}
+              />
+            </Suspense>
+          )}
         </Fragment>
       )}
     </div>
