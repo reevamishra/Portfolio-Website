@@ -1,4 +1,5 @@
 import { useRef, useState, memo } from 'react';
+import classNames from 'classnames';
 import { NavLink, Link as RouterLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 import Monogram from 'components/Monogram';
@@ -70,8 +71,9 @@ function Navbar(props) {
           {navLinks.map(({ label, pathname, hash }) => (
             <NavLink
               exact
-              className="navbar__nav-link"
-              activeClassName="navbar__nav-link--active"
+              className={({ isActive }) =>
+                classNames('navbar__nav-link', { 'navbar__nav-link--active': isActive })
+              }
               isActive={match => isMatch({ match, hash })}
               onClick={handleNavClick}
               key={label}
@@ -95,8 +97,13 @@ function Navbar(props) {
           <nav className={`navbar__mobile-nav navbar__mobile-nav--${status}`}>
             {navLinks.map(({ label, pathname, hash }, index) => (
               <NavLink
-                className={`navbar__mobile-nav-link navbar__mobile-nav-link--${status}`}
-                activeClassName="navbar__mobile-nav-link--active"
+                className={({ isActive }) =>
+                  classNames(
+                    'navbar__mobile-nav-link',
+                    `navbar__mobile-nav-link--${status}`,
+                    { 'navbar__mobile-nav-link--active': isActive }
+                  )
+                }
                 key={label}
                 onClick={handleMobileNavClick}
                 to={{ pathname, hash, state: hashKey }}
