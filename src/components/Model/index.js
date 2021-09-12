@@ -82,7 +82,7 @@ const Model = ({
       powerPreference: 'high-performance',
     });
 
-    renderer.current.setPixelRatio(2);
+    renderer.current.setPixelRatio(Math.min(2, window.devicePixelRatio));
     renderer.current.setSize(clientWidth, clientHeight);
     renderer.current.outputEncoding = sRGBEncoding;
     renderer.current.physicallyCorrectLights = true;

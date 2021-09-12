@@ -26,6 +26,7 @@ varying float noise;
 #include <fog_pars_fragment>
 #include <bsdfs>
 #include <lights_pars_begin>
+#include <normal_pars_fragment>
 #include <envmap_physical_pars_fragment>
 #include <lights_phong_pars_fragment>
 #include <shadowmap_pars_fragment>

@@ -50,11 +50,10 @@ const DisplacementSphere = props => {
     mouse.current = new Vector2(0.8, 0.5);
     renderer.current = new WebGLRenderer({
       canvas: canvas.current,
-      antialias: false,
       powerPreference: 'high-performance',
     });
     renderer.current.setSize(innerWidth, innerHeight);
-    renderer.current.setPixelRatio(1);
+    renderer.current.setPixelRatio(Math.min(2, window.devicePixelRatio));
     renderer.current.outputEncoding = sRGBEncoding;
 
     camera.current = new PerspectiveCamera(54, innerWidth / innerHeight, 0.1, 100);

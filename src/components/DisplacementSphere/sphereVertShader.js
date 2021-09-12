@@ -184,21 +184,19 @@ float turbulence(vec3 p) {
 // START
 uniform float time;
 varying vec2 vUv;
-varying vec3 vNormal;
 varying float noise;
-
 varying vec3 vViewPosition;
+
+#include <normal_pars_vertex>
 
 void main() {
   #include <beginnormal_vertex>
   #include <defaultnormal_vertex>
+  #include <normal_vertex>
   #include <begin_vertex>
   #include <project_vertex>
-  #ifndef FLAT_SHADED // Normal computed with derivatives when FLAT_SHADED
-    vNormal = normalize(transformedNormal);
-  #endif
 
-  vViewPosition = - mvPosition.xyz;
+  vViewPosition = -mvPosition.xyz;
 
   vUv = uv;
 

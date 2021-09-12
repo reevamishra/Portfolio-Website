@@ -9,18 +9,18 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@craco/craco": "^6.2.0",
+    "@craco/craco": "^6.3.0",
     "@storybook/addon-a11y": "^6.3.8",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-controls": "^6.3.8",
     "@storybook/react": "^6.3.8",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
+    "@testing-library/react": "^12.1.0",
     "@testing-library/user-event": "^13.2.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "mdx-loader": "^3.0.2",
-    "prettier": "^2.3.2",
+    "prettier": "^2.4.0",
     "react-scripts": "^4.0.3",
     "react-snap": "1.23.0",
     "source-map-explorer": "^2.5.2",
@@ -37,7 +37,7 @@
     "react-helmet": "^6.1.0",
     "react-router-dom": "5.3.0",
     "react-transition-group": "^4.4.2",
-    "three": "^0.131.3"
+    "three": "^0.132.2"
   },
   "scripts": {
     "start": "set PORT=80 && craco start",
