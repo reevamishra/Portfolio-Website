@@ -8,7 +8,8 @@ import { useTheme } from 'components/ThemeProvider';
 import { usePrefersReducedMotion, useInViewport } from 'hooks';
 import { reflow } from 'utils/transition';
 import { media } from 'utils/style';
-import { vertexShader, fragmentShader } from './sphereShader';
+import vertexShader from './sphereVert.glsl';
+import fragmentShader from './sphereFrag.glsl';
 import './index.css';
 
 const Sphere = ({ isInViewport, reduceMotion }) => {

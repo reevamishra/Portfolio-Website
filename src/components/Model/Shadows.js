@@ -8,9 +8,10 @@ import {
   MeshDepthMaterial,
   ShaderMaterial,
 } from 'three';
-import { HorizontalBlurShader } from 'three/examples/jsm/shaders/HorizontalBlurShader.js';
-import { VerticalBlurShader } from 'three/examples/jsm/shaders/VerticalBlurShader.js';
 import { useThree, useFrame } from '@react-three/fiber';
+import vertexShader from './shadowVert.glsl';
+import fragmentShaderHorizontal from './shadowFragHorizontal.glsl';
+import fragmentShaderVertical from './shadowFragVertical.glsl';
 
 const renderTargetSize = 512;
 const planeWidth = 8;
@@ -105,10 +106,24 @@ const Shadows = () => {
     depthMaterial.current.depthTest = false;
     depthMaterial.current.depthWrite = false;
 
-    horizontalBlurMaterial.current = new ShaderMaterial(HorizontalBlurShader);
+    horizontalBlurMaterial.current = new ShaderMaterial({
+      uniforms: {
+        tDiffuse: { type: 't', value: null },
+        h: { type: 'f', value: 1.0 / 512.0 },
+      },
+      vertexShader,
+      fragmentShader: fragmentShaderHorizontal,
+    });
     horizontalBlurMaterial.current.depthTest = false;
 
-    verticalBlurMaterial.current = new ShaderMaterial(VerticalBlurShader);
+    verticalBlurMaterial.current = new ShaderMaterial({
+      uniforms: {
+        tDiffuse: { type: 't', value: null },
+        v: { type: 'f', value: 1.0 / 512.0 },
+      },
+      vertexShader,
+      fragmentShader: fragmentShaderVertical,
+    });
     verticalBlurMaterial.current.depthTest = false;
   }, []);
 

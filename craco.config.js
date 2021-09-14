@@ -1,4 +1,20 @@
+const { addBeforeLoader, loaderByName } = require('@craco/craco');
+
 module.exports = {
+  plugins: [
+    {
+      plugin: {
+        overrideWebpackConfig({ webpackConfig }) {
+          addBeforeLoader(webpackConfig, loaderByName('file-loader'), {
+            test: /\.glsl$/,
+            use: 'raw-loader',
+          });
+
+          return webpackConfig;
+        },
+      },
+    },
+  ],
   style: {
     postcss: {
       mode: 'extends',

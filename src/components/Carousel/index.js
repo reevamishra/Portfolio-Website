@@ -20,7 +20,8 @@ import { cleanScene, cleanRenderer } from 'utils/three';
 import { getImageFromSrcSet } from 'utils/image';
 import { ReactComponent as ArrowLeft } from 'assets/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'assets/arrow-right.svg';
-import { vertexShader, fragmentShader } from './carouselShader';
+import vertexShader from './carouselVert.glsl';
+import fragmentShader from './carouselFrag.glsl';
 import './index.css';
 
 function determineIndex(imageIndex, index, images, direction) {
