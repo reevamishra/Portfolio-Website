@@ -28,18 +28,18 @@ const ProfileText = ({ status, titleId }) => (
       className={classNames('profile__description', `profile__description--${status}`)}
       size="l"
     >
-      I'm Cody. I am a multidisciplinary designer & developer with a focus on motion and
-      user experience. My projects include UI/UX design, animation, illustration, and
-      development. If you are interested in the tools and software I use, check out my{' '}
-      <Link href="/uses">uses page</Link>.
+      I'm Cody, a multidisciplinary designer & developer with a focus on motion and user
+      experience. My projects include UI/UX design, animation, 3D modeling & illustration,
+      and development.
     </Text>
     <Text
       className={classNames('profile__description', `profile__description--${status}`)}
       size="l"
     >
-      In my spare time, I like to{' '}
-      <Link href="https://youtube.codyb.co">play/compose music</Link> and{' '}
-      <Link href="/articles">write technical articles</Link>. I am always interested in
+      This portfolio is a selection of my featured and most recent work. I also write{' '}
+      <Link href="/articles">technical articles</Link> and create OSS with{' '}
+      <Link href="https://github.com/pmndrs">@pmndrs</Link> and{' '}
+      <Link href="https://github.com/threejs">@threejs</Link>. I'm always interested in
       new projects, so feel free to drop me a line.
     </Text>
   </Fragment>
