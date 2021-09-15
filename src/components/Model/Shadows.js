@@ -162,7 +162,6 @@ const Shadows = () => {
     scene.background = null;
 
     // Force the depthMaterial to everything
-    // cameraHelper.visible = false;
     scene.overrideMaterial = depthMaterial.current;
 
     // Render to the render target to get the depths

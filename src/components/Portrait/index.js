@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, Suspense } from 'react';
+import { useRef, useEffect, Suspense } from 'react';
 import classNames from 'classnames';
 import { useThree, Canvas } from '@react-three/fiber';
 import { useGLTF, Environment } from '@react-three/drei';
@@ -57,18 +57,11 @@ const Model = ({ isInViewport, reduceMotion }) => {
   return <primitive object={gltf.scene} position={[0, -1.6, 0]} />;
 };
 
-const Portrait = ({ className, noStyle = false, delay, ...rest }) => {
-  const [loaded, setLoaded] = useState();
+const Portrait = ({ className, show = true, noStyle, delay, ...rest }) => {
   const canvas = useRef();
   const isInViewport = useInViewport(canvas);
   const reduceMotion = usePrefersReducedMotion();
-
-  const Loader = () => {
-    useEffect(() => {
-      return () => setLoaded(true);
-    }, []);
-    return null;
-  };
+  const visible = show || isInViewport;
 
   useEffect(() => {
     if (!noStyle) return;
@@ -93,8 +86,8 @@ const Portrait = ({ className, noStyle = false, delay, ...rest }) => {
       <fog attach="fog" args={[0x111111, -6, 40]} />
       <spotLight intensity={0.8} angle={0.1} penumbra={1} position={[5, 2, 10]} />
       <spotLight intensity={0.8} angle={0.1} penumbra={1} position={[5, 2, -10]} />
-      {(isInViewport || loaded) && (
-        <Suspense fallback={<Loader />}>
+      {visible && (
+        <Suspense fallback={null}>
           <Model isInViewport={isInViewport} reduceMotion={reduceMotion} />
           <Environment preset="studio" />
         </Suspense>

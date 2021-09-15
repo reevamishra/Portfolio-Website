@@ -98,16 +98,24 @@ const ProjectDM = () => {
           <ProjectTextRow>
             <ProjectSectionHeading>The Problem</ProjectSectionHeading>
             <ProjectSectionText>
-              After complimenting <Link href="/uses">my arsenal</Link> with Figma as my
-              weapon of choice for UI design in 2019, I noticed that working with 3D and
-              interactive content was not possible within Figma, especially when using
-              grid systems.
+              After moving to Figma as my weapon of choice for UI design in 2019, I found
+              my 3D workflow for design assets cumbersome and repetitive. Not every
+              project would ultimately leverage real-time 3D in the final product — only
+              still images.
             </ProjectSectionText>
             <ProjectSectionText>
-              In early 2019, I found that designers were growing increasingly interested
-              in 3D and immersive art direction, yet lacked the tools to do so without
-              hiring a developer or modeler. I decided to change that and, with it,
-              created Device Models.
+              Later in 2019, designers grew increasingly interested in 3D and immersive
+              art direction. This tension became commonplace yet only done through a niche
+              collection of creators.
+            </ProjectSectionText>
+            <ProjectSectionText>
+              Tools like{' '}
+              <Link href="https://docs.pmnd.rs/react-three-fiber">
+                @react-three/fiber
+              </Link>{' '}
+              emerged to better the experience on the development side, but there was no
+              equivalent for designers. With Figma already dominating the design space, I
+              found this to be as simple as a plugin.
             </ProjectSectionText>
           </ProjectTextRow>
         </ProjectSection>

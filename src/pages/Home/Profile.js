@@ -9,7 +9,7 @@ import Section from 'components/Section';
 import Heading from 'components/Heading';
 import Text from 'components/Text';
 import { ReactComponent as KatakanaProfile } from 'assets/katakana-profile.svg';
-import { reflow } from 'utils/transition';
+import { reflow, isVisible } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './Profile.css';
 
@@ -93,6 +93,7 @@ const Profile = ({ id, visible, sectionRef }) => {
                   <Suspense fallback={null}>
                     <Portrait
                       noStyle
+                      show={isVisible(status)}
                       className={classNames(
                         'profile__image',
                         `profile__image--${status}`

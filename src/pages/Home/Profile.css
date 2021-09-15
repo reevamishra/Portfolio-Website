@@ -170,7 +170,7 @@
     z-index: 16;
   }
 
-  & .portrait__canvas {
+  & canvas {
     opacity: 0;
   }
 

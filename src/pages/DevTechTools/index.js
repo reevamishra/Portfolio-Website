@@ -29,12 +29,7 @@ const ProjectDTT = () => {
         <meta name="description" content={description} />
       </Helmet>
       <ProjectContainer>
-        <ProjectHeader
-          title={title}
-          description={description}
-          url="https://devtechtools.com"
-          roles={roles}
-        />
+        <ProjectHeader title={title} description={description} roles={roles} />
         <ProjectSection first>
           <ProjectSectionContent>
             <ProjectImage
