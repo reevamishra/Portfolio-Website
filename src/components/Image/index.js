@@ -14,10 +14,6 @@ import VisuallyHidden from 'components/VisuallyHidden';
 import './index.css';
 
 const Image = ({ className, style, reveal, delay = 0, raised, src, ...rest }) => {
-  // require returns an ES module in CRA 4
-  // https://github.com/facebook/create-react-app/issues/9831
-  if (src?.default) src = src.default;
-
   const [loaded, setLoaded] = useState(false);
   const { themeId } = useTheme();
   const containerRef = useRef();
