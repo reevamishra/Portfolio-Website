@@ -83,7 +83,6 @@ const Portrait = ({ className, show = true, noStyle, delay, ...rest }) => {
       aria-label="A 3D portrait of myself."
       frameloop="demand"
       dpr={[1, 2]}
-      gl={{ powerPreference: 'high-performance' }}
       camera={{ fov: 45, near: 0.5, far: 2.25, position: [0, 0, 0.8] }}
       style={{ '--delay': delay }}
       {...rest}

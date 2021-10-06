@@ -108,8 +108,8 @@ const Shadows = () => {
 
     horizontalBlurMaterial.current = new ShaderMaterial({
       uniforms: {
-        tDiffuse: { type: 't', value: null },
-        h: { type: 'f', value: 1.0 / 512.0 },
+        tDiffuse: { value: null },
+        h: { value: 1.0 / 512.0 },
       },
       vertexShader,
       fragmentShader: fragmentShaderHorizontal,
@@ -118,8 +118,8 @@ const Shadows = () => {
 
     verticalBlurMaterial.current = new ShaderMaterial({
       uniforms: {
-        tDiffuse: { type: 't', value: null },
-        v: { type: 'f', value: 1.0 / 512.0 },
+        tDiffuse: { value: null },
+        v: { value: 1.0 / 512.0 },
       },
       vertexShader,
       fragmentShader: fragmentShaderVertical,

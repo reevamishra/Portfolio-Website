@@ -98,7 +98,7 @@ const Sphere = ({ isInViewport, reduceMotion }) => {
         UniformsLib['ambient'],
         UniformsLib['lights'],
         shader.uniforms,
-        { time: { type: 'f', value: 0 } },
+        { time: { value: 0 } },
       ]);
 
       shader.uniforms = uniforms.current;
@@ -133,7 +133,6 @@ const DisplacementSphere = props => {
           frameloop={reduceMotion ? 'demand' : 'always'}
           className={classNames('displacement-sphere', `displacement-sphere--${status}`)}
           dpr={[1, 2]}
-          gl={{ powerPreference: 'high-performance' }}
           camera={{ fov: 54, near: 0.1, far: 100, position: [0, 0, 52] }}
           style={{ position: 'absolute', width: '100vw', height: '130vh' }}
           {...props}

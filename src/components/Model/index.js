@@ -85,7 +85,6 @@ const Model = ({
       flat
       frameloop="demand"
       dpr={[1, 2]}
-      gl={{ powerPreference: 'high-performance' }}
       camera={{
         fov: 36,
         near: 0.1,
