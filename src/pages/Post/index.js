@@ -24,23 +24,21 @@ const PostWrapper = ({
   children,
   title,
   description,
-  slug,
   date,
   banner,
-  bannerVideo,
   bannerPlaceholder,
-  bannerAlt,
+  bannerAlt = '',
   readTime,
 }) => {
-  const windowSize = useWindowSize();
-  const contentRef = useRef();
+  const { width } = useWindowSize();
+  const scrollRef = useRef();
   useScrollRestore();
 
   const handleScrollIndicatorClick = event => {
     event.preventDefault();
 
     window.scrollTo({
-      top: contentRef.current.offsetTop,
+      top: scrollRef.current.offsetTop,
       left: 0,
       behavior: 'smooth',
     });
@@ -64,8 +62,8 @@ const PostWrapper = ({
             {status => (
               <div className="post__date">
                 <Divider
-                  notchWidth={windowSize.width > media.mobile ? '90px' : '60px'}
-                  notchHeight={windowSize.width > media.mobile ? '10px' : '8px'}
+                  notchWidth={width > media.mobile ? '90px' : '60px'}
+                  notchHeight={width > media.mobile ? '10px' : '8px'}
                   collapsed={status !== 'entered'}
                 />
                 <span
@@ -109,12 +107,14 @@ const PostWrapper = ({
             delay={600}
             className="post__banner-image"
             src={banner ? require(`posts/assets/${banner}`) : undefined}
-            placeholder={require(`posts/assets/${bannerPlaceholder}`)}
+            placeholder={
+              bannerPlaceholder ? require(`posts/assets/${bannerPlaceholder}`) : undefined
+            }
             alt={bannerAlt}
           />
         </div>
       </header>
-      <Section className="post__content-wrapper" id="postContent" ref={contentRef}>
+      <Section className="post__content-wrapper" id="postContent" ref={scrollRef}>
         <div className="post__content">{children}</div>
       </Section>
       <Footer />
@@ -154,23 +154,21 @@ const PostCode = ({ children, ...rest }) => (
 
 const PostLink = ({ ...props }) => <Link {...props} />;
 
-const Post = ({ slug, content: PostContent, ...rest }) => {
-  return (
-    <MDXProvider
-      components={{
-        wrapper: PostWrapper,
-        h2: PostHeadingTwo,
-        p: PostParagraph,
-        ul: PostList,
-        img: PostImage,
-        a: PostLink,
-        pre: Code,
-        inlineCode: PostCode,
-      }}
-    >
-      <PostContent slug={slug} {...rest} />
-    </MDXProvider>
-  );
-};
+const Post = ({ slug, content: PostContent, ...rest }) => (
+  <MDXProvider
+    components={{
+      wrapper: PostWrapper,
+      h2: PostHeadingTwo,
+      p: PostParagraph,
+      ul: PostList,
+      img: PostImage,
+      a: PostLink,
+      pre: Code,
+      inlineCode: PostCode,
+    }}
+  >
+    <PostContent slug={slug} {...rest} />
+  </MDXProvider>
+);
 
 export default Post;

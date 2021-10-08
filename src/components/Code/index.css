@@ -14,6 +14,29 @@
   }
 }
 
+.code--has-preview {
+  margin-bottom: 0;
+}
+
+.code__preview {
+  --spaceBottom: 80px;
+
+  border: none;
+  display: block;
+  grid-column: 3;
+  height: 400px;
+  margin: 0 calc(var(--spaceL) * -1) var(--spaceBottom);
+  width: calc(100% + var(--space2XL));
+}
+
+@media (--mediaTablet) {
+  .code__preview {
+    --spaceBottom: 60px;
+
+    grid-column: 1;
+  }
+}
+
 .code--dark {
   --char: #d8dee9;
   --comment: #b2b2b2;

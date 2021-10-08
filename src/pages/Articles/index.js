@@ -25,7 +25,7 @@ const ArticlesPost = ({
   description,
   banner,
   bannerPlaceholder,
-  bannerAlt,
+  bannerAlt = '',
   date,
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -51,7 +51,9 @@ const ArticlesPost = ({
             play={hovered}
             className="articles__post-image"
             src={banner ? require(`posts/assets/${banner}`) : undefined}
-            placeholder={require(`posts/assets/${bannerPlaceholder}`)}
+            placeholder={
+              bannerPlaceholder ? require(`posts/assets/${bannerPlaceholder}`) : undefined
+            }
             alt={bannerAlt}
           />
           <div className="articles__post-image-tag">K256</div>
