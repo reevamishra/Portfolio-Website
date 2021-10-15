@@ -85,13 +85,11 @@ const Model = ({
       flat
       frameloop="demand"
       dpr={[1, 2]}
+      gl={{ physicallyCorrectLights: true }}
       camera={{
         fov: 36,
-        near: 0.1,
-        far: 100,
         position: [cameraPosition.x, cameraPosition.y, cameraPosition.z],
       }}
-      onCreated={({ gl }) => (gl.physicallyCorrectLights = true)}
       {...rest}
     >
       <ambientLight intensity={1.2} />
