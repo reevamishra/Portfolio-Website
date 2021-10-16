@@ -9,6 +9,7 @@ import usePrefersReducedMotion from './usePrefersReducedMotion';
 import usePrevious from './usePrevious';
 import useRouteTransition from './useRouteTransition';
 import useScrollRestore from './useScrollRestore';
+import useSmoothScroll from './useSmoothScroll';
 import useWindowSize from './useWindowSize';
 
 export {
@@ -23,5 +24,6 @@ export {
   usePrevious,
   useRouteTransition,
   useScrollRestore,
+  useSmoothScroll,
   useWindowSize,
 };
