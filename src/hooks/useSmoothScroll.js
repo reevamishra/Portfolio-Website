@@ -4,7 +4,7 @@ import { usePrefersReducedMotion, useRouteTransition } from 'hooks';
 
 const useSmoothScroll = (...scrollSections) => {
   const { status } = useRouteTransition();
-  const { hash, state } = useLocation();
+  const { hash } = useLocation();
   const initHash = useRef(true);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -67,7 +67,9 @@ const useSmoothScroll = (...scrollSections) => {
         scrollObserver.disconnect();
       }
     };
-  }, [scrollSections, hash, state, prefersReducedMotion, status]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status, hash, prefersReducedMotion]);
 };
 
 export default useSmoothScroll;
