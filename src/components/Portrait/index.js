@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, Suspense } from 'react';
 import classNames from 'classnames';
 import { Vector2 } from 'three';
 import { useThree, Canvas } from '@react-three/fiber';
-import { useGLTF, Environment } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { useSpring } from '@react-spring/core';
 import { useInViewport, usePrefersReducedMotion } from 'hooks';
 import portraitModelPath from 'assets/portrait.glb';
@@ -60,7 +60,7 @@ const PortraitModel = ({ isInViewport, reduceMotion }) => {
     };
   }, [pause]);
 
-  return <primitive object={gltf.scene} position={[0, -1.6, 0]} />;
+  return <primitive object={gltf.scene} position={[0, -1.62, 0]} />;
 };
 
 const Portrait = ({ className, show = true, noStyle, delay, ...rest }) => {
@@ -83,18 +83,16 @@ const Portrait = ({ className, show = true, noStyle, delay, ...rest }) => {
       aria-label="A 3D portrait of myself."
       frameloop="demand"
       dpr={[1, 2]}
-      camera={{ fov: 45, near: 0.5, far: 2.25, position: [0, 0, 0.8] }}
+      camera={{ fov: 45, near: 0.5, far: 2.25, position: [0, 0, 0.75] }}
       style={{ '--delay': delay }}
       {...rest}
     >
-      <ambientLight intensity={0.1} />
-      <fog attach="fog" args={[0x111111, -6, 40]} />
-      <spotLight intensity={0.8} angle={0.1} penumbra={1} position={[5, 2, 10]} />
-      <spotLight intensity={0.8} angle={0.1} penumbra={1} position={[5, 2, -10]} />
+      <ambientLight intensity={0.2} />
+      <spotLight intensity={2.2} angle={0.1} penumbra={1} position={[5, 2, 5]} />
+      <spotLight intensity={2.4} angle={0.1} penumbra={1} position={[5, 2, 10]} />
       {visible && (
         <Suspense fallback={null}>
           <PortraitModel isInViewport={isInViewport} reduceMotion={reduceMotion} />
-          <Environment preset="studio" />
         </Suspense>
       )}
     </Canvas>

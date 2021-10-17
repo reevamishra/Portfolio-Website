@@ -1841,10 +1841,10 @@
   resolved "https://registry.yarnpkg.com/@react-spring/types/-/types-9.3.0.tgz#54ec58ca40414984209c8baa75fddd394f9e2949"
   integrity sha512-q4cDr2RSPblXMD3Rxvk6qcC7nmhhfV2izEBP06hb8ZCXznA6qJirG3RMpi29kBtEQiw1lWR59hAXKhauaPtbOA==
 
-"@react-three/drei@^7.15.0":
-  version "7.15.0"
-  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.15.0.tgz#331dbc4348cdb583d46f796427783d02156d31b6"
-  integrity sha512-evMdj2FPjHToc79KGIQ4cDPWiJnRYhOL7cP4XZjuSY2d7JALMYEfx7JgSUJcD+IJmYKPWcZMpAUjxsRXBHnf8g==
+"@react-three/drei@^7.16.3":
+  version "7.16.3"
+  resolved "https://registry.yarnpkg.com/@react-three/drei/-/drei-7.16.3.tgz#d27cb3eccb21498aca854e24e04e0b34a2ed2861"
+  integrity sha512-L5KxPA9I/ji5/4q3kRcu1+KtfviADVFftcZ3Tv4NHZAENhbXZY4/ByBR8CgtxiQGnGEZQOoNmmwfjZBduc415A==
   dependencies:
     "@babel/runtime" "^7.11.2"
     detect-gpu "^3.1.21"
