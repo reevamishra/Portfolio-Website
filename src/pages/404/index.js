@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import { Button } from 'components/Button';
 import DecoderText from 'components/DecoderText';
 import Heading from 'components/Heading';
@@ -13,10 +13,10 @@ import './index.css';
 
 const NotFound = () => (
   <section className="page-404">
-    <Helmet>
-      <title tag="title">404 | Not Found</title>
-      <meta name="description" content="404 page not found. This page doesn't exist" />
-    </Helmet>
+    <SEO
+      title="404 | Not Found"
+      description="404 page not found. This page doesn't exist"
+    />
     <Transition appear in={true} timeout={0} onEnter={reflow}>
       {status => (
         <Fragment>

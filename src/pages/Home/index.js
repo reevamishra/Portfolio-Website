@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import Intro from './Intro';
 import ProjectSummary from './ProjectSummary';
 import Profile from './Profile';
@@ -15,6 +15,10 @@ import iphone11 from 'assets/iphone-11.glb';
 import macbookPro from 'assets/macbook-pro.glb';
 import portrait from 'assets/portrait.glb';
 import './index.css';
+
+const title = 'Cody Bennett | Designer + Developer';
+const description =
+  'Portfolio of Cody Jason Bennett – a multidisciplinary designer & developer with a focus on motion and user experience.';
 
 const disciplines = ['Developer', 'Creator', 'Animator', 'Illustrator', 'Musician'];
 
@@ -65,16 +69,15 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Helmet>
-        <title>Cody Bennett | Designer + Developer</title>
-        <meta
-          name="description"
-          content="Portfolio of Cody Jason Bennett – a multidisciplinary designer & developer with a focus on motion and user experience."
-        />
+      <SEO
+        title={title}
+        description={description}
+        socialImage="https://codyb.co/social-image.png"
+      >
         <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
         <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
         <link rel="prefetch" href={portrait} as="fetch" crossorigin="" />
-      </Helmet>
+      </SEO>
       <Intro
         id="intro"
         sectionRef={intro}

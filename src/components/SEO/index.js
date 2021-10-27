@@ -1,0 +1,24 @@
+import { Helmet } from 'react-helmet';
+
+const SEO = ({ title, description, socialImage, children }) => (
+  <Helmet>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content={description} />
+    {socialImage && <meta itemprop="image" content={socialImage} />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+
+    {children}
+  </Helmet>
+);
+
+export default SEO;

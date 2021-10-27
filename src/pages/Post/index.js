@@ -6,7 +6,7 @@ import Divider from 'components/Divider';
 import { numToMs, msToNum } from 'utils/style';
 import { useWindowSize, useScrollRestore } from 'hooks';
 import Image from 'components/Image';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import { MDXProvider } from '@mdx-js/react';
 import Link from 'components/Link';
 import Code from 'components/Code';
@@ -46,11 +46,13 @@ const PostWrapper = ({
 
   return (
     <article className="post">
-      <Helmet>
-        <title>Articles | {title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:type" content="article" />
-      </Helmet>
+      <SEO
+        title={`Articles | ${title}`}
+        description={description}
+        socialImage={
+          banner ? `https://codyb.co${require(`posts/assets/${banner}`)}` : undefined
+        }
+      />
       <header className="post__header">
         <div className="post__header-text">
           <Transition

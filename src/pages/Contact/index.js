@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import classNames from 'classnames';
 import { TransitionGroup, Transition } from 'react-transition-group';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import Input from 'components/Input';
 import DecoderText from 'components/DecoderText';
 import Divider from 'components/Divider';
@@ -97,13 +97,10 @@ const Contact = () => {
 
   return (
     <Section className={classNames('contact', `contact--${status}`)}>
-      <Helmet>
-        <title>Contact | Cody Bennett</title>
-        <meta
-          name="description"
-          content="Send me a message if you’re interested in discussing a project or if you just want to say hi"
-        />
-      </Helmet>
+      <SEO
+        title="Contact | Cody Bennett"
+        description="Send me a message if you’re interested in discussing a project or if you just want to say hi."
+      />
       <TransitionGroup component={null}>
         {!complete && (
           <Transition appear mountOnEnter unmountOnExit timeout={1600} onEnter={reflow}>

@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import Footer from 'components/Footer';
 import {
   ProjectContainer,
@@ -24,10 +24,7 @@ const ProjectDTT = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Projects | {title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <SEO title={`Projects | ${title}`} description={description} socialImage={dtt} />
       <ProjectContainer>
         <ProjectHeader title={title} description={description} roles={roles} />
         <ProjectSection first>

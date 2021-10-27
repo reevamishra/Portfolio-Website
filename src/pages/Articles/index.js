@@ -8,7 +8,7 @@ import {
   Suspense,
 } from 'react';
 import { Route, Switch, Link as RouterLink } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import Post from 'pages/Post';
 import Image from 'components/Image';
 import Section from 'components/Section';
@@ -79,13 +79,10 @@ const Articles = () => {
 
   return (
     <div className="articles">
-      <Helmet>
-        <title>Articles | Cody Bennett</title>
-        <meta
-          name="description"
-          content="A collection of technical design and development articles."
-        />
-      </Helmet>
+      <SEO
+        title="Articles | Cody Bennett"
+        description="A collection of technical design and development articles."
+      />
       <Section className="articles__content">
         <div className="articles__column">
           {posts.map(({ slug, ...post }, index) => (

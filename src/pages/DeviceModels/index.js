@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from 'components/SEO';
 import Image from 'components/Image';
 import Link from 'components/Link';
 import { Button } from 'components/Button';
@@ -67,10 +67,11 @@ const ProjectDM = () => {
 
   return (
     <Fragment>
-      <Helmet>
-        <title>Projects | {title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+      <SEO
+        title={`Projects | ${title}`}
+        description={description}
+        socialImage={deviceModels}
+      />
       <ProjectContainer>
         <ProjectBackground
           srcSet={`${deviceModelsBackground} 1080w, ${deviceModelsBackgroundLarge} 2160w`}
