@@ -49,9 +49,7 @@ const PostWrapper = ({
       <SEO
         title={`Articles | ${title}`}
         description={description}
-        socialImage={
-          banner ? `https://codyb.co${require(`posts/assets/${banner}`)}` : undefined
-        }
+        socialImage={banner ? require(`posts/assets/${banner}`) : undefined}
       />
       <header className="post__header">
         <div className="post__header-text">

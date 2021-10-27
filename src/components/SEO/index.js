@@ -1,24 +1,30 @@
 import { Helmet } from 'react-helmet';
 
-const SEO = ({ title, description, socialImage, children }) => (
-  <Helmet>
-    <title>{title}</title>
-    <meta name="description" content={description} />
+const SEO = ({ title, description, socialImage, children }) => {
+  // Make relative Webpack paths absolute for crawlers
+  if (socialImage && !socialImage.startsWith('https://'))
+    socialImage = `https://codyb.co${socialImage}`;
 
-    <meta itemprop="name" content={title} />
-    <meta itemprop="description" content={description} />
-    {socialImage && <meta itemprop="image" content={socialImage} />}
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
 
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    {socialImage && <meta property="og:image" content={socialImage} />}
+      <meta itemprop="name" content={title} />
+      <meta itemprop="description" content={description} />
+      {socialImage && <meta itemprop="image" content={socialImage} />}
 
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    {socialImage && <meta name="twitter:image" content={socialImage} />}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      {socialImage && <meta property="og:image" content={socialImage} />}
 
-    {children}
-  </Helmet>
-);
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {socialImage && <meta name="twitter:image" content={socialImage} />}
+
+      {children}
+    </Helmet>
+  );
+};
 
 export default SEO;
