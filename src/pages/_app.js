@@ -10,7 +10,6 @@ import VisuallyHidden from 'components/VisuallyHidden';
 import { tokens } from 'components/ThemeProvider/theme';
 import { msToNum } from 'utils/style';
 import { useLocalStorage } from 'hooks';
-import { initialState, reducer } from 'utils/reducer';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './reset.css';
@@ -30,7 +29,28 @@ const repoPrompt = `\u00A9 2017-${new Date().getFullYear()} Cody Bennett\n\nChec
 
 const App = () => {
   const [storedTheme] = useLocalStorage('theme', 'dark');
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      const { type, value } = action;
+
+      switch (type) {
+        case 'setTheme':
+          return { ...state, theme: value };
+        case 'toggleTheme': {
+          const newThemeId = state.theme === 'dark' ? 'light' : 'dark';
+          return { ...state, theme: newThemeId };
+        }
+        case 'toggleMenu':
+          return { ...state, menuOpen: !state.menuOpen };
+        default:
+          throw new Error();
+      }
+    },
+    {
+      menuOpen: false,
+      theme: 'dark',
+    }
+  );
 
   useEffect(() => {
     if (!prerender) {
