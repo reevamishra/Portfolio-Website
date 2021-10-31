@@ -1,10 +1,10 @@
 const { patchWebpackConfig } = require('next-global-css');
 
 module.exports = {
+  swcMinify: true,
   images: {
     disableStaticImages: true,
   },
-  poweredByHeader: false,
   exportPathMap: async () => ({
     '/404': { page: '/404' },
     '/articles': { page: '/Articles' },
@@ -17,6 +17,7 @@ module.exports = {
     // Disable NextJS global CSS warnings
     patchWebpackConfig(config, { isServer });
 
+    // Configure Webpack patches
     config.module.rules.push(
       {
         test: /\.svg$/,
@@ -29,6 +30,10 @@ module.exports = {
       {
         test: /\.glsl$/,
         type: 'asset/source',
+      },
+      {
+        test: /\.mdx$/,
+        use: ['next-swc-loader', 'mdx-loader'],
       }
     );
 

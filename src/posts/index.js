@@ -1,9 +1,4 @@
-const allPosts = require.context(
-  '!babel-loader!mdx-loader!posts',
-  true,
-  /\.mdx$/,
-  'lazy'
-);
+const allPosts = require.context('posts', true, /\.mdx$/, 'lazy');
 
 const posts = allPosts
   .keys()
