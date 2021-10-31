@@ -2,6 +2,7 @@ const { patchWebpackConfig } = require('next-global-css');
 
 module.exports = {
   swcMinify: true,
+  productionBrowserSourceMaps: true,
   images: {
     disableStaticImages: true,
   },

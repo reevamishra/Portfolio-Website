@@ -1,4 +1,3 @@
-const postcssOptions = require('../postcss.config');
 const nextOptions = require('../next.config');
 
 module.exports = {
@@ -6,46 +5,23 @@ module.exports = {
     builder: 'webpack5',
   },
   addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-controls',
+    {
+      name: '@storybook/addon-essentials',
+      options: { backgrounds: false, docs: false, outline: false },
+    },
     '@storybook/addon-a11y',
-    '@storybook/addon-toolbars',
+    '@storybook/addon-postcss',
   ],
   stories: ['../src/**/*.stories.js'],
   webpackFinal(config) {
     // Respect absolute paths
     config.resolve.modules.push('src');
 
-    // Configure base loaders
-    config.module.rules = [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['next/babel'],
-        },
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions,
-            },
-          },
-        ],
-        sideEffects: true,
-      },
-    ];
+    // Filter to base rules
+    const baseExts = ['.css', '.js'];
+    config.module.rules = config.module.rules.filter(rule =>
+      baseExts.some(ext => rule.test?.test(ext))
+    );
 
     // Use Next Webpack patches
     return nextOptions.webpack(config, { isServer: false });

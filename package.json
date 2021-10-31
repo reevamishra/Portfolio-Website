@@ -8,10 +8,9 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.15.8",
     "@storybook/addon-a11y": "^6.3.12",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-controls": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.3.12",
     "@storybook/manager-webpack5": "^6.3.12",
     "@storybook/react": "^6.3.12",
@@ -51,7 +50,7 @@
     "build-storybook": "build-storybook -o build-storybook",
     "lint": "next lint",
     "storybook": "start-storybook -p 9009 -s public --no-manager-cache",
-    "analyze": "source-map-explorer 'build/static/js/*.js'"
+    "analyze": "source-map-explorer 'build/_next/static/chunks/*.js'"
   },
   "reactSnap": {
     "puppeteerArgs": [
