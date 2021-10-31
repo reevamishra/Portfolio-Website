@@ -1,4 +1,3 @@
-const path = require('path');
 const postcssOptions = require('../postcss.config');
 const nextOptions = require('../next.config');
 
@@ -13,9 +12,9 @@ module.exports = {
     '@storybook/addon-toolbars',
   ],
   stories: ['../src/**/*.stories.js'],
-  webpackFinal(config, { mode }) {
+  webpackFinal(config) {
     // Respect absolute paths
-    config.resolve.modules.push(path.resolve(process.cwd(), 'src'));
+    config.resolve.modules.push('src');
 
     // Configure base loaders
     config.module.rules = [
