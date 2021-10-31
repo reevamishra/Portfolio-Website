@@ -23,9 +23,3 @@ To view the components and storybook:
 ```bash
 yarn storybook
 ```
-
-To run tests:
-
-```bash
-yarn test
-```

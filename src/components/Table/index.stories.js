@@ -9,7 +9,7 @@ export const table = () => (
   <StoryContainer>
     <Table>
       {new Array(10).fill().map((_, i) => (
-        <TableRow>
+        <TableRow key={i}>
           <TableCell>
             <strong>Label {i + 1}</strong>
           </TableCell>

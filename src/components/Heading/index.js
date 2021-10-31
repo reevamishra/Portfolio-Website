@@ -21,7 +21,7 @@ const Heading = ({
       {/* Conditionally load the bold font weight because we use it less frequently */}
       {weight === 'bold' && (
         <Helmet>
-          <link rel="preload" href={GothamBold} as="font" crossorigin="" />
+          <link rel="preload" href={GothamBold} as="font" crossOrigin="" />
           <style>
             {`
               @font-face {

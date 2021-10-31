@@ -1,5 +1,6 @@
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
-const createConfig = require('../webpack.config.js');
+const path = require('path');
+const postcssOptions = require('../postcss.config');
+const nextOptions = require('../next.config');
 
 module.exports = {
   core: {
@@ -12,30 +13,39 @@ module.exports = {
     '@storybook/addon-toolbars',
   ],
   stories: ['../src/**/*.stories.js'],
-  webpackFinal(config, { configType }) {
-    process.env.STORYBOOK = true;
+  webpackFinal(config, { mode }) {
+    // Respect absolute paths
+    config.resolve.modules.push(path.resolve(process.cwd(), 'src'));
 
-    const mode = configType.toLowerCase();
-    const webpackConfig = createConfig(null, { mode });
+    // Configure base loaders
+    config.module.rules = [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions,
+            },
+          },
+        ],
+        sideEffects: true,
+      },
+    ];
 
-    return {
-      ...config,
-      module: {
-        ...config.module,
-        rules: webpackConfig.module.rules,
-      },
-      resolve: {
-        ...config.resolve,
-        modules: [...config.resolve.modules, ...webpackConfig.resolve.modules],
-      },
-      plugins: [
-        ...config.plugins,
-        mode === 'production' &&
-          new MiniCSSExtractPlugin({
-            filename: 'static/css/[name].[contenthash:8].css',
-            chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-          }),
-      ].filter(Boolean),
-    };
+    // Use Next Webpack patches
+    return nextOptions.webpack(config, { isServer: false });
   },
 };

@@ -7,7 +7,7 @@ import Divider from 'components/Divider';
 import { useWindowSize } from 'hooks';
 import { reflow, isVisible } from 'utils/transition';
 import { media } from 'utils/style';
-import { ReactComponent as KatakanaProject } from 'assets/katakana-project.svg';
+import KatakanaProject from 'assets/katakana-project.svg';
 import deviceModels from 'components/Model/deviceModels';
 import Heading from 'components/Heading';
 import Text from 'components/Text';

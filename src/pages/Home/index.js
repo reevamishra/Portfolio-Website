@@ -74,9 +74,9 @@ const Home = () => {
         description={description}
         socialImage="https://codyb.co/social-image.png"
       >
-        <link rel="prefetch" href={iphone11} as="fetch" crossorigin="" />
-        <link rel="prefetch" href={macbookPro} as="fetch" crossorigin="" />
-        <link rel="prefetch" href={portrait} as="fetch" crossorigin="" />
+        <link rel="prefetch" href={iphone11} as="fetch" crossOrigin="" />
+        <link rel="prefetch" href={macbookPro} as="fetch" crossOrigin="" />
+        <link rel="prefetch" href={portrait} as="fetch" crossOrigin="" />
       </SEO>
       <Intro
         id="intro"

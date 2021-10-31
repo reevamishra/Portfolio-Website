@@ -1,7 +1,9 @@
 {
-  "extends": "react-app",
-  "plugins": ["react-hooks"],
+  "extends": "next/core-web-vitals",
   "rules": {
+    "@next/next/no-img-element": 0,
+    "react/no-unescaped-entities": 0,
+    "react/display-name": 0,
     "import/no-anonymous-default-export": 0,
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error",

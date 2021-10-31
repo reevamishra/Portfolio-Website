@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TransitionContext } from 'app';
+import { TransitionContext } from 'pages/_app';
 
 function useRouteTransition() {
   return useContext(TransitionContext);

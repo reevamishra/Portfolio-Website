@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, createContext, useReducer, Fragment } from '
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import classNames from 'classnames';
+import dynamic from 'next/dynamic';
 import { Helmet } from 'react-helmet';
 import Navbar from 'components/Navbar';
 import ThemeProvider from 'components/ThemeProvider';
@@ -9,7 +10,7 @@ import VisuallyHidden from 'components/VisuallyHidden';
 import { tokens } from 'components/ThemeProvider/theme';
 import { msToNum } from 'utils/style';
 import { useLocalStorage } from 'hooks';
-import { initialState, reducer } from 'app/reducer';
+import { initialState, reducer } from 'utils/reducer';
 import { reflow } from 'utils/transition';
 import prerender from 'utils/prerender';
 import './reset.css';
@@ -95,4 +96,7 @@ const AppRoutes = () => {
   );
 };
 
-export default App;
+// Disable SSR globally
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+});
