@@ -46,7 +46,7 @@
   "scripts": {
     "start": "next dev",
     "build": "next build && next export -o build/",
-    "postbuild": "node bin/clean && react-snap",
+    "postbuild": "react-snap",
     "build-storybook": "build-storybook -o build-storybook",
     "lint": "next lint",
     "storybook": "start-storybook -p 9009 -s public --no-manager-cache",

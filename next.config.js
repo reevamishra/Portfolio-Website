@@ -6,14 +6,7 @@ module.exports = {
   images: {
     disableStaticImages: true,
   },
-  exportPathMap: async () => ({
-    '/404': { page: '/404' },
-    '/articles': { page: '/Articles' },
-    '/contact': { page: '/Contact' },
-    '/projects/devtech-tools': { page: '/DevTechTools' },
-    '/projects/device-models': { page: '/DeviceModels' },
-    '/': { page: '/Home' },
-  }),
+  exportPathMap: async () => ({ '/': { page: '/Home' } }),
   webpack(config, { isServer }) {
     // Disable NextJS global CSS warnings
     patchWebpackConfig(config, { isServer });
