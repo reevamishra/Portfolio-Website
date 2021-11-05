@@ -85,7 +85,7 @@ const Model = ({
       flat
       frameloop="demand"
       dpr={[1, 2]}
-      gl={{ physicallyCorrectLights: true }}
+      gl={{ antialias: false, physicallyCorrectLights: true }}
       camera={{
         fov: 36,
         position: [cameraPosition.x, cameraPosition.y, cameraPosition.z],

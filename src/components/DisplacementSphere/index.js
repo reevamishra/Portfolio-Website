@@ -133,6 +133,7 @@ const DisplacementSphere = props => {
           frameloop={reduceMotion ? 'demand' : 'always'}
           className={classNames('displacement-sphere', `displacement-sphere--${status}`)}
           dpr={[1, 2]}
+          gl={{ antialias: false }}
           camera={{ fov: 54, position: [0, 0, 52] }}
           style={{ position: 'absolute', width: '100vw', height: '130vh' }}
           {...props}
