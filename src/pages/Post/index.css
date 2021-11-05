@@ -1,7 +1,6 @@
 .post {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
 }
 
 .post__header {
