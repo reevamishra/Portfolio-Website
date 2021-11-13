@@ -1,6 +1,6 @@
 import { useRef, useState, memo } from 'react';
 import classNames from 'classnames';
-import { NavLink, Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { Transition } from 'react-transition-group';
 import Monogram from 'components/Monogram';
 import Icon from 'components/Icon';
@@ -32,7 +32,7 @@ const NavbarIcons = () => (
   </div>
 );
 
-function Navbar(props) {
+const Navbar = props => {
   const { menuOpen, dispatch } = useAppContext();
   const { location } = props;
   const [hashKey, setHashKey] = useState();
@@ -49,9 +49,9 @@ function Navbar(props) {
     if (menuOpen) dispatch({ type: 'toggleMenu' });
   };
 
-  const isMatch = ({ match, hash = '' }) => {
-    if (!match) return false;
-    return `${match.url}${hash}` === `${location.pathname}${location.hash}`;
+  const isMatch = (url = '', hash = '') => {
+    if (!url) return false;
+    return `${url}${hash}` === `${location.pathname}${location.hash}`;
   };
 
   return (
@@ -69,19 +69,16 @@ function Navbar(props) {
       <nav className="navbar__nav">
         <div className="navbar__nav-list">
           {navLinks.map(({ label, pathname, hash }) => (
-            <NavLink
-              exact
-              className={({ isActive }) =>
-                classNames('navbar__nav-link', { 'navbar__nav-link--active': isActive })
-              }
-              isActive={match => isMatch({ match, hash })}
+            <RouterLink
+              className="navbar__nav-link"
+              aria-current={isMatch(pathname, hash) ? 'page' : undefined}
               onClick={handleNavClick}
               key={label}
               to={{ pathname, hash, state: hashKey }}
               onMouseUp={blurOnMouseUp}
             >
               {label}
-            </NavLink>
+            </RouterLink>
           ))}
         </div>
         <NavbarIcons />
@@ -96,14 +93,12 @@ function Navbar(props) {
         {status => (
           <nav className={`navbar__mobile-nav navbar__mobile-nav--${status}`}>
             {navLinks.map(({ label, pathname, hash }, index) => (
-              <NavLink
-                className={({ isActive }) =>
-                  classNames(
-                    'navbar__mobile-nav-link',
-                    `navbar__mobile-nav-link--${status}`,
-                    { 'navbar__mobile-nav-link--active': isActive }
-                  )
-                }
+              <RouterLink
+                className={classNames(
+                  'navbar__mobile-nav-link',
+                  `navbar__mobile-nav-link--${status}`
+                )}
+                aria-current={isMatch(pathname, hash) ? 'page' : undefined}
                 key={label}
                 onClick={handleMobileNavClick}
                 to={{ pathname, hash, state: hashKey }}
@@ -115,7 +110,7 @@ function Navbar(props) {
                 }}
               >
                 {label}
-              </NavLink>
+              </RouterLink>
             ))}
             <NavbarIcons />
             <ThemeToggle isMobile />
@@ -125,6 +120,6 @@ function Navbar(props) {
       {!isMobile && <ThemeToggle />}
     </header>
   );
-}
+};
 
 export default memo(Navbar);

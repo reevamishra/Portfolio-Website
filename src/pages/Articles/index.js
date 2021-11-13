@@ -7,7 +7,7 @@ import {
   lazy,
   Suspense,
 } from 'react';
-import { Route, Switch, Link as RouterLink } from 'react-router-dom';
+import { Route, Routes, Link as RouterLink } from 'react-router-dom';
 import SEO from 'components/SEO';
 import Post from 'pages/Post';
 import Image from 'components/Image';
@@ -108,18 +108,17 @@ const ArticlesRouter = () => {
   return (
     <ArticlesContext.Provider value={{ posts }}>
       <Suspense>
-        <Switch>
+        <Routes>
           {posts?.map(({ slug, ...rest }) => (
             <Route
-              exact
               key={slug}
-              path={`/articles/${slug}`}
-              render={() => <Post slug={slug} {...rest} />}
+              path={`/${slug}`}
+              element={<Post slug={slug} {...rest} />}
             />
           ))}
-          <Route exact component={Articles} path="/articles" />
-          <Route component={Page404} />
-        </Switch>
+          <Route path="/" element={<Articles />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
       </Suspense>
     </ArticlesContext.Provider>
   );

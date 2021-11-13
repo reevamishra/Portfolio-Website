@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, createContext, useReducer, Fragment } from 'react';
-import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Transition, TransitionGroup } from 'react-transition-group';
 import classNames from 'classnames';
 import dynamic from 'next/dynamic';
@@ -98,14 +98,14 @@ const AppRoutes = () => {
             <TransitionContext.Provider value={{ status }}>
               <div className={classNames('app__page', `app__page--${status}`)}>
                 <Suspense fallback={<Fragment />}>
-                  <Switch location={location}>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/projects/device-models" component={ProjectDM} />
-                    <Route path="/projects/devtech-tools" component={ProjectDTT} />
-                    <Route path="/articles" component={Articles} />
-                    <Route component={Page404} />
-                  </Switch>
+                  <Routes key={pathname} location={location}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/projects/device-models" element={<ProjectDM />} />
+                    <Route path="/projects/devtech-tools" element={<ProjectDTT />} />
+                    <Route path="/articles/*" element={<Articles />} />
+                    <Route path="*" element={<Page404 />} />
+                  </Routes>
                 </Suspense>
               </div>
             </TransitionContext.Provider>
